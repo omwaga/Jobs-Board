@@ -1,0 +1,70 @@
+@extends('layouts.front')
+@section('content')
+@include('front.banner')
+
+<section class="ftco-section bg-light">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12 col-lg-12 mb-5">
+
+				<form action="{{ route('register') }}" method="POST" class="p-5 bg-white">
+					@csrf
+
+					<div class="row form-group">
+						<div class="col-md-12 mb-md-0">
+							<label class="font-weight-bold" for="fullname">Name</label>					
+							<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+							@error('name')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col-md-12 mb-md-0">
+							<label class="font-weight-bold" for="fullname">Email Address</label>
+							<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+							@error('email')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+					</div> 
+
+					<div class="row form-group">
+						<div class="col-md-12 mb-md-0">
+							<label class="font-weight-bold" for="fullname">Password</label>
+							<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+							@error('password')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+					</div> 
+
+					<div class="row form-group">
+						<div class="col-md-12 mb-md-0">
+							<label class="font-weight-bold" for="fullname">Confirm Password</label>				
+							<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+						</div>
+					</div> 
+
+					<div class="row form-group">
+						<div class="col-md-12">
+							<input type="submit" value="Register" class="btn btn-primary  py-2 px-5 float-right">
+						</div>
+					</div>          
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+@endsection
