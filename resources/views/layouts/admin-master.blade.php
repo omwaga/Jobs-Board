@@ -340,8 +340,8 @@
             </a>
             <ul class="sub">
               <li><a class="" href="{{route('admin.categories.index')}}">Categories</a></li>
-              <li><a class="" href="{{route('admin.job-types.index')}}">Job Types</a></li>  
-              <li><a class="" href="{{route('admin.posting-subscriptions.index')}}">Posting Subscriptions</a></li>  
+              <li><a class="" href="{{route('admin.jobtypes.index')}}">Job Types</a></li>  
+              <li><a class="" href="{{route('admin.postingsubscriptions.index')}}">Posting Subscriptions</a></li>  
               <li><a class="" href="#">New Vacancy</a></li>
               <li><a class="" href="#">Manage Vacancies</a></li>
             </ul>

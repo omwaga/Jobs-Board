@@ -1,17 +1,7 @@
 @extends('layouts.front')
 @section('content')
 
-<div class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row no-gutters slider-text align-items-end justify-content-start">
-      <div class="col-md-12 ftco-animate text-center mb-5">
-       <p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Job Post</span></p>
-       <h1 class="mb-3 bread">Post A Job</h1>
-     </div>
-   </div>
- </div>
-</div>
+@include('front.banner')
 
 <section class="ftco-section bg-light">
   <div class="container">
@@ -19,21 +9,23 @@
 
       <div class="col-md-12 col-lg-12 mb-5">
 
-        <form action="#" class="p-5 bg-white">
+        <form action="{{route('register')}}" method="POST" class="p-5 bg-white">
+          @csrf
+          <input type="hidden" name="JobPost" value="JobPost">
 
           <div class="row form-group">
             <div class="col-md-12" align="center"><h3>Company Details</h3></div>
             <div class="col-md-12 mb-3 mb-md-0">
-              <label class="font-weight-bold" for="fullname">Company Name</label>
-              <input type="text" id="fullname" class="form-control" placeholder="eg. Facebook, Inc.">
+              <label class="font-weight-bold">Company Name</label>
+              <input type="text" name="name" class="form-control" placeholder="eg. Facebook, Inc.">
             </div>
           </div>
           <div class="row">
             <div class="col-md-6">
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Company Type</label>
-                  <select class="form-control">
+                  <label class="font-weight-bold">Company Type</label>
+                  <select class="form-control" name="company_type">
                     <option value="">Select Company Type</option>
                     @foreach($company_types as $company)
                     <option value="{{$company->id}}">{{$company->name}}</option>
@@ -44,8 +36,8 @@
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Country</label>
-                  <select class="form-control">
+                  <label class="font-weight-bold">Country</label>
+                  <select class="form-control" name="country_id">
                     <option value="">Select Country</option>
                     @foreach($countries as $key => $value)
                     <option value="{{$key}}">{{$value}}</option>
@@ -56,22 +48,22 @@
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Official Email</label>
-                  <input type="text" id="fullname" class="form-control" placeholder="eg. Facebook, Inc.">
+                  <label class="font-weight-bold">Official Email</label>
+                  <input type="text" class="form-control" name="email" placeholder="eg. mail@mail.com">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Contact Person's Name</label>
-                  <input type="text" id="fullname" class="form-control" placeholder="eg. Facebook, Inc.">
+                  <label class="font-weight-bold">Contact Person's Name</label>
+                  <input type="text" name="contact_person" class="form-control" placeholder="eg. John Doe">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Password</label>
-                  <input type="text" id="fullname" class="form-control" placeholder="eg. Facebook, Inc.">
+                  <label class="font-weight-bold">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="eg. Password">
                 </div>
               </div>
             </div>
@@ -79,8 +71,8 @@
             <div class="col-md-6">
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Industry</label>
-                  <select class="form-control">
+                  <label class="font-weight-bold">Industry</label>
+                  <select class="form-control" name="industry_id">
                     <option value="">Select Industry</option>
                     @foreach($industries as $industry)
                     <option value="{{$industry->id}}">{{$industry->name}}</option>
@@ -91,8 +83,8 @@
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">City</label>
-                  <select class="form-control">
+                  <label class="font-weight-bold">City</label>
+                  <select class="form-control" name="city_id">
                     <option value="">Select City</option>
                     @foreach($cities as $city)
                     <option value="{{$city->id}}">{{$city->name}}</option>
@@ -103,22 +95,22 @@
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Mobile/Landline</label>
-                  <input type="text" id="fullname" class="form-control" placeholder="eg. Facebook, Inc.">
+                  <label class="font-weight-bold">Mobile/Landline</label>
+                  <input type="text" name="phone_number" class="form-control" placeholder="eg. +254700000000">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Logo</label>
-                  <input type="text" id="fullname" class="form-control" placeholder="eg. Facebook, Inc.">
+                  <input type="file" class="form-control" name="logo">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Confirm Password</label>
-                  <input type="text" id="fullname" class="form-control" placeholder="eg. Facebook, Inc.">
+                  <label class="font-weight-bold">Confirm Password</label>
+                  <input type="password" name="password_confirmation" class="form-control" placeholder="eg. Password">
                 </div>
               </div>
             </div>            
@@ -126,27 +118,19 @@
           
           <div class="row form-group">
             <div class="col-md-12" align="center"><h3>Job Details</h3></div>
+            @foreach($posting_subscriptions as $subscription)
             <div class="col-md-12 mb-3 mb-md-0">
               <label for="option-price-1">
-                <input type="checkbox" id="option-price-1"> <span class="text-success">Free</span> For 2 weeks
+                <input type="checkbox" id="option-price-1" value="{{$subscription->id}}" name="subscription"> <span class="text-success">{{$subscription->name}}</span> {{$subscription->description}}
               </label>
             </div>
-            <div class="col-md-12 mb-3 mb-md-0">
-              <label for="option-price-1">
-                <input type="checkbox" id="option-price-1"> <span class="text-success">$500</span> For 30 days
-              </label>
-            </div>
-            <div class="col-md-12 mb-3 mb-md-0">
-              <label for="option-price-2">
-                <input type="checkbox" id="option-price-2"> <span class="text-success">$300</span> / Monthly Recurring
-              </label>
-            </div>
+            @endforeach
           </div>
 
           <div class="row form-group">
             <div class="col-md-12 mb-3 mb-md-0">
-              <label class="font-weight-bold" for="fullname">Job Title</label>
-              <input type="text" id="fullname" class="form-control" placeholder="eg. Professional UI/UX Designer">
+              <label class="font-weight-bold">Job Title</label>
+              <input type="text" name="job_title" class="form-control" placeholder="eg. Professional UI/UX Designer">
             </div>
           </div>
 
@@ -154,8 +138,8 @@
             <div class="col-md-6">
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="fullname">Job Category</label>
-                  <select class="form-control">
+                  <label class="font-weight-bold">Job Category</label>
+                  <select class="form-control" name="category">
                     <option value="">Select Category</option>
                     @foreach($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -166,8 +150,8 @@
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3">
-                  <label class="font-weight-bold" for="fullname">Country</label>
-                  <select class="form-control">
+                  <label class="font-weight-bold">Country</label>
+                  <select class="form-control" name="country">
                     <option value="">Select Country</option>
                     @foreach($countries as $key => $value)
                     <option value="{{$key}}">{{$value}}</option>
@@ -179,11 +163,11 @@
             <div class="col-md-6">
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Job Type</label><br>                  
-                  <select class="form-control">
-                    <option value="">Select City</option>
-                    @foreach($cities as $city)
-                    <option value="{{$city->id}}">{{$city->name}}</option>
+                  <label class="font-weight-bold">Job Type</label><br>                  
+                  <select class="form-control" name="job_type">
+                    <option value="">Select Job Type</option>
+                    @foreach($job_types as $job_type)
+                    <option value="{{$job_type->id}}">{{$job_type->name}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -191,8 +175,8 @@
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">City</label>
-                  <select class="form-control">
+                  <label class="font-weight-bold">City</label>
+                  <select class="form-control" name="city">
                     <option value="">Select City</option>
                     @foreach($cities as $city)
                     <option value="{{$city->id}}">{{$city->name}}</option>
@@ -205,15 +189,15 @@
 
           <div class="row form-group">
             <div class="col-md-12 mb-3 mb-md-0">
-              <label class="font-weight-bold" for="fullname">Salary Specification</label>
-              <input type="text" id="fullname" class="form-control" placeholder="eg. Professional UI/UX Designer">
+              <label class="font-weight-bold">Salary Specification</label>
+              <input type="text" name="salary" class="form-control" placeholder="eg. ksh 5000">
             </div>
           </div>
           
           <div class="row form-group">
             <div class="col-md-12 mb-3 mb-md-0">
-              <label class="font-weight-bold" for="fullname">Job Description</label>
-              <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+              <label class="font-weight-bold">Job Description</label>
+              <textarea name="description" class="form-control" id="" cols="30" rows="5"></textarea>
             </div>
           </div>
 

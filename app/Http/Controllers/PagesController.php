@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use DB;
 use App\Country;
 use App\City;
 use App\Industry;
 use App\CompanyType;
 use App\Category;
+use App\JobType;
+use App\PostingSubscription;
 
 class PagesController extends Controller
 {
     public function home()
     {
+        SEOMeta::setTitle('Home');
     	return view('front.index');
     }
 
@@ -37,8 +41,10 @@ class PagesController extends Controller
         $industries = Industry::all();
         $company_types =  CompanyType::all();
         $categories = Category::all();
+        $job_types = JobType::all();
+        $posting_subscriptions = PostingSubscription::all();
 
-    	return view('front.post-vacancy', compact('countries', 'cities', 'industries', 'company_types', 'categories'));
+    	return view('front.post-vacancy', compact('countries', 'cities', 'industries', 'company_types', 'categories', 'job_types', 'posting_subscriptions'));
     }
 
     public function employerregister()

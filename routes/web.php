@@ -33,8 +33,8 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 	Route::resource('/cities', 'CityController');
 	Route::resource('/countries', 'CountryController');
 	Route::resource('/companies', 'CompanyTypeController');
-	Route::resource('/job-types', 'JobTypeController');
-	Route::resource('/posting-subscriptions', 'PostingSubscriptionController');
+	Route::resource('/jobtypes', 'JobTypeController');
+	Route::resource('/postingsubscriptions', 'PostingSubscriptionController');
 });
 
 Route::get('/portfolio', function () {
