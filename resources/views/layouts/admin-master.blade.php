@@ -339,11 +339,17 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
+              @can('manage-categories')
               <li><a class="" href="{{route('admin.categories.index')}}">Categories</a></li>
+              @endcan
+              @can('manage-jobtypes')
               <li><a class="" href="{{route('admin.jobtypes.index')}}">Job Types</a></li>  
-              <li><a class="" href="{{route('admin.postingsubscriptions.index')}}">Posting Subscriptions</a></li>  
+              @endcan
+              @can('manage-posting-subscriptions')
+              <li><a class="" href="{{route('admin.postingsubscriptions.index')}}">Posting Subscriptions</a></li>
+              @endcan  
               <li><a class="" href="#">New Vacancy</a></li>
-              <li><a class="" href="#">Manage Vacancies</a></li>
+              <li><a class="" href="{{route('admin.vacancies.index')}}">Manage Vacancies</a></li>
             </ul>
           </li>
           <li>
@@ -450,6 +456,7 @@
   <!-- nice scroll -->
   <script src="{{asset('admin/js/jquery.scrollTo.min.js')}}"></script>
   <script src="{{asset('admin/js/jquery.nicescroll.js')}}" type="text/javascript"></script>
+  <script type="text/javascript" src="{{asset('admin/ckeditor/ckeditor.js')}}"></script>
   <!-- charts scripts -->
   <!-- <script src="{{asset('admin/assets/jquery-knob/js/jquery.knob.js')}}"></script>
   <script src="{{asset('admin/js/jquery.sparkline.js')}}" type="text/javascript"></script>

@@ -197,7 +197,7 @@
           <div class="row form-group">
             <div class="col-md-12 mb-3 mb-md-0">
               <label class="font-weight-bold">Job Description</label>
-              <textarea name="description" class="form-control" id="" cols="30" rows="5"></textarea>
+              <textarea name="description" class="form-control ckeditor" id="" cols="30" rows="5"></textarea>
             </div>
           </div>
 

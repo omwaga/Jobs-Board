@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -35,6 +24,7 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 	Route::resource('/companies', 'CompanyTypeController');
 	Route::resource('/jobtypes', 'JobTypeController');
 	Route::resource('/postingsubscriptions', 'PostingSubscriptionController');
+	Route::resource('vacancies', 'VacancyController');
 });
 
 Route::get('/portfolio', function () {
