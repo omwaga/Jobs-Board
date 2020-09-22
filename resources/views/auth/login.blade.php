@@ -1,77 +1,121 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Login</title>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
 
-  <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="admin/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="admin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="admin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="admin/css/font-awesome.css" rel="stylesheet" />
-  <!-- Custom styles -->
-  <link href="admin/css/style.css" rel="stylesheet">
-  <link href="admin/css/style-responsive.css" rel="stylesheet" />
+  <!-- Fonts and icons -->
+  <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+  <script>
+    WebFont.load({
+      google: {"families":["Open+Sans:300,400,600,700"]},
+      custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['assets/css/fonts.css']},
+      active: function() {
+        sessionStorage.fonts = true;
+      }
+    });
+  </script>
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/azzara.min.css">
 </head>
-
-<body class="login-img3-body">
-
-  <div class="container">
-
-    <form method="POST" class="login-form" action="{{ route('login') }}">
+<body class="login">
+  <div class="wrapper wrapper-login">
+    <div class="container container-login animated fadeIn">
+      <h3 class="text-center">Sign In To Admin</h3>
+      <form method="POST" class="login-form" action="{{ route('login') }}">
         @csrf
-        <div class="login-wrap">
-            <p class="login-img"><i class="icon_lock_alt"></i></p>
-            <div class="input-group">
-              <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input  id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email/Username">
+        <div class="login-form">
+          <div class="form-group form-floating-label">
+            <input id="username" name="email" type="text" class="form-control input-border-bottom @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-              @error('email')
-              <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
             </span>
             @enderror
+            <label for="username" class="placeholder">Username</label>
+          </div>
+          <div class="form-group form-floating-label">
+            <input id="password" name="password" type="password" class="form-control input-border-bottom @error('password') is-invalid @enderror" required autocomplete="current-password">
+
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            <label for="password" class="placeholder">Password</label>
+            <div class="show-password">
+              <i class="flaticon-interface"></i>
+            </div>
+          </div>
+          <div class="row form-sub m-0">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+              <label class="custom-control-label" for="rememberme">Remember Me</label>
+            </div>
+
+            @if (Route::has('password.request'))
+            <a href="{{ route('password.request') }}" class="link float-right">Forget Password ?</a>
+            @endif
+          </div>
+          <div class="form-action mb-3">
+            <button type="submit" class="btn btn-primary btn-rounded btn-login">Sign In</button>
+          </div>
+          <div class="login-account">
+            <span class="msg">Don't have an account yet ?</span>
+            <a href="#" id="show-signup" class="link">Sign Up</a>
+          </div>
         </div>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
-
-          @error('password')
-          <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
+      </form>
     </div>
-    <label class="checkbox">
-        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>Remember me
 
-        @if (Route::has('password.request'))
-        <span class="pull-right"> <a href="{{ route('password.request') }}"> Forgot Password?</a></span>
-        @endif
-    </label>
-    <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-    <a href="{{route('register')}}"><button class="btn btn-info btn-lg btn-block" type="button">Register</button></a>
-</div>
-</form>
-<div class="text-right">
-  <div class="credits">
-      Designed by <a href="#">Acodem Solutions</a>
+    <div class="container container-signup animated fadeIn">
+      <h3 class="text-center">Sign Up</h3>
+      <div class="login-form">
+        <div class="form-group form-floating-label">
+          <input  id="fullname" name="fullname" type="text" class="form-control input-border-bottom" required>
+          <label for="fullname" class="placeholder">Fullname</label>
+        </div>
+        <div class="form-group form-floating-label">
+          <input  id="email" name="email" type="email" class="form-control input-border-bottom" required>
+          <label for="email" class="placeholder">Email</label>
+        </div>
+        <div class="form-group form-floating-label">
+          <input  id="passwordsignin" name="passwordsignin" type="password" class="form-control input-border-bottom" required>
+          <label for="passwordsignin" class="placeholder">Password</label>
+          <div class="show-password">
+            <i class="flaticon-interface"></i>
+          </div>
+        </div>
+        <div class="form-group form-floating-label">
+          <input  id="confirmpassword" name="confirmpassword" type="password" class="form-control input-border-bottom" required>
+          <label for="confirmpassword" class="placeholder">Confirm Password</label>
+          <div class="show-password">
+            <i class="flaticon-interface"></i>
+          </div>
+        </div>
+        <div class="row form-sub m-0">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="agree" id="agree">
+            <label class="custom-control-label" for="agree">I Agree the terms and conditions.</label>
+          </div>
+        </div>
+        <div class="form-action">
+          <a href="#" id="show-signin" class="btn btn-danger btn-rounded btn-login mr-3">Cancel</a>
+          <a href="#" class="btn btn-primary btn-rounded btn-login">Sign Up</a>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-
-
+  <script src="assets/js/core/jquery.3.2.1.min.js"></script>
+  <script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+  <script src="assets/js/core/popper.min.js"></script>
+  <script src="assets/js/core/bootstrap.min.js"></script>
+  <script src="assets/js/ready.js"></script>
 </body>
-
 </html>

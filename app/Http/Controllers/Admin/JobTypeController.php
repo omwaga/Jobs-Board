@@ -28,9 +28,9 @@ class JobTypeController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function create(JobType $jobtype)
+    public function create()
     {
-
+        return view('admin.vacancies.create-jobtype');
     }
 
     /**
@@ -64,7 +64,8 @@ class JobTypeController extends Controller
     public function store(Request $request)
     {
        $attributes = $request->validate([
-        'name' => 'required|min:3',
+        'name' => 'required|min:3|unique:job_types',
+        'description' => 'nullable',
     ]);  
 
     //    if ($attributes->fails()) {
@@ -75,7 +76,7 @@ class JobTypeController extends Controller
 
        Alert::Success('Success!', 'Job type added successfully')->position('top-right')->toToast();
 
-       return back();
+       return redirect(route('admin.jobtypes.index'));
    }
 
     /**
@@ -89,6 +90,7 @@ class JobTypeController extends Controller
     {
         $jobtype->update([
             'name' => $request->name,
+            'description' => $request->description,
         ]);
 
        Alert::Success('Success!', 'The job type updated successfully')->position('top-right')->toToast();

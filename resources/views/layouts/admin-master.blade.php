@@ -1,542 +1,477 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Azzara Bootstrap 4 Admin Dashboard</title>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
 
-  <title>Creative - Bootstrap Admin Template</title>
+  <!-- Fonts and icons -->
+  <script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
+  <script>
+    WebFont.load({
+      google: {"families":["Open+Sans:300,400,600,700"]},
+      custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['{{asset('assets/css/fonts.css')}}']},
+      active: function() {
+        sessionStorage.fonts = true;
+      }
+    });
+  </script>
 
-  <!-- Bootstrap CSS -->
-  <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="{{asset('admin/css/bootstrap-theme.css')}}" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="{{asset('admin/css/elegant-icons-style.css')}}" rel="stylesheet" />
-  <link href="{{asset('admin/css/font-awesome.min.css')}}" rel="stylesheet" />
-  <!-- full calendar css-->
-  <!-- <link href="{{asset('admin/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css')}}" rel="stylesheet" /> -->
-  <!-- <link href="{{asset('admin/assets/fullcalendar/fullcalendar/fullcalendar.css')}}" rel="stylesheet" /> -->
-  <!-- easy pie chart-->
-  <!-- <link href="{{asset('admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css')}}" rel="stylesheet" type="text/css" media="screen" /> -->
-  <!-- owl carousel -->
-  <!-- <link rel="stylesheet" href="{{asset('admin/css/owl.carousel.css')}}" type="text/css"> -->
-  <!-- <link href="{{asset('admin/css/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet"> -->
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="{{asset('admin/css/fullcalendar.css')}}">
-  <link href="{{asset('admin/css/widgets.css')}}" rel="stylesheet">
-  <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
-  <link href="{{asset('admin/css/style-responsive.css')}}" rel="stylesheet" />
-  <link href="{{asset('admin/css/xcharts.min.css')}}" rel=" stylesheet">
-  <link href="{{asset('admin/css/jquery-ui-1.10.4.min.css')}}" rel="stylesheet">
-  <!-- =======================================================
-    Theme Name: NiceAdmin
-    Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-    ======================================================= -->
-  </head>
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/azzara.min.css')}}">
 
-  <body>    
-    @include('sweetalert::alert')
-    <!-- container section start -->
-    <section id="container" class="">
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
+</head>
+<body>
+  @include('sweetalert::alert')
+  <div class="wrapper">
+    <!--
+      Tip 1: You can change the background color of the main header using: data-background-color="blue | purple | light-blue | green | orange | red"
+    -->
+    <div class="main-header" data-background-color="purple">
+      <!-- Logo Header -->
+      <div class="logo-header">
 
-
-      <header class="header dark-bg">
-        <div class="toggle-nav">
-          <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+        <a href="#" class="logo">
+          <img src="{{asset('assets/img/logoazzara.svg')}}" alt="navbar brand" class="navbar-brand">
+        </a>
+        <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+            <i class="fa fa-bars"></i>
+          </span>
+        </button>
+        <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
+        <div class="navbar-minimize">
+          <button class="btn btn-minimize btn-rounded">
+            <i class="fa fa-bars"></i>
+          </button>
         </div>
+      </div>
+      <!-- End Logo Header -->
 
-        <!--logo start-->
-        <a href="#" class="logo">Nice <span class="lite">Admin</span></a>
-        <!--logo end-->
+      <!-- Navbar Header -->
+      <nav class="navbar navbar-header navbar-expand-lg">
 
-        <div class="nav search-row" id="top_menu">
-          <!--  search form start -->
-          <ul class="nav top-menu">
-            <li>
-              <form class="navbar-form">
-                <input class="form-control" placeholder="Search" type="text">
-              </form>
-            </li>
-          </ul>
-          <!--  search form end -->
-        </div>
-
-        <div class="top-nav notification-row">
-          <!-- notificatoin dropdown start-->
-          <ul class="nav pull-right top-menu">
-
-            <!-- task notificatoin start -->
-            <li id="task_notificatoin_bar" class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <i class="icon-task-l"></i>
-                <span class="badge bg-important">6</span>
+        <div class="container-fluid">
+          <div class="collapse" id="search-nav">
+            <form class="navbar-left navbar-form nav-search mr-md-3">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <button type="submit" class="btn btn-search pr-1">
+                    <i class="fa fa-search search-icon"></i>
+                  </button>
+                </div>
+                <input type="text" placeholder="Search ..." class="form-control">
+              </div>
+            </form>
+          </div>
+          <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+            <li class="nav-item toggle-nav-search hidden-caret">
+              <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
+                <i class="fa fa-search"></i>
               </a>
-              <ul class="dropdown-menu extended tasks-bar">
-                <div class="notify-arrow notify-arrow-blue"></div>
+            </li>
+            <li class="nav-item dropdown hidden-caret">
+              <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-envelope"></i>
+              </a>
+              <ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
                 <li>
-                  <p class="blue">You have 6 pending letter</p>
+                  <div class="dropdown-title d-flex justify-content-between align-items-center">
+                    Messages                  
+                    <a href="#" class="small">Mark all as read</a>
+                  </div>
                 </li>
                 <li>
-                  <a href="#">
-                    <div class="task-info">
-                      <div class="desc">Design PSD </div>
-                      <div class="percent">90%</div>
+                  <div class="message-notif-scroll scrollbar-outer">
+                    <div class="notif-center">
+                      <a href="#">
+                        <div class="notif-img"> 
+                          <img src="assets/img/jm_denis.jpg" alt="Img Profile">
+                        </div>
+                        <div class="notif-content">
+                          <span class="subject">Jimmy Denis</span>
+                          <span class="block">
+                            How are you ?
+                          </span>
+                          <span class="time">5 minutes ago</span> 
+                        </div>
+                      </a>
                     </div>
-                    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                        <span class="sr-only">90% Complete (success)</span>
-                      </div>
-                    </div>
-                  </a>
+                  </div>
                 </li>
                 <li>
-                  <a href="#">
-                    <div class="task-info">
-                      <div class="desc">
-                        Project 1
-                      </div>
-                      <div class="percent">30%</div>
-                    </div>
-                    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                        <span class="sr-only">30% Complete (warning)</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="task-info">
-                      <div class="desc">Digital Marketing</div>
-                      <div class="percent">80%</div>
-                    </div>
-                    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                        <span class="sr-only">80% Complete</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="task-info">
-                      <div class="desc">Logo Designing</div>
-                      <div class="percent">78%</div>
-                    </div>
-                    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%">
-                        <span class="sr-only">78% Complete (danger)</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="task-info">
-                      <div class="desc">Mobile App</div>
-                      <div class="percent">50%</div>
-                    </div>
-                    <div class="progress progress-striped active">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                        <span class="sr-only">50% Complete</span>
-                      </div>
-                    </div>
-
-                  </a>
-                </li>
-                <li class="external">
-                  <a href="#">See All Tasks</a>
+                  <a class="see-all" href="javascript:void(0);">See all messages<i class="fa fa-angle-right"></i> </a>
                 </li>
               </ul>
             </li>
-            <!-- task notificatoin end -->
-            <!-- inbox notificatoin start-->
-            <li id="mail_notificatoin_bar" class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <i class="icon-envelope-l"></i>
-                <span class="badge bg-important">5</span>
+            <li class="nav-item dropdown hidden-caret">
+              <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell"></i>
+                <span class="notification">4</span>
               </a>
-              <ul class="dropdown-menu extended inbox">
-                <div class="notify-arrow notify-arrow-blue"></div>
+              <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
                 <li>
-                  <p class="blue">You have 5 new messages</p>
+                  <div class="dropdown-title">You have 4 new notification</div>
                 </li>
                 <li>
-                  <a href="#">
-                    <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
-                    <span class="subject">
-                      <span class="from">Greg  Martin</span>
-                      <span class="time">1 min</span>
-                    </span>
-                    <span class="message">
-                      I really like this admin panel.
-                    </span>
-                  </a>
+                  <div class="notif-scroll scrollbar-outer">
+                    <div class="notif-center">
+                      <a href="#">
+                        <div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
+                        <div class="notif-content">
+                          <span class="block">
+                            New user registered
+                          </span>
+                          <span class="time">5 minutes ago</span> 
+                        </div>
+                      </a>
+                      <a href="#">
+                        <div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
+                        <div class="notif-content">
+                          <span class="block">
+                            Rahmad commented on Admin
+                          </span>
+                          <span class="time">12 minutes ago</span> 
+                        </div>
+                      </a>
+                      <a href="#">
+                        <div class="notif-img"> 
+                          <img src="assets/img/profile2.jpg" alt="Img Profile">
+                        </div>
+                        <div class="notif-content">
+                          <span class="block">
+                            Reza send messages to you
+                          </span>
+                          <span class="time">12 minutes ago</span> 
+                        </div>
+                      </a>
+                      <a href="#">
+                        <div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
+                        <div class="notif-content">
+                          <span class="block">
+                            Farrah liked Admin
+                          </span>
+                          <span class="time">17 minutes ago</span> 
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 </li>
                 <li>
-                  <a href="#">
-                    <span class="photo"><img alt="avatar" src="./img/avatar-mini2.jpg"></span>
-                    <span class="subject">
-                      <span class="from">Bob   Mckenzie</span>
-                      <span class="time">5 mins</span>
-                    </span>
-                    <span class="message">
-                     Hi, What is next project plan?
-                   </span>
-                 </a>
-               </li>
-               <li>
-                <a href="#">
-                  <span class="photo"><img alt="avatar" src="./img/avatar-mini3.jpg"></span>
-                  <span class="subject">
-                    <span class="from">Phillip   Park</span>
-                    <span class="time">2 hrs</span>
-                  </span>
-                  <span class="message">
-                    I am like to buy this Admin Template.
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="photo"><img alt="avatar" src="./img/avatar-mini4.jpg"></span>
-                  <span class="subject">
-                    <span class="from">Ray   Munoz</span>
-                    <span class="time">1 day</span>
-                  </span>
-                  <span class="message">
-                    Icon fonts are great.
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="#">See all messages</a>
-              </li>
-            </ul>
-          </li>
-          <!-- inbox notificatoin end -->
-          <!-- alert notification start-->
-          <li id="alert_notificatoin_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                  <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown hidden-caret">
+              <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                <div class="avatar-sm">
+                  <img src="{{asset('assets/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
+                </div>
+              </a>
+              <ul class="dropdown-menu dropdown-user animated fadeIn">
+                <li>
+                  <div class="user-box">
+                    <div class="avatar-lg"><img src="{{asset('assets/img/profile.jpg')}}" alt="image profile" class="avatar-img rounded"></div>
+                    <div class="u-text">
+                      <h4>Hizrian</h4>
+                      <p class="text-muted">hello@example.com</p><a href="#" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">My Profile</a>
+                  <a class="dropdown-item" href="#">My Balance</a>
+                  <a class="dropdown-item" href="#">Inbox</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Account Setting</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();"> Log Out</a>
 
-              <i class="icon-bell-l"></i>
-              <span class="badge bg-important">7</span>
-            </a>
-            <ul class="dropdown-menu extended notification">
-              <div class="notify-arrow notify-arrow-blue"></div>
-              <li>
-                <p class="blue">You have 4 new notifications</p>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-primary"><i class="icon_profile"></i></span>
-                  Friend Request
-                  <span class="small italic pull-right">5 mins</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-warning"><i class="icon_pin"></i></span>
-                  John location.
-                  <span class="small italic pull-right">50 mins</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-danger"><i class="icon_book_alt"></i></span>
-                  Project 3 Completed.
-                  <span class="small italic pull-right">1 hr</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-success"><i class="icon_like"></i></span>
-                  Mick appreciated your work.
-                  <span class="small italic pull-right"> Today</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">See all notifications</a>
-              </li>
-            </ul>
-          </li>
-          <!-- alert notification end-->
-          <!-- user login dropdown start-->
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <span class="profile-ava">
-                <img alt="" src="img/avatar1_small.jpg">
-              </span>
-              <span class="username">{{ Auth::user()->name }}</span>
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>
-              <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> My Profile</a>
-              </li>
-              <li>
-                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-              </li>
-              <li>
-                <a href="{{route('admin.users.index')}}"><i class="icon_clock_alt"></i> User Management</a>
-              </li>
-              <li>
-                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-              </li>
-              <li>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();"><i class="icon_key_alt"></i> Log Out</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                  </form>
+                </li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+    </div>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                  @csrf
-                </form>
-              </li>
-            </ul>
-          </li>
-          <!-- user login dropdown end -->
-        </ul>
-        <!-- notificatoin dropdown end-->
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-background"></div>
+      <div class="sidebar-wrapper scrollbar-inner">
+        <div class="sidebar-content">
+          <div class="user">
+            <div class="avatar-sm float-left mr-2">
+              <img src="{{asset('assets/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
+            </div>
+            <div class="info">
+              <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                <span>
+                  Hizrian
+                  <span class="user-level">Administrator</span>
+                  <span class="caret"></span>
+                </span>
+              </a>
+              <div class="clearfix"></div>
+
+              <div class="collapse in" id="collapseExample">
+                <ul class="nav">
+                  <li>
+                    <a href="#profile">
+                      <span class="link-collapse">My Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#edit">
+                      <span class="link-collapse">Edit Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#settings">
+                      <span class="link-collapse">Settings</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <ul class="nav">
+            <li class="nav-item active">
+              <a href="{{route('admin.dashboard')}}">
+                <i class="fas fa-home"></i>
+                <p>Dashboard</p>
+                <span class="badge badge-count">5</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a data-toggle="collapse" href="#forms">
+                <i class="fas fa-pen-square"></i>
+                <p>Users</p>
+                <span class="caret"></span>
+              </a>
+              <div class="collapse" id="forms">
+                <ul class="nav nav-collapse">
+                  <li>
+                    <a href="{{route('admin.users.index')}}">
+                      <span class="sub-item">User Management</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a data-toggle="collapse" href="#vacancies">
+                <i class="fas fa-pen-square"></i>
+                <p>Vacancies</p>
+                <span class="caret"></span>
+              </a>
+              <div class="collapse" id="vacancies">
+                <ul class="nav nav-collapse">
+                  @can('manage-categories')
+                  <li>
+                    <a href="{{route('admin.categories.index')}}">
+                      <span class="sub-item">Categories</span>
+                    </a>
+                  </li>
+                  @endcan
+                  @can('manage-jobtypes')
+                  <li>
+                    <a href="{{route('admin.jobtypes.index')}}">
+                      <span class="sub-item">Job Types</span>
+                    </a>
+                  </li>  
+                  @endcan
+                  @can('manage-posting-subscriptions')
+                  <li>
+                    <a href="{{route('admin.postingsubscriptions.index')}}">
+                      <span class="sub-item">Posting Subscriptions</span>
+                    </a>
+                  </li> 
+                  @endcan
+                  <li>
+                    <a href="{{route('admin.vacancies.index')}}">
+                      <span class="sub-item">Manage Vacancies</span>
+                    </a>
+                  </li>                  
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#">
+                <i class="fas fa-desktop"></i>
+                <p>Applications</p>
+                <span class="badge badge-count badge-success">4</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#">
+                <i class="fas fa-desktop"></i>
+                <p>Talent Pools</p>
+                <span class="badge badge-count badge-success">4</span>
+              </a>
+            </li>
+            @can('manage-companies')
+            <li class="nav-item">
+              <a data-toggle="collapse" href="#companies">
+                <i class="fas fa-pen-square"></i>
+                <p>Companies</p>
+                <span class="caret"></span>
+              </a>
+              <div class="collapse" id="companies">
+                <ul class="nav nav-collapse">
+                  <li>
+                    <a href="{{route('admin.industries.index')}}">
+                      <span class="sub-item">Industries</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="sub-item">New Company</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{route('admin.companies.index')}}">
+                      <span class="sub-item">Company Types</span>
+                    </a>
+                  </li> 
+                  <li>
+                    <a href="#">
+                      <span class="sub-item">Company Profiles</span>
+                    </a>
+                  </li>                  
+                </ul>
+              </div>
+            </li>
+            @endcan
+            <li class="nav-item">
+              <a href="#">
+                <i class="fas fa-desktop"></i>
+                <p>Candidates</p>
+                <span class="badge badge-count badge-success">4</span>
+              </a>
+            </li>
+
+
+            @can('manage-locations')
+            <li class="nav-item">
+              <a data-toggle="collapse" href="#locations">
+                <i class="fas fa-pen-square"></i>
+                <p>Locations</p>
+                <span class="caret"></span>
+              </a>
+              <div class="collapse" id="locations">
+                <ul class="nav nav-collapse">
+                  <li>
+                    <a href="{{route('admin.countries.index')}}">
+                      <span class="sub-item">Manage Countries</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{route('admin.cities.index')}}">
+                      <span class="sub-item">Manage Cities</span>
+                    </a>
+                  </li>                 
+                </ul>
+              </div>
+            </li>
+            @endcan            
+          </ul>
+        </div>
       </div>
-    </header>
-    <!--header end-->
-
-    <!--sidebar start-->
-    <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu">
-          <li class="active">
-            <a class="" href="#">
-              <i class="icon_house_alt"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-              <i class="icon_document_alt"></i>
-              <span>Users</span>
-              <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-              <li><a class="" href="#">User Management</a></li>
-              <li><a class="" href="#">New User</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-              <i class="icon_desktop"></i>
-              <span>Vacancies</span>
-              <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-              @can('manage-categories')
-              <li><a class="" href="{{route('admin.categories.index')}}">Categories</a></li>
-              @endcan
-              @can('manage-jobtypes')
-              <li><a class="" href="{{route('admin.jobtypes.index')}}">Job Types</a></li>  
-              @endcan
-              @can('manage-posting-subscriptions')
-              <li><a class="" href="{{route('admin.postingsubscriptions.index')}}">Posting Subscriptions</a></li>
-              @endcan  
-              <li><a class="" href="#">New Vacancy</a></li>
-              <li><a class="" href="{{route('admin.vacancies.index')}}">Manage Vacancies</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="" href="#">
-              <i class="icon_genius"></i>
-              <span>Applications</span>
-            </a>
-          </li>
-          <li>
-            <a class="" href="#">
-              <i class="icon_piechart"></i>
-              <span>Talent Pools</span>
-            </a>
-          </li>
-
-          @can('manage-companies')
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-              <i class="icon_table"></i>
-              <span>Companies</span>
-              <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-              <li><a class="" href="{{route('admin.industries.index')}}">Industries</a></li>  
-              <li><a class="" href="#">New Company</a></li>    
-              <li><a class="" href="{{route('admin.companies.index')}}">Company Types</a></li>              
-              <li><a class="" href="#">Company Profiles</a></li>
-            </ul>
-          </li>
-          @endcan
-
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-              <i class="icon_table"></i>
-              <span>Candidates</span>
-              <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-              <li><a class="" href="#">Basic Table</a></li>
-            </ul>
-          </li>
-
-          @can('manage-locations')
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-              <i class="icon_table"></i>
-              <span>Locations</span>
-              <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-              <li><a class="" href="{{route('admin.countries.index')}}">Manage Countries</a></li>
-              <li><a class="" href="{{route('admin.cities.index')}}">Manage Cities</a></li>
-            </ul>
-          </li>
-          @endcan
-
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-              <i class="icon_documents_alt"></i>
-              <span>Settings</span>
-              <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-              <li><a class="" href="#">Profile</a></li>
-              <li><a class="" href="#"><span>Login Page</span></a></li>
-              <li><a class="" href="#"><span>Contact Page</span></a></li>
-              <li><a class="" href="#">Blank Page</a></li>
-              <li><a class="" href="#">404 Error</a></li>
-            </ul>
-          </li>
-
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
-    <!--sidebar end-->
+    </div>
+    <!-- End Sidebar -->
 
     @yield('content')
 
 
-    <div class="text-right">
-      <div class="credits">
-          <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-          -->
-          Designed by <a href="#">Acodem Solutions</a>
-        </div>
-      </div>
-    </section>
-    <!--main content end-->
-  </section>
-  <!-- container section start -->
+  </div>
+</div>
+<!--   Core JS Files   -->
+<script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}"></script>
+<script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+<script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
 
-  <!-- javascripts -->
-  <script src="{{asset('admin/js/jquery.js')}}"></script>
-  <script src="{{asset('admin/js/jquery-ui-1.10.4.min.js')}}"></script>
-  <script src="{{asset('admin/js/jquery-1.8.3.min.js')}}"></script>
-  <script type="{{asset('text/javascript" src="admin/js/jquery-ui-1.9.2.custom.min.js')}}"></script>
-  <!-- bootstrap -->
-  <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
-  <!-- nice scroll -->
-  <script src="{{asset('admin/js/jquery.scrollTo.min.js')}}"></script>
-  <script src="{{asset('admin/js/jquery.nicescroll.js')}}" type="text/javascript"></script>
-  <script type="text/javascript" src="{{asset('admin/ckeditor/ckeditor.js')}}"></script>
-  <!-- charts scripts -->
-  <!-- <script src="{{asset('admin/assets/jquery-knob/js/jquery.knob.js')}}"></script>
-  <script src="{{asset('admin/js/jquery.sparkline.js')}}" type="text/javascript"></script>
-  <script src="{{asset('admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js')}}"></script>
-  <script src="{{asset('admin/js/owl.carousel.js')}}"></script> -->
-  <!-- jQuery full calendar -->
-  <!-- <<script src="{{asset('admin/js/fullcalendar.min.js')}}"></script> -->
-  <!-- Full Google Calendar - Calendar -->
-  <!-- <script src="{{asset('admin/assets/fullcalendar/fullcalendar/fullcalendar.js')}}"></script> -->
-  <!--script for this page only-->
-  <!-- <script src="{{asset('admin/js/calendar-custom.js')}}"></script> -->
-  <!-- <script src="{{asset('admin/js/jquery.rateit.min.js')}}"></script> -->
-  <!-- custom select -->
-  <!-- <script src="{{asset('admin/js/jquery.customSelect.min.js')}}"></script> -->
-  <!-- <script src="{{asset('admin/assets/chart-master/Chart.js')}}"></script> -->
+<!-- jQuery UI -->
+<script src="{{asset('assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+<script src="{{asset('assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
 
-  <!--custome script for all page-->
-  <script src="{{asset('admin/js/scripts.js')}}"></script>
-  <!-- custom script for this page-->
-  <script src="{{asset('admin/js/form-validation-script.js')}}"></script>
-  <script type="text/javascript" src="{{asset('admin/js/jquery.validate.min.js')}}"></script>
+<!-- jQuery Scrollbar -->
+<script src="{{asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
 
- <!--  <script src="{{asset('admin/js/sparkline-chart.js')}}"></script>
-  <script src="{{asset('admin/js/easy-pie-chart.js')}}"></script>
-  <script src="{{asset('admin/js/jquery-jvectormap-1.2.2.min.js')}}"></script>
-  <script src="{{asset('admin/js/jquery-jvectormap-world-mill-en.js')}}"></script>
-  <script src="{{asset('admin/js/xcharts.min.js')}}"></script>
-  <script src="{{asset('admin/js/jquery.autosize.min.js')}}"></script>
-  <script src="{{asset('admin/js/jquery.placeholder.min.js')}}"></script>
-  <script src="{{asset('admin/js/gdp-data.js')}}"></script>
-  <script src="{{asset('admin/js/morris.min.js')}}"></script>
-  <script src="{{asset('admin/js/sparklines.js')}}"></script>
-  <script src="{{asset('admin/js/charts.js')}}"></script>
-  <script src="{{asset('admin/js/jquery.slimscroll.min.js')}}"></script> -->
-<!--   <script>
-      //knob
-      $(function() {
-        $(".knob").knob({
-          'draw': function() {
-            $(this.i).val(this.cv + '%')
-          }
-        })
+<!-- Moment JS -->
+<script src="{{asset('assets/js/plugin/moment/moment.min.js')}}"></script>
+
+<!-- Chart JS -->
+<script src="{{asset('assets/js/plugin/chart.js/chart.min.js')}}"></script>
+
+<!-- jQuery Sparkline -->
+<script src="{{asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
+
+<!-- Chart Circle -->
+<script src="{{asset('assets/js/plugin/chart-circle/circles.min.js')}}"></script>
+
+<!-- Datatables -->
+<script src="{{asset('assets/js/plugin/datatables/datatables.min.js')}}"></script>
+
+<!-- Bootstrap Notify -->
+<script src="{{asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+
+<!-- Bootstrap Toggle -->
+<script src="{{asset('assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+
+<!-- jQuery Vector Maps -->
+<script src="assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+<script src="assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+<!-- Sweet Alert -->
+<script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+<!-- Azzara JS -->
+<script src="{{asset('assets/js/ready.min.js')}}"></script>
+<script >
+    $(document).ready(function() {
+      $('#basic-datatables').DataTable({
       });
 
-      //carousel
-      $(document).ready(function() {
-        $("#owl-slider").owlCarousel({
-          navigation: true,
-          slideSpeed: 300,
-          paginationSpeed: 400,
-          singleItem: true
+      $('#multi-filter-select').DataTable( {
+        "pageLength": 20,
+        initComplete: function () {
+          this.api().columns().every( function () {
+            var column = this;
+            var select = $('<select class="form-control"><option value=""></option></select>')
+            .appendTo( $(column.footer()).empty() )
+            .on( 'change', function () {
+              var val = $.fn.dataTable.util.escapeRegex(
+                $(this).val()
+                );
 
-        });
+              column
+              .search( val ? '^'+val+'$' : '', true, false )
+              .draw();
+            } );
+
+            column.data().unique().sort().each( function ( d, j ) {
+              select.append( '<option value="'+d+'">'+d+'</option>' )
+            } );
+          } );
+        }
       });
-
-      //custom select box
-
-      $(function() {
-        $('select.styled').customSelect();
-      });
-
-      /* ---------- Map ---------- */
-      $(function() {
-        $('#map').vectorMap({
-          map: 'world_mill_en',
-          series: {
-            regions: [{
-              values: gdpData,
-              scale: ['#000', '#000'],
-              normalizeFunction: 'polynomial'
-            }]
-          },
-          backgroundColor: '#eef3f7',
-          onLabelShow: function(e, el, code) {
-            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-          }
-        });
-      });
-    </script> -->
-
-  </body>
-
-  </html>
+    });
+  </script>
+</body>
+</html>

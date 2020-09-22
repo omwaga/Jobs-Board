@@ -1,34 +1,58 @@
 @extends('layouts.admin-master')
-@section('content')	
-<section id="main-content">
-  <section class="wrapper">
-    <!--overview start-->
-    <div class="row">
-      <div class="col-lg-12">
-        <h3 class="page-header"><i class="fa fa-laptop"></i> Vacancy Management</h3>
-        <ol class="breadcrumb">
-          <li><i class="fa fa-home"></i><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-          <li><i class="fa fa-laptop"></i>Vacancy Management</li>
-        </ol>
+@section('content')
+<div class="main-panel">
+  <div class="content">
+    <div class="page-inner">
+      <div class="page-header">
+        <h4 class="page-title">Vacancy Management</h4>
+        <ul class="breadcrumbs">
+          <li class="nav-home">
+            <a href="{{route('admin.dashboard')}}">
+              <i class="flaticon-home"></i>
+            </a>
+          </li>
+          <li class="separator">
+            <i class="flaticon-right-arrow"></i>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admin.dashboard')}}">Dashboard</a>
+          </li>
+          <li class="separator">
+            <i class="flaticon-right-arrow"></i>
+          </li>
+          <li class="nav-item">
+            <a href="#">Vacancy Management</a>
+          </li>
+        </ul>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-12">
-        <section class="panel">
-          <header class="panel-heading">
-            Vacancy Management
-
-            <a class="btn btn-success pull-right" href="">New Vacancy</a>
-          </header>
-
-          <table class="table table-striped table-advance table-hover">
-            <tbody>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Action</th>
-              </tr>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <a href="{{route('admin.vacancies.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Vacancy</a>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="multi-filter-select" class="display table table-striped table-hover" >
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Registration Date</th>
+                      <th>Role</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Registration Date</th>
+                      <th>Role</th>
+                      <th>Action</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
               @php $no = 0 @endphp
               @foreach($vacancies as $vacancy)
               @php $no = $no + 1 @endphp
@@ -50,10 +74,14 @@
                 </td>
               </tr>
               @endforeach
-            </tbody>
-          </table>
-        </section>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-  @endsection
+  </div>      
+</div>
+@endsection

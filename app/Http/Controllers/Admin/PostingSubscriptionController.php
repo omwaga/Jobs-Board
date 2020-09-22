@@ -27,9 +27,9 @@ class PostingSubscriptionController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function create(PostingSubscription $postingsubscription)
+    public function create()
     {
-
+        return view('admin.vacancies.create-posting-subscription');
     }
 
     /**
@@ -63,20 +63,16 @@ class PostingSubscriptionController extends Controller
     public function store(Request $request)
     {
        $attributes = $request->validate([
-        'name' => 'required|min:3',
+        'name' => 'required|min:3|unique:posting_subscriptions',
         'charges' => 'required',
         'description' => 'required',
     ]);  
-
-    //    if ($attributes->fails()) {
-    //     return back()->with('toast_error', $attributes->messages()->all()[0])->withInput()->position('top-right')->toToast();
-    // }
 
        PostingSubscription::create($attributes);
 
        Alert::Success('Success!', 'Posting subsription added successfully')->position('top-right')->toToast();
 
-       return back();
+       return redirect(route('admin.postingsubscriptions.index'));
    }
 
     /**
@@ -94,9 +90,9 @@ class PostingSubscriptionController extends Controller
             'description' => $request->description,
         ]);
 
-       Alert::Success('Success!', 'Posting subscription updated successfully')->position('top-right')->toToast();
+        Alert::Success('Success!', 'Posting subscription updated successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.postingsubscriptions.index'));
+        return redirect(route('admin.postingsubscriptions.index'));
     }
 
     /**
@@ -112,5 +108,5 @@ class PostingSubscriptionController extends Controller
        Alert::Success('Success!', 'Posting subscription deleted successfully')->position('top-right')->toToast();
 
        return redirect(route('admin.postingsubscriptions.index'));
-    }
+   }
 }

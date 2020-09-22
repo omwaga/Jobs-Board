@@ -30,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create(Category $category)
     {
-
+        return view('admin.vacancies.create-category');
     }
 
     /**
@@ -64,7 +64,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
        $attributes = $request->validate([
-        'name' => 'required|min:3',
+        'name' => 'required|min:3|unique:categories',
+        'description' => 'nullable'
     ]);  
 
     //    if ($attributes->fails()) {
@@ -75,7 +76,7 @@ class CategoryController extends Controller
 
        Alert::Success('Success!', 'Category Added Successfully')->position('top-right')->toToast();
 
-       return back();
+       return redirect(route('admin.categories.index'));
    }
 
     /**
@@ -89,6 +90,7 @@ class CategoryController extends Controller
     {
         $category->update([
             'name' => $request->name,
+            'description' => $request->description,
         ]);
 
        Alert::Success('Success!', 'Category Updated Successfully')->position('top-right')->toToast();

@@ -12,8 +12,8 @@ class IndustriesTableSeeder extends Seeder
      */
     public function run()
     {        
-        Industry::create(['name' => 'Computing and IT']);
-        Industry::create(['name' => 'Data Science and Machine Learning']);
-        Industry::create(['name' => 'Sales and Marketing']);   
+        Industry::create(['name' => 'Computing and IT', 'description' => 'description']);
+        Industry::create(['name' => 'Data Science and Machine Learning', 'description' => 'description']);
+        Industry::create(['name' => 'Sales and Marketing', 'description' => 'description']);   
     }
 }

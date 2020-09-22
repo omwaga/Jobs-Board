@@ -12,4 +12,9 @@ class Vacancy extends Model
     {
     	return $this->belongsTo(Country::class, 'country', 'id');
     }
+
+    public function subscription()
+    {
+    	return $this->belongsTo(PostingSubscription::class, 'subscription', 'id');
+    }
 }

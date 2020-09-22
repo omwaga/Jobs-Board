@@ -12,13 +12,16 @@ use App\CompanyType;
 use App\Category;
 use App\JobType;
 use App\PostingSubscription;
+use App\Vacancy;
 
 class PagesController extends Controller
 {
     public function home()
     {
+        $vacancies = Vacancy::orderBy('created_at', 'DESC')->get();
+
         SEOMeta::setTitle('Home');
-    	return view('front.index');
+    	return view('front.index', compact('vacancies'));
     }
 
 
