@@ -21,7 +21,7 @@ class CityController extends Controller
         $cities = City::all();
         $countries =  Country::all();
 
-        return view('admin.cities', compact('cities', 'countries'));
+        return view('backend.cities', compact('cities', 'countries'));
     }
 
     /**
@@ -30,9 +30,11 @@ class CityController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function create(City $city)
+    public function create()
     {
+        $countries =  Country::all();
 
+        return view('backend.create-city', compact('countries'));
     }
 
     /**
@@ -56,7 +58,7 @@ class CityController extends Controller
     {
         $countries =  Country::all();
 
-        return view('admin.edit-city', compact('city', 'countries'));
+        return view('backend.edit-city', compact('city', 'countries'));
     }
 
     /**
@@ -68,7 +70,7 @@ class CityController extends Controller
     public function store(Request $request)
     {
        $attributes = $request->validate([
-        'name' => 'required|unique:cities|min:3',
+        'name' => 'required|unique:cities|min:3|unique:cities',
         'country_id' => 'required',
     ]); 
 
@@ -76,7 +78,7 @@ class CityController extends Controller
 
        Alert::Success('Success!', 'City Added Successfully')->position('top-right')->toToast();
 
-       return back();
+       return redirect(route('admin.cities.index'));
    }
 
     /**

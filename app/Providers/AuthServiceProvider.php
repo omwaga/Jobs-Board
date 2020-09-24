@@ -49,6 +49,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasAnyRoles(['admin']);
         });
 
+        Gate::define('manage-vacancies', function($user){
+            return $user->hasAnyRoles(['admin', 'company']);
+        });
+
         Gate::define('edit-users', function($user){
             return $user->hasAnyRoles(['admin', 'company']);
         });
@@ -56,5 +60,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('delete-users', function($user){
             return $user->hasRole('admin');
         });
+
     }
 }

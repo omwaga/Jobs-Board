@@ -318,12 +318,12 @@
 						<div class="job-post-item p-4 d-block d-lg-flex align-items-center">
 							<div class="one-third mb-4 mb-md-0">
 								<div class="job-post-item-header align-items-center">
-									<span class="subadge">{{$vacancy->job_type ?? ''}}</span>
+									<span class="subadge">{{$vacancy->postjobtype->name ?? ''}}</span>
 									<h2 class="mr-3 text-black"><a href="#">{{$vacancy->job_title ?? ''}}</a></h2>
 								</div>
 								<div class="job-post-item-body d-block d-md-flex">
-									<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->user_id ?? ''}}</a></div>
-									<div><span class="icon-my_location"></span> <span>{{$vacancy->city ?? ''}}, {{$vacancy->country ?? ''}}</span></div>
+									<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->user->name ?? ''}}</a></div>
+									<div><span class="icon-my_location"></span> <span>{{$vacancy->postcity->name ?? ''}}, {{$vacancy->postcountry->name ?? ''}}</span></div>
 								</div>
 							</div>
 

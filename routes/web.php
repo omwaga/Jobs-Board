@@ -10,6 +10,7 @@ Route::name('front.')->group(function(){
 	Route::get('/candidates', 'PagesController@candidates')->name('candidates');
 	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
 	Route::get('/post', 'PagesController@post')->name('post');
+	Route::get('/job/{name}', 'PagesController@singlejob')->name('singlejob');
 	Route::get('/employer/register', 'PagesController@employerregister')->name('employer.register');
 	Route::get('/jobseeker/register', 'PagesController@jobseekerregister')->name('jobseeker.register');
 });

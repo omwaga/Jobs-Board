@@ -19,7 +19,7 @@ class CountryController extends Controller
     {
         $countries = Country::all();
 
-        return view('admin.countries', compact('countries'));
+        return view('backend.countries', compact('countries'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CountryController extends Controller
      */
     public function create(Country $country)
     {
-
+        return view('backend.create-country');
     }
 
     /**
@@ -52,7 +52,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        return view('admin.edit-country', compact('country'));
+        return view('backend.edit-country', compact('country'));
     }
 
     /**
@@ -65,18 +65,14 @@ class CountryController extends Controller
     {
         $attributes = $request->validate([
             'name' => 'required|unique:countries|min:3',
-            'code' => 'required'
+            'code' => 'required|unique:countries'
         ]);
-
-        // if ($attributes->fails()) {
-        //     return back()->with('toast_error', $attributes->messages()->all()[0])->withInput();
-        // }
 
         Country::create($attributes);
 
         Alert::Success('Success!', 'Country Added Successfully')->position('top-right')->toToast();
 
-        return back();
+        return redirect(route('admin.countries.index'));
     }
 
     /**

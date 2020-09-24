@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Auth;
 use App\Vacancy;
 use App\Country;
 use App\JobType;
@@ -25,9 +26,15 @@ class VacancyController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->hasRole('admin'))
+        {
+            $vacancies = Vacancy::all();
+        }
+        else{
         $vacancies = Vacancy::where('user_id', auth()->user()->id)->get();
+        }
 
-        return view('admin.vacancies.all-vacancies', compact('vacancies'));
+        return view('backend.vacancies.all-vacancies', compact('vacancies'));
     }
 
     /**
@@ -44,7 +51,7 @@ class VacancyController extends Controller
         $job_types = JobType::all();
         $subscriptions = PostingSubscription::all();
 
-        return view('admin.vacancies.new-vacancy', compact(
+        return view('backend.vacancies.new-vacancy', compact(
             'countries', 
             'categories',
             'cities',
@@ -79,7 +86,7 @@ class VacancyController extends Controller
         $job_types = JobType::all();
         $subscriptions = PostingSubscription::all();
 
-        return view('admin.vacancies.edit-vacancy', compact(
+        return view('backend.vacancies.edit-vacancy', compact(
             'countries', 
             'categories',
             'cities',
@@ -97,7 +104,7 @@ class VacancyController extends Controller
      */
     public function store(Request $request)
     {
-       $attributes = $request->validate([
+     $attributes = $request->validate([
         'subscription' => 'required',
         'job_title' => ['required', 'min:3'],
         'category' => 'required',
@@ -106,14 +113,14 @@ class VacancyController extends Controller
         'job_type' => 'required',
         'salary' => 'required',
         'description' => 'required',
-       ]);  
+    ]);  
 
-       Vacancy::create($attributes + ['user_id' => auth()->user()->id]);
+     Vacancy::create($attributes + ['user_id' => auth()->user()->id]);
 
-       Alert::Success('Success!', 'Job vacancy added successfully')->position('top-right')->toToast();
+     Alert::Success('Success!', 'Job vacancy added successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.vacancies.index'));
-   }
+     return redirect(route('admin.vacancies.index'));
+ }
 
     /**
      * Update the specified resource in storage.
@@ -135,9 +142,9 @@ class VacancyController extends Controller
             'description' => $request->description,
         ]);
 
-        Alert::Success('Success!', 'Posting subscription updated successfully')->position('top-right')->toToast();
+        Alert::Success('Success!', 'Job vacancy updated successfully')->position('top-right')->toToast();
 
-        return redirect(route('admin.postingsubscriptions.index'));
+        return redirect(route('admin.vacancies.index'));
     }
 
     /**
@@ -148,10 +155,10 @@ class VacancyController extends Controller
      */
     public function destroy(Vacancy $vacancy)
     {
-       $vacancy->delete();
+     $vacancy->delete();
 
-       Alert::Success('Success!', 'Vacancy deleted successfully')->position('top-right')->toToast();
+     Alert::Success('Success!', 'Vacancy deleted successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.vacancies.index'));
-   }
+     return redirect(route('admin.vacancies.index'));
+ }
 }

@@ -19,7 +19,7 @@ class CompanyTypeController extends Controller
     {
         $company_types = CompanyType::all();
 
-        return view('admin.company-types', compact('company_types'));
+        return view('backend.company-types', compact('company_types'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CompanyTypeController extends Controller
      */
     public function create(CompanyType $company)
     {
-
+        return view('backend.create-company-type');
     }
 
     /**
@@ -52,7 +52,7 @@ class CompanyTypeController extends Controller
      */
     public function edit(CompanyType $company)
     {
-        return view('admin.edit-company-type', compact('company'));
+        return view('backend.edit-company-type', compact('company'));
     }
 
     /**
@@ -63,20 +63,16 @@ class CompanyTypeController extends Controller
      */
     public function store(Request $request)
     {
-       $attributes = $request->validate([
-        'name' => 'required|min:3',
+     $attributes = $request->validate([
+        'name' => 'required|min:3|unique:company_types',
     ]);  
 
-    //    if ($attributes->fails()) {
-    //     return back()->with('toast_error', $attributes->messages()->all()[0])->withInput()->position('top-right')->toToast();
-    // }
+     CompanyType::create($attributes);
 
-       CompanyType::create($attributes);
+     Alert::Success('Success!', 'Company type added successfully')->position('top-right')->toToast();
 
-       Alert::Success('Success!', 'Company type added successfully')->position('top-right')->toToast();
-
-       return back();
-   }
+     return redirect(route('admin.companies.index'));
+ }
 
     /**
      * Update the specified resource in storage.
@@ -91,9 +87,9 @@ class CompanyTypeController extends Controller
             'name' => $request->name,
         ]);
 
-       Alert::Success('Success!', 'Company type updated successfully')->position('top-right')->toToast();
+        Alert::Success('Success!', 'Company type updated successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.companies.index'));
+        return redirect(route('admin.companies.index'));
     }
 
     /**
@@ -104,10 +100,10 @@ class CompanyTypeController extends Controller
      */
     public function destroy(CompanyType $company)
     {
-       $company->delete();
+     $company->delete();
 
-       Alert::Success('Success!', 'Company type deleted successfully')->position('top-right')->toToast();
+     Alert::Success('Success!', 'Company type deleted successfully')->position('top-right')->toToast();
 
-       return back();
-    }
+     return back();
+ }
 }

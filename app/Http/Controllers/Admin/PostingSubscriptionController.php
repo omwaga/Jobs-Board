@@ -18,7 +18,7 @@ class PostingSubscriptionController extends Controller
     {
         $posting_subscriptions = PostingSubscription::all();
 
-        return view('admin.vacancies.posting-subscriptions', compact('posting_subscriptions'));
+        return view('backend.vacancies.posting-subscriptions', compact('posting_subscriptions'));
     }
 
     /**
@@ -29,7 +29,7 @@ class PostingSubscriptionController extends Controller
      */
     public function create()
     {
-        return view('admin.vacancies.create-posting-subscription');
+        return view('backend.vacancies.create-posting-subscription');
     }
 
     /**
@@ -51,7 +51,7 @@ class PostingSubscriptionController extends Controller
      */
     public function edit(PostingSubscription $postingsubscription)
     {
-        return view('admin.vacancies.edit-posting-subsription', compact('postingsubscription'));
+        return view('backend.vacancies.edit-posting-subsription', compact('postingsubscription'));
     }
 
     /**

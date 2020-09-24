@@ -22,7 +22,7 @@ class UsersController extends Controller
     {
         $users = User::orderby('created_at', 'DESC')->get();
 
-        return view('admin.users.index', compact('users'));
+        return view('backend.users.index', compact('users'));
     }
 
     /**
@@ -40,7 +40,7 @@ class UsersController extends Controller
 
         $roles = Role::all();
 
-        return view('admin.users.edit', compact('user', 'roles'));
+        return view('backend.users.edit', compact('user', 'roles'));
         
     }
 

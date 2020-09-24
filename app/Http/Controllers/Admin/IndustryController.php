@@ -9,7 +9,7 @@ use App\Industry;
 
 class IndustryController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +19,18 @@ class IndustryController extends Controller
     {
         $industries  = Industry::all();
 
-        return view('admin.vacancies.industries', compact('industries'));
+        return view('backend.vacancies.industries', compact('industries'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {        
+        return view('backend.vacancies.create-industry');
     }
 
     /**
@@ -30,7 +41,7 @@ class IndustryController extends Controller
      */
     public function edit(Industry $industry)
     {        
-        return view('admin.vacancies.edit-industry', compact('industry'));
+        return view('backend.vacancies.edit-industry', compact('industry'));
     }
 
     /**
@@ -41,7 +52,7 @@ class IndustryController extends Controller
      */
     public function show(Industry $industry)
     {
-        
+
     }
 
     /**
@@ -52,21 +63,18 @@ class IndustryController extends Controller
      */
     public function store(Request $request)
     {
-       $attributes = $request->validate([
-        'name' => 'required|min:3',
+     $attributes = $request->validate([
+        'name' => 'required|min:3|unique:industries',
+        'description' => 'nullable',
     ]);  
 
-    //    if ($attributes->fails()) {
-    //     return back()->with('toast_error', $attributes->messages()->all()[0])->withInput()->position('top-right')->toToast();
-    // }
-
-       Industry::create($attributes);
+     Industry::create($attributes);
 
 
-       Alert::Success('Success!', 'Industry Added Successfully')->position('top-right')->toToast();
+     Alert::Success('Success!', 'Industry Added Successfully')->position('top-right')->toToast();
 
-       return back();
-    }
+     return redirect(route('admin.industries.index'));
+ }
 
     /**
      * Update the specified resource in storage.
@@ -79,11 +87,12 @@ class IndustryController extends Controller
     {
         $industry->update([
             'name' => $request->name,
+            'description' => $request->description,
         ]);
 
-       Alert::Success('Success!', 'Industry Updated Successfully')->position('top-right')->toToast();
+        Alert::Success('Success!', 'Industry updated successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.industries.index'));
+        return redirect(route('admin.industries.index'));
     }
 
     /**
@@ -94,10 +103,10 @@ class IndustryController extends Controller
      */
     public function destroy(Industry $industry)
     {
-       $industry->delete();
+     $industry->delete();
 
-       Alert::Success('Success!', 'Industry Deleted Successfully')->position('top-right')->toToast();
+     Alert::Success('Success!', 'Industry Deleted Successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.industries.index'));
-    }
+     return redirect(route('admin.industries.index'));
+ }
 }

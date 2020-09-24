@@ -33,9 +33,23 @@ class PagesController extends Controller
 
     public function vacancies()
     {
-    	return view('front.vacancies');
+        $vacancies = Vacancy::orderBy('created_at', 'DESC')->get();
+        $categories = Category::all();
+        $locations = City::all();
+        $job_types = JobType::all();
+
+    	return view('front.vacancies', compact('vacancies', 'categories', 'locations', 'job_types'));
     }
 
+    public function singlejob($name)
+    {
+        $related_jobs = Vacancy::orderBy('created_at', 'DESC')->limit(8)->get();
+        $categories = Category::all();
+        $locations = City::all();
+        $job_types = JobType::all();
+
+        return view('front.single-job', compact('related_jobs', 'categories', 'locations', 'job_types'));
+    }
 
     public function post()
     {

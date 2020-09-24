@@ -19,7 +19,7 @@ class JobTypeController extends Controller
     {
         $job_types = JobType::all();
 
-        return view('admin.vacancies.job-types', compact('job_types'));
+        return view('backend.vacancies.job-types', compact('job_types'));
     }
 
     /**
@@ -30,7 +30,7 @@ class JobTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.vacancies.create-jobtype');
+        return view('backend.vacancies.create-jobtype');
     }
 
     /**
@@ -52,7 +52,7 @@ class JobTypeController extends Controller
      */
     public function edit(JobType $jobtype)
     {
-        return view('admin.vacancies.edit-job-type', compact('jobtype'));
+        return view('backend.vacancies.edit-job-type', compact('jobtype'));
     }
 
     /**
