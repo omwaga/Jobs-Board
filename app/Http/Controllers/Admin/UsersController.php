@@ -31,6 +31,25 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
+    public function create()
+    {
+        if(Gate::denies('create-users'))
+        {
+            return redirect(route('admin.users.index'));
+        }
+
+        $roles = Role::all();
+
+        return view('backend.users.create', compact('roles'));
+        
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
     public function edit(User $user)
     {
         if(Gate::denies('edit-users'))

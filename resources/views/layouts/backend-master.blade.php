@@ -185,7 +185,7 @@
                 </li>
                 <li>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">My Profile</a>
+                  <a class="dropdown-item" href="{{route('jobseeker.profile')}}">My Profile</a>
                   <a class="dropdown-item" href="#">My Balance</a>
                   <a class="dropdown-item" href="#">Inbox</a>
                   <div class="dropdown-divider"></div>
@@ -278,7 +278,7 @@
             <li class="nav-item">
               <a data-toggle="collapse" href="#vacancies">
                 <i class="fas fa-pen-square"></i>
-                <p>Job Vacancies</p>
+                <p>Job Listings</p>
                 <span class="caret"></span>
               </a>
               <div class="collapse" id="vacancies">
@@ -304,11 +304,20 @@
                     </a>
                   </li> 
                   @endcan
+                  @can('manage-vacancies')
                   <li>
                     <a href="{{route('admin.vacancies.index')}}">
                       <span class="sub-item">Manage Vacancies</span>
                     </a>
-                  </li>                  
+                  </li> 
+                  @endcan
+                  @can('apply-job')
+                  <li>
+                    <a href="{{route('jobseeker.vacancies')}}">
+                      <span class="sub-item">Job Listings</span>
+                    </a>
+                  </li> 
+                  @endcan                 
                 </ul>
               </div>
             </li>
@@ -434,7 +443,7 @@
 
 <!-- Bootstrap Toggle -->
 <script src="{{asset('assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js')}}"></script>
-  <script type="text/javascript" src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
 
 <!-- jQuery Vector Maps -->
 <script src="assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
@@ -446,34 +455,34 @@
 <!-- Azzara JS -->
 <script src="{{asset('assets/js/ready.min.js')}}"></script>
 <script >
-    $(document).ready(function() {
-      $('#basic-datatables').DataTable({
-      });
-
-      $('#multi-filter-select').DataTable( {
-        "pageLength": 20,
-        initComplete: function () {
-          this.api().columns().every( function () {
-            var column = this;
-            var select = $('<select class="form-control"><option value=""></option></select>')
-            .appendTo( $(column.footer()).empty() )
-            .on( 'change', function () {
-              var val = $.fn.dataTable.util.escapeRegex(
-                $(this).val()
-                );
-
-              column
-              .search( val ? '^'+val+'$' : '', true, false )
-              .draw();
-            } );
-
-            column.data().unique().sort().each( function ( d, j ) {
-              select.append( '<option value="'+d+'">'+d+'</option>' )
-            } );
-          } );
-        }
-      });
+  $(document).ready(function() {
+    $('#basic-datatables').DataTable({
     });
-  </script>
+
+    $('#multi-filter-select').DataTable( {
+      "pageLength": 20,
+      initComplete: function () {
+        this.api().columns().every( function () {
+          var column = this;
+          var select = $('<select class="form-control"><option value=""></option></select>')
+          .appendTo( $(column.footer()).empty() )
+          .on( 'change', function () {
+            var val = $.fn.dataTable.util.escapeRegex(
+              $(this).val()
+              );
+
+            column
+            .search( val ? '^'+val+'$' : '', true, false )
+            .draw();
+          } );
+
+          column.data().unique().sort().each( function ( d, j ) {
+            select.append( '<option value="'+d+'">'+d+'</option>' )
+          } );
+        } );
+      }
+    });
+  });
+</script>
 </body>
 </html>

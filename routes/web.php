@@ -10,14 +10,24 @@ Route::name('front.')->group(function(){
 	Route::get('/candidates', 'PagesController@candidates')->name('candidates');
 	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
 	Route::get('/post', 'PagesController@post')->name('post');
-	Route::get('/job/{name}', 'PagesController@singlejob')->name('singlejob');
+	Route::get('/job/{slug}', 'PagesController@singlejob')->name('singlejob');
+	Route::get('/category/{categorySlug}', 'PagesController@categorySlug')->name('category');
+	Route::get('/location/{locationSlug}', 'PagesController@locationSlug')->name('location');
+	Route::get('/type/{typeSlug}', 'PagesController@typeSlug')->name('type');
 	Route::get('/employer/register', 'PagesController@employerregister')->name('employer.register');
 	Route::get('/jobseeker/register', 'PagesController@jobseekerregister')->name('jobseeker.register');
 });
 
+Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(function(){
+	Route::get('/profile', 'PagesController@userProfile')->name('profile');
+	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
+	Route::get('/job/{slug}', 'PagesController@singleJob')->name('singlejob');
+	Route::get('/{categorySlug}', 'PagesController@categorySlug')->name('category');
+});
+
 Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function(){
 	Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
-	Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'store'] ]);
+	Route::resource('/users', 'UsersController');
 	Route::resource('/categories', 'CategoryController');
 	Route::resource('/industries', 'IndustryController');
 	Route::resource('/cities', 'CityController');

@@ -12,9 +12,9 @@ class JobTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        JobType::create(['name' => 'Full Time', 'description' => 'description']);
-        JobType::create(['name' => 'Part Time', 'description' => 'description']);
-        JobType::create(['name' => 'Contract', 'description' => 'description']);
-        JobType::create(['name' => 'Tender', 'description' => 'description']);
+        JobType::create(['name' => 'Full Time', 'slug' => 'full-time-jobs', 'description' => 'description']);
+        JobType::create(['name' => 'Part Time', 'slug' => 'part-time-jobs', 'description' => 'description']);
+        JobType::create(['name' => 'Contract', 'slug' => 'contract-jobs', 'description' => 'description']);
+        JobType::create(['name' => 'Tender', 'slug' => 'tender-jobs', 'description' => 'description']);
     }
 }

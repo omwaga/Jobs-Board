@@ -22,6 +22,7 @@ class CreateVacanciesTable extends Migration
             $table->unsignedBigInteger('category');
             $table->unsignedBigInteger('job_type');
             $table->string('job_title');
+            $table->string('slug');
             $table->string('salary');
             $table->text('description');
             $table->timestamps();

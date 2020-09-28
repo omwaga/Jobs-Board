@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Str;
 use App\Category;
 
 class CategoryController extends Controller
@@ -63,21 +64,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-       $attributes = $request->validate([
+     $attributes = $request->validate([
         'name' => 'required|min:3|unique:categories',
         'description' => 'nullable'
     ]);  
 
-    //    if ($attributes->fails()) {
-    //     return back()->with('toast_error', $attributes->messages()->all()[0])->withInput()->position('top-right')->toToast();
-    // }
+     $slug = Str::slug($request->name.'-jobs');
 
-       Category::create($attributes);
+     Category::create($attributes + ['slug' => $slug]);
 
-       Alert::Success('Success!', 'Category Added Successfully')->position('top-right')->toToast();
+     Alert::Success('Success!', 'Category Added Successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.categories.index'));
-   }
+     return redirect(route('admin.categories.index'));
+ }
 
     /**
      * Update the specified resource in storage.
@@ -93,9 +92,9 @@ class CategoryController extends Controller
             'description' => $request->description,
         ]);
 
-       Alert::Success('Success!', 'Category Updated Successfully')->position('top-right')->toToast();
+        Alert::Success('Success!', 'Category Updated Successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.categories.index'));
+        return redirect(route('admin.categories.index'));
     }
 
     /**
@@ -106,10 +105,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-       $category->delete();
+     $category->delete();
 
-       Alert::Success('Success!', 'Category Deleted Successfully')->position('top-right')->toToast();
+     Alert::Success('Success!', 'Category Deleted Successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.categories.index'));
-    }
+     return redirect(route('admin.categories.index'));
+ }
 }

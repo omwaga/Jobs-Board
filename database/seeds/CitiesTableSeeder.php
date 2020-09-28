@@ -12,8 +12,8 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        City::create(['name' => 'Nairobi', 'country_id' => '1']);
-        City::create(['name' => 'Kampala', 'country_id' => '2']);
-        City::create(['name' => 'Lagos', 'country_id' => '3']);
+        City::create(['name' => 'Nairobi', 'slug' => 'nairobi-jobs', 'country_id' => '1']);
+        City::create(['name' => 'Kampala',  'slug' => 'kampala-jobs', 'country_id' => '2']);
+        City::create(['name' => 'Lagos', 'slug' => 'lagos-jobs', 'country_id' => '3']);
     }
 }

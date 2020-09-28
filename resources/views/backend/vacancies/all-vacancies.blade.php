@@ -38,7 +38,7 @@
                     <tr>
                       <th>#</th>
                       <th>Job Title</th>
-                      <th>Applications</th>
+                      <th>Slug</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -57,7 +57,7 @@
               <tr>
                 <td>{{$no}}</td>
                 <td>{{$vacancy->job_title}}</td>
-                <td>0</td>
+                <td>{{$vacancy->slug}}</td>
                 <td>
                   <div class="btn-group">
                     <a class="btn btn-primary btn-sm" href="{{route('admin.vacancies.edit', $vacancy->id)}}"><i class="fas fa-edit"></i> Edit</a>

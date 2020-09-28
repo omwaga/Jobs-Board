@@ -63,21 +63,19 @@ class JobTypeController extends Controller
      */
     public function store(Request $request)
     {
-       $attributes = $request->validate([
+     $attributes = $request->validate([
         'name' => 'required|min:3|unique:job_types',
         'description' => 'nullable',
     ]);  
 
-    //    if ($attributes->fails()) {
-    //     return back()->with('toast_error', $attributes->messages()->all()[0])->withInput()->position('top-right')->toToast();
-    // }
+     $slug = Str::slug($request->name.'-jobs');
 
-       JobType::create($attributes);
+     JobType::create($attributes + ['slug' => $slug]);
 
-       Alert::Success('Success!', 'Job type added successfully')->position('top-right')->toToast();
+     Alert::Success('Success!', 'Job type added successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.jobtypes.index'));
-   }
+     return redirect(route('admin.jobtypes.index'));
+ }
 
     /**
      * Update the specified resource in storage.
@@ -93,9 +91,9 @@ class JobTypeController extends Controller
             'description' => $request->description,
         ]);
 
-       Alert::Success('Success!', 'The job type updated successfully')->position('top-right')->toToast();
+        Alert::Success('Success!', 'The job type updated successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.jobtypes.index'));
+        return redirect(route('admin.jobtypes.index'));
     }
 
     /**
@@ -106,10 +104,10 @@ class JobTypeController extends Controller
      */
     public function destroy(JobType $jobtype)
     {
-       $jobtype->delete();
+     $jobtype->delete();
 
-       Alert::Success('Success!', 'Job type deleted successfully')->position('top-right')->toToast();
+     Alert::Success('Success!', 'Job type deleted successfully')->position('top-right')->toToast();
 
-       return redirect(route('admin.jobtypes.index'));
-    }
+     return redirect(route('admin.jobtypes.index'));
+ }
 }

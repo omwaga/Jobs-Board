@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
+use Str;
 use App\Vacancy;
 use App\Country;
 use App\JobType;
@@ -28,10 +29,10 @@ class VacancyController extends Controller
     {
         if(Auth::user()->hasRole('admin'))
         {
-            $vacancies = Vacancy::all();
+            $vacancies = Vacancy::orderby('created_at', 'DESC')->get();
         }
         else{
-        $vacancies = Vacancy::where('user_id', auth()->user()->id)->get();
+        $vacancies = Vacancy::where('user_id', auth()->user()->id)->orderby('created_at', 'DESC')->get();
         }
 
         return view('backend.vacancies.all-vacancies', compact('vacancies'));
@@ -114,6 +115,8 @@ class VacancyController extends Controller
         'salary' => 'required',
         'description' => 'required',
     ]);  
+
+     $slug = Str::slug($request->job_title.'-'.auth()->user()->id);
 
      Vacancy::create($attributes + ['user_id' => auth()->user()->id]);
 

@@ -1,62 +1,149 @@
 @extends('layouts.front')
 @section('content')
 
-<div class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row no-gutters slider-text align-items-end justify-content-start">
-      <div class="col-md-12 ftco-animate text-center mb-5">
-       <p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-3"><a href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single</span></p>
-       <h1 class="mb-3 bread">Single Blog</h1>
-     </div>
-   </div>
- </div>
-</div>
-
-<section class="ftco-section ftco-degree-bg">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 ftco-animate">
-        <h2 class="mb-3">It is a long established fact a reader be distracted</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
-        <p>
-          <img src="images/image_7.jpg" alt="" class="img-fluid">
-        </p>
-        <p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-        <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2>
-        <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
-        <p>
-          <img src="images/image_8.jpg" alt="" class="img-fluid">
-        </p>
-        <p>Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus, quibusdam iste enim veniam, modi rem maiores.</p>
-        <p>Odit voluptatibus, eveniet vel nihil cum ullam dolores laborum, quo velit commodi rerum eum quidem pariatur! Quia fuga iste tenetur, ipsa vel nisi in dolorum consequatur, veritatis porro explicabo soluta commodi libero voluptatem similique id quidem? Blanditiis voluptates aperiam non magni. Reprehenderit nobis odit inventore, quia laboriosam harum excepturi ea.</p>
-        <p>Adipisci vero culpa, eius nobis soluta. Dolore, maxime ullam ipsam quidem, dolor distinctio similique asperiores voluptas enim, exercitationem ratione aut adipisci modi quod quibusdam iusto, voluptates beatae iure nemo itaque laborum. Consequuntur et pariatur totam fuga eligendi vero dolorum provident. Voluptatibus, veritatis. Beatae numquam nam ab voluptatibus culpa, tenetur recusandae!</p>
-        <p>Voluptas dolores dignissimos dolorum temporibus, autem aliquam ducimus at officia adipisci quasi nemo a perspiciatis provident magni laboriosam repudiandae iure iusto commodi debitis est blanditiis alias laborum sint dolore. Dolores, iure, reprehenderit. Error provident, pariatur cupiditate soluta doloremque aut ratione. Harum voluptates mollitia illo minus praesentium, rerum ipsa debitis, inventore?</p>
-        <div class="tag-widget post-tag-container mb-5 mt-5">
-          <div class="tagcloud">
-            <a href="#" class="tag-cloud-link">Life</a>
-            <a href="#" class="tag-cloud-link">Sport</a>
-            <a href="#" class="tag-cloud-link">Tech</a>
-            <a href="#" class="tag-cloud-link">Travel</a>
+    <!-- HOME -->
+    <section class="section-hero overlay inner-page bg-image" style="background-image: url('front/images/hero_1.jpg');"
+      id="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-white font-weight-bold">Product Designer</h1>
           </div>
         </div>
-
-        <div class="about-author d-flex p-4 bg-light">
-          <div class="bio mr-5">
-            <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
+      </div>
+    </section>
+    
+    
+    <section class="site-section">
+      <div class="container">
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-8 mb-4 mb-lg-0">
+            <div class="d-flex align-items-center">
+              <div class="border p-2 d-inline-block mr-3 rounded">
+                <img src="front/images/featured-listing-1.jpg" alt="Free Website Template By Free-Template.co">
+              </div>
+              <div>
+                <h2>Product Designer</h2>
+                <div>
+                  <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>Puma</span>
+                  <span class="m-2"><span class="icon-room mr-2"></span>New York City</span>
+                  <span class="m-2"><span class="icon-clock-o mr-2"></span><span class="text-primary">Full
+                      Time</span></span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="desc">
-            <h3>George Washington</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+          <div class="col-lg-4">
+            <div class="row">
+              <div class="col-6">
+                <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save
+                  Job</a>
+              </div>
+              <div class="col-6">
+                <a href="#" class="btn btn-block btn-primary btn-md">Apply Now</a>
+              </div>
+            </div>
           </div>
         </div>
-
-      </div> <!-- .col-md-8 -->
-
-      @include('front.singlejob-sidebar')
-
-    </div>
-  </div>
-</section> <!-- .section -->
-
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="mb-5">
+              <figure class="mb-5"><img src="images/sq_img_1.jpg" alt="Free Website Template by Free-Template.co"
+                  class="img-fluid rounded"></figure>
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Job
+                Description</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores,
+                commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus.
+              </p>
+              <p>Velit unde aliquam et voluptas reiciendis non sapiente labore, deleniti asperiores blanditiis nihil quia
+                officiis dolor vero iste dolore vel molestiae saepe. Id nisi, consequuntur sunt impedit quidem, vitae
+                mollitia!</p>
+            </div>
+            <div class="mb-5">
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
+                  class="icon-rocket mr-3"></span>Responsibilities</h3>
+              <ul class="list-unstyled m-0 p-0">
+                <li class="d-flex align-items-start mb-2"><span
+                    class="icon-check_circle mr-2 text-muted"></span><span>Necessitatibus quibusdam facilis</span></li>
+                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>Velit
+                    unde aliquam et voluptas reiciendis n Velit unde aliquam et voluptas reiciendis non sapiente
+                    labore</span></li>
+                <li class="d-flex align-items-start mb-2"><span
+                    class="icon-check_circle mr-2 text-muted"></span><span>Commodi quae ipsum quas est itaque</span></li>
+                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>Lorem
+                    ipsum dolor sit amet, consectetur adipisicing elit</span></li>
+                <li class="d-flex align-items-start mb-2"><span
+                    class="icon-check_circle mr-2 text-muted"></span><span>Deleniti asperiores blanditiis nihil quia
+                    officiis dolor</span></li>
+              </ul>
+            </div>
+    
+            <div class="mb-5">
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-book mr-3"></span>Education +
+                Experience</h3>
+              <ul class="list-unstyled m-0 p-0">
+                <li class="d-flex align-items-start mb-2"><span
+                    class="icon-check_circle mr-2 text-muted"></span><span>Necessitatibus quibusdam facilis</span></li>
+                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>Velit
+                    unde aliquam et voluptas reiciendis non sapiente labore</span></li>
+                <li class="d-flex align-items-start mb-2"><span
+                    class="icon-check_circle mr-2 text-muted"></span><span>Commodi quae ipsum quas est itaque</span></li>
+                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>Lorem
+                    ipsum dolor sit amet, consectetur adipisicing elit</span></li>
+                <li class="d-flex align-items-start mb-2"><span
+                    class="icon-check_circle mr-2 text-muted"></span><span>Deleniti asperiores blanditiis nihil quia
+                    officiis dolor</span></li>
+              </ul>
+            </div>
+    
+            <div class="mb-5">
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-turned_in mr-3"></span>Other
+                Benifits</h3>
+              <ul class="list-unstyled m-0 p-0">
+                <li class="d-flex align-items-start mb-2"><span
+                    class="icon-check_circle mr-2 text-muted"></span><span>Necessitatibus quibusdam facilis</span></li>
+                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>Velit
+                    unde aliquam et voluptas reiciendis non sapiente labore</span></li>
+                <li class="d-flex align-items-start mb-2"><span
+                    class="icon-check_circle mr-2 text-muted"></span><span>Commodi quae ipsum quas est itaque</span></li>
+                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>Lorem
+                    ipsum dolor sit amet, consectetur adipisicing elit</span></li>
+                <li class="d-flex align-items-start mb-2"><span
+                    class="icon-check_circle mr-2 text-muted"></span><span>Deleniti asperiores blanditiis nihil quia
+                    officiis dolor</span></li>
+              </ul>
+            </div>
+    
+            
+          </div>
+          <div class="col-lg-4">
+            <div class="bg-light p-3 border rounded mb-4">
+              <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
+              <ul class="list-unstyled pl-3 mb-0">
+                <li class="mb-2"><strong class="text-black">Published on:</strong> April 14, 2019</li>
+                <li class="mb-2"><strong class="text-black">Vacancy:</strong> 20</li>
+                <li class="mb-2"><strong class="text-black">Employment Status:</strong> Full-time</li>
+                <li class="mb-2"><strong class="text-black">Experience:</strong> 2 to 3 year(s)</li>
+                <li class="mb-2"><strong class="text-black">Job Location:</strong> New ork City</li>
+                <li class="mb-2"><strong class="text-black">Salary:</strong> $60k - $100k</li>
+                <li class="mb-2"><strong class="text-black">Gender:</strong> Any</li>
+                <li class="mb-2"><strong class="text-black">Application Deadline:</strong> April 28, 2019</li>
+              </ul>
+            </div>
+    
+            <div class="bg-light p-3 border rounded">
+              <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
+              <div class="px-3">
+                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
+                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
+                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
+                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-pinterest"></span></a>
+              </div>
+            </div>
+    
+                                    @include('front.singlejob-sidebar')
+          </div>
+        </div>
+      </div>
+    </section>
 @endsection

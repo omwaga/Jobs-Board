@@ -29,7 +29,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title">All Users</h4>
+              <a href="{{route('admin.users.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Add User</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
