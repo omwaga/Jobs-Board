@@ -49,7 +49,7 @@ class RegisterController extends Controller
                 return $this->redirectTo;
             }
 
-            $this->redirectTo =  route('home');
+            $this->redirectTo =  route('jobseeker.levelSelection');
             return $this->redirectTo;
         }
 

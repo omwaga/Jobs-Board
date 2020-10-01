@@ -39,8 +39,8 @@ class PagesController extends Controller
     	return view('backend.jobseeker.single-job', compact('job', 'related_jobs', 'categories'));
     }
 
-    public function categorySlug($categorySlug)
+    public function fillDetails()
     {
-        return $categorySlug;
+        return view('backend.jobseeker.details-master');
     }
 }

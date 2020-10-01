@@ -22,9 +22,6 @@
   <!-- CSS Files -->
   <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('assets/css/azzara.min.css')}}">
-
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
 </head>
 <body>
   @include('sweetalert::alert')
@@ -253,6 +250,13 @@
               <a href="{{route('admin.dashboard')}}">
                 <i class="fas fa-home"></i>
                 <p>Dashboard</p>
+                <span class="badge badge-count">5</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a href="{{route('jobseeker.fillDetails')}}">
+                <i class="fas fa-home"></i>
+                <p>My Resume</p>
                 <span class="badge badge-count">5</span>
               </a>
             </li>

@@ -11,7 +11,7 @@
 	<div class="categories">
 		<h3 class="heading-3">Related Jobs</h3>
 		@foreach($related_jobs as $related_job)
-		<li><a href="#">{{$related_job->job_title}}</a></li>
+		<li><a href="{{route('front.singlejob', $related_job->slug)}}">{{$related_job->job_title}}</a></li>
 		@endforeach
 	</div>
 </div>

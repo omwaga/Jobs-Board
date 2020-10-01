@@ -2,12 +2,12 @@
 @section('content')
 
     <!-- HOME -->
-    <section class="section-hero overlay inner-page bg-image" style="background-image: url('front/images/hero_1.jpg');"
+    <section class="section-hero overlay inner-page bg-image" style="background-image: url('{{asset('front/images/hero_1.jpg')}}');"
       id="home-section">
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h1 class="text-white font-weight-bold">Product Designer</h1>
+            <h1 class="text-white font-weight-bold">{{$job->job_title ?? ''}}</h1>
           </div>
         </div>
       </div>
@@ -20,15 +20,14 @@
           <div class="col-lg-8 mb-4 mb-lg-0">
             <div class="d-flex align-items-center">
               <div class="border p-2 d-inline-block mr-3 rounded">
-                <img src="front/images/featured-listing-1.jpg" alt="Free Website Template By Free-Template.co">
+                <img src="{{asset('front/images/featured-listing-1.jpg')}}" alt="{{$job->job_title}}">
               </div>
               <div>
-                <h2>Product Designer</h2>
+                <h2>{{$job->job_title ?? ''}}</h2>
                 <div>
-                  <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>Puma</span>
-                  <span class="m-2"><span class="icon-room mr-2"></span>New York City</span>
-                  <span class="m-2"><span class="icon-clock-o mr-2"></span><span class="text-primary">Full
-                      Time</span></span>
+                  <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{{$job->user->name ?? ''}}</span>
+                  <span class="m-2"><span class="icon-room mr-2"></span>{{$job->postcity->name ?? ''}}, {{$job->postcountry->name}}</span>
+                  <span class="m-2"><span class="icon-clock-o mr-2"></span><span class="text-primary">{{$job->postjobtype->name ?? ''}}</span></span>
                 </div>
               </div>
             </div>
@@ -45,11 +44,11 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row pb-5">
           <div class="col-lg-8">
             <div class="mb-5">
-              <figure class="mb-5"><img src="images/sq_img_1.jpg" alt="Free Website Template by Free-Template.co"
-                  class="img-fluid rounded"></figure>
+              <figure class="mb-5"><img src="{{asset('front/images/sq_img_1.jpg')}}" alt="{{$job->job_title ?? ''}}"
+                  class="img-fluid rounded" style="height: 200px; width: 100%"></figure>
               <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Job
                 Description</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores,
@@ -97,8 +96,7 @@
             </div>
     
             <div class="mb-5">
-              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-turned_in mr-3"></span>Other
-                Benifits</h3>
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-turned_in mr-3"></span>Other Benifits</h3>
               <ul class="list-unstyled m-0 p-0">
                 <li class="d-flex align-items-start mb-2"><span
                     class="icon-check_circle mr-2 text-muted"></span><span>Necessitatibus quibusdam facilis</span></li>
@@ -113,8 +111,15 @@
                     officiis dolor</span></li>
               </ul>
             </div>
-    
-            
+
+                <div class="row">
+                  <div class="col-6">
+                    <a href="#" class="btn btn-warning">Login to Apply</a>
+                  </div>
+                  <div class="col-6 text-left">
+                    <a href="#" class="btn btn-primary">Register to Apply</a>
+                  </div>
+                </div>
           </div>
           <div class="col-lg-4">
             <div class="bg-light p-3 border rounded mb-4">
@@ -141,9 +146,10 @@
               </div>
             </div>
     
-                                    @include('front.singlejob-sidebar')
+              @include('front.singlejob-sidebar')
           </div>
         </div>
+                @include('front.similar-jobs')
       </div>
     </section>
 @endsection

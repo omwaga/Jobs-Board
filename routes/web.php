@@ -20,9 +20,13 @@ Route::name('front.')->group(function(){
 
 Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(function(){
 	Route::get('/profile', 'PagesController@userProfile')->name('profile');
+	Route::get('/level-selection', 'HomeController@levelSelection')->name('levelSelection');
+	Route::get('/fresher-profile', 'HomeController@fresherProfile')->name('fresherProfile');
 	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
 	Route::get('/job/{slug}', 'PagesController@singleJob')->name('singlejob');
-	Route::get('/{categorySlug}', 'PagesController@categorySlug')->name('category');
+	Route::resource('applications', 'ApplicationController');
+	Route::get('/fill-details', 'PagesController@fillDetails')->name('fillDetails');
+	Route::get('/dashboard', 'HomeController@index')->name('home');
 });
 
 Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function(){
@@ -40,10 +44,9 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 
 Route::get('/portfolio', function () {
 	Alert::Success('Success!', 'Project Created ')->position('top-right')->toToast();
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 

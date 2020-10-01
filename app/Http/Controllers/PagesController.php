@@ -20,9 +20,11 @@ class PagesController extends Controller
     {
         $vacancies = Vacancy::orderBy('created_at', 'DESC')->get();
         $top_categories = Category::orderBy('created_at', 'DESC')->limit(8)->get();
+        $categories = Category::all();
+        $locations = City::all();
 
         SEOMeta::setTitle('Home');
-    	return view('front.index', compact('vacancies', 'top_categories'));
+    	return view('front.index', compact('vacancies', 'top_categories', 'categories', 'locations'));
     }
 
 
@@ -44,12 +46,14 @@ class PagesController extends Controller
 
     public function singlejob($slug)
     {
+        $job = Vacancy::where('slug', '=', $slug)->first();
         $related_jobs = Vacancy::orderBy('created_at', 'DESC')->limit(8)->get();
+        $similar_jobs = Vacancy::orderBy('created_at', 'DESC')->limit(8)->get();
         $categories = Category::all();
         $locations = City::all();
         $job_types = JobType::all();
 
-        return view('front.single-job', compact('related_jobs', 'categories', 'locations', 'job_types'));
+        return view('front.single-job', compact('related_jobs', 'categories', 'locations', 'job_types', 'job', 'similar_jobs'));
     }
 
     public function categorySlug($categorySlug)

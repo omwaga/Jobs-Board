@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
 <!-- HOME -->
-<section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('images/hero_1.jpg');"
+<section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('{{asset('front/images/hero_1.jpg')}}');"
 id="home-section">
 
 <div class="container">
@@ -33,21 +33,27 @@ id="home-section">
 				<div class="mb-5">
 
 					@foreach($vacancies as $vacancy)
-					<div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
-						<div class="col-md-2">
-							<a href="{{route('front.singlejob', $vacancy->slug)}}"><img src="front/images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
-						</div>
-						<div class="col-md-4">
-							<span class="badge badge-secondary px-2 py-1 mb-3">{{$vacancy->postjobtype->name}}</span>
-							<h2><a href="{{route('front.singlejob', $vacancy->slug)}}">{{$vacancy->job_title}}</a> </h2>
-							<p class="meta">Publisher: <strong>{{$vacancy->user->name}}</strong> In: <strong>{{$vacancy->postcategory->name}}</strong></p>
-						</div>
-						<div class="col-md-3 text-left">
-							<h3>{{$vacancy->postcity->name}}</h3>
-							<span class="meta">{{$vacancy->postcountry->name}}</span>
-						</div>
-						<div class="col-md-3 text-md-right">
-							<a href="{{route('front.singlejob', $vacancy->slug)}}" class="btn btn-primary">Apply</a>
+					<div class="card border-light shadow-sm border-bottom pb-3 mb-3 pt-3">
+						<div class="row align-items-start job-item">
+							<div class="col-md-2">
+								<a href="{{route('front.singlejob', $vacancy->slug)}}"><img src="front/images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
+							</div>
+							<div class="col-md-6">
+								<span class="badge badge-secondary px-2 py-1 mb-3">{{$vacancy->postjobtype->name}}</span>
+								<h2><a href="{{route('front.singlejob', $vacancy->slug)}}">{{$vacancy->job_title}}</a> </h2>
+								<p class="meta"><strong>{{$vacancy->user->name}}</strong></p>
+								<p>{{$vacancy->postcity->name}}, {{$vacancy->postcountry->name}}</p>
+							</div>
+							<div class="col-md-4 text-md-right">
+								<div class="row">
+									<div class="col-6">
+										<a href="{{route('front.singlejob', $vacancy->slug)}}" class="btn btn-light"><span class="icon-heart-o mr-2 text-danger"></span>Save</a>
+									</div>
+									<div class="col-6 text-left">
+										<a href="{{route('front.singlejob', $vacancy->slug)}}" class="btn btn-primary">Apply</a>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					@endforeach
