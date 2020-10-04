@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplicationsTable extends Migration
+class CreateExperiencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,20 @@ class CreateApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('experiences', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('vacancy_id');
+            $table->string('organization');
+            $table->string('position');
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
+            $table->string('current_work')->nullable();
+            $table->text('responsibilities');
             $table->timestamps();
 
             $table->foreign('user_id')
             ->references('id')
             ->on('users')
-            ->onDelete('cascade');
-
-            $table->foreign('vacancy_id')
-            ->references('id')
-            ->on('vacancies')
             ->onDelete('cascade');
         });
     }
@@ -38,6 +38,6 @@ class CreateApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('experiences');
     }
 }

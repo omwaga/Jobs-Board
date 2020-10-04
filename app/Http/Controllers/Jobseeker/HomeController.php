@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('backend.jobseeker.dashboard');
     }
 
     public function levelSelection()
@@ -35,5 +35,10 @@ class HomeController extends Controller
     public function fresherProfile()
     {
         return view('backend.jobseeker.fresher-profile');
+    }
+
+    public function professionalProfile()
+    {
+        return view('backend.jobseeker.professional-profile');
     }
 }

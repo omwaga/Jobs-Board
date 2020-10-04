@@ -22,11 +22,16 @@ Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(functio
 	Route::get('/profile', 'PagesController@userProfile')->name('profile');
 	Route::get('/level-selection', 'HomeController@levelSelection')->name('levelSelection');
 	Route::get('/fresher-profile', 'HomeController@fresherProfile')->name('fresherProfile');
+	Route::get('/professional-profile', 'HomeController@professionalProfile')->name('professionalProfile');
 	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
 	Route::get('/job/{slug}', 'PagesController@singleJob')->name('singlejob');
 	Route::resource('applications', 'ApplicationController');
+	Route::resource('details', 'JobseekerDetailController');
+	Route::resource('educations', 'EducationController');
+	Route::resource('internships', 'InternshipController');
 	Route::get('/fill-details', 'PagesController@fillDetails')->name('fillDetails');
 	Route::get('/dashboard', 'HomeController@index')->name('home');
+	Route::get('/category/{categorySlug}', 'PagesController@categorySlug')->name('category');
 });
 
 Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function(){
