@@ -91,15 +91,19 @@
                           <div class="form-group">
                             <label>Home City</label>                           
                             <select class="form-control" name="home_city">
-                              <option>Select Home City</option>
-                              <option>Male</option>
+                              <option value="">Select Home City</option>
+                              @foreach($locations as $location)
+                              <option value="{{$location->id}}">{{$location->name}}</option>
+                              @endforeach
                             </select>
                           </div>
                           <div class="form-group">
                             <label>Current Location</label>
                             <select class="form-control" name="current_location">
-                              <option>Select Current Location</option>
-                              <option>Male</option>
+                              <option value="">Select Current Location</option>
+                              @foreach($locations as $location)
+                              <option value="{{$location->id}}">{{$location->name}}</option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
@@ -107,22 +111,28 @@
                           <div class="form-group">
                             <label>When to start working</label>                                                   
                             <select class="form-control" name="when_to_start">
-                              <option>Select when to start working</option>
-                              <option>Male</option>
+                              <option value="">Select when to start working</option>
+                              <option value="Immediately">Immediately</option>
+                              <option value="After 2 Weeks">After 2 Weeks</option>
+                              <option value="After 1 Month">After 1 Month</option>
                             </select>
                           </div>
                           <div class="form-group">
-                            <label>Preferred work location</label>                                                 
+                            <label>Preferred work location</label>                                       
                             <select class="form-control" name="preferred_location">
-                              <option>Select Preferred Location</option>
-                              <option>Male</option>
+                              <option value="">Select Preferred Location</option>
+                              @foreach($locations as $location)
+                              <option value="{{$location->id}}">{{$location->name}}</option>
+                              @endforeach
                             </select>
                           </div>
                           <div class="form-group">
                             <label>Preferred Job Type</label>                                                     
                             <select class="form-control" name="job_type">
-                              <option>Select Preferred Job Type</option>
-                              <option>Male</option>
+                              <option value="">Select Preferred Job Type</option>
+                              @foreach($job_types as $type)
+                              <option value="{{$type->id}}">{{$type->name}}</option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
@@ -162,6 +172,7 @@
                             <label>Course Type</label>                          
                             <select class="form-control" name="course_type">
                               <option>Part Time</option>
+                              <option>Full Time</option>
                             </select>
                           </div>
                           <div class="form-group">
@@ -182,10 +193,10 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <p>Have you done any internships? If yes then please enter the company name below</p>
-                                <small>I have not doen internship</small>
+                                <!-- <small>I have not doen internship</small>
                                 <select class="form-control">
                                   <option>Course</option>
-                                </select>
+                                </select> -->
                               </div>
                               <div class="form-group">
                                 <label>Organization</label>                          
@@ -206,10 +217,10 @@
                                 <input class="form-control" name="end_date" type="date" required value="{{old('end_date')}}" />
                               </div>
                               <div class="form-group">
-                                <label>Current Internship</label>                          
-                                <select class="form-control" name="current_internship">
-                                  <option>Part Time</option>
-                                </select>
+                                <label class="form-radio-label ml-3">
+                                  <input class="form-radio-input" type="radio" name="current_internship" value="Current Internship">
+                                  <span class="form-radio-sign">Current Internship</span>
+                                </label>
                               </div>
                               <div class="form-group">
                                 <label>Duties and Responsibilities</label>  
@@ -231,7 +242,7 @@
                   <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
                     <div class="row">
                       <div class="col-md-8">
-                        <form method="Post" action="#">
+                        <form method="Post" action="{{route('jobseeker.projects.store')}}">
                           @csrf
                           <p>Did you undertake any projects ? If Yes, please add the details below</p>
                           <div class="form-group">

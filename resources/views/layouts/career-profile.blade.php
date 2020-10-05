@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="{{asset('assets/css/azzara.min.css')}}">
 </head>
 <body class="login">
+  @include('sweetalert::alert')
 
   @yield('content')
 

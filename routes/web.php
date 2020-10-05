@@ -29,6 +29,7 @@ Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(functio
 	Route::resource('details', 'JobseekerDetailController');
 	Route::resource('educations', 'EducationController');
 	Route::resource('internships', 'InternshipController');
+	Route::resource('projects', 'ProjectController');
 	Route::get('/fill-details', 'PagesController@fillDetails')->name('fillDetails');
 	Route::get('/dashboard', 'HomeController@index')->name('home');
 	Route::get('/category/{categorySlug}', 'PagesController@categorySlug')->name('category');

@@ -23,7 +23,7 @@ class CreateJobseekerDetailsTable extends Migration
             $table->string('gender');
             $table->unsignedBigInteger('current_location');
             $table->date('date_of_birth');
-            $table->date('when_to_start');
+            $table->string('when_to_start');
             $table->unsignedBigInteger('home_city');
             $table->unsignedBigInteger('preferred_location');
             $table->unsignedBigInteger('job_type');

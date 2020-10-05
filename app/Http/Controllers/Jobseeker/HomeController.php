@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Category;
+use App\City;
+use App\JobType;
 
 class HomeController extends Controller
 {
@@ -34,7 +37,11 @@ class HomeController extends Controller
 
     public function fresherProfile()
     {
-        return view('backend.jobseeker.fresher-profile');
+        $categories = Category::all();
+        $locations = City::all();
+        $job_types = JobType::all();
+
+        return view('backend.jobseeker.fresher-profile', compact('categories', 'locations', 'job_types'));
     }
 
     public function professionalProfile()
