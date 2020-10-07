@@ -316,7 +316,7 @@
                   <div class="tab-pane fade" id="achievements" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
                     <div class="row">
                       <div class="col-md-8">
-                        <form method="Post" action="#">
+                        <form method="Post" action="{{route('jobseeker.certifications.store')}}">
                           @csrf
                           <div class="form-group">
                             <p>If you have done any certification course add them below</p>                   
@@ -334,17 +334,23 @@
                                 <label>Ending Date</label>                        
                                 <input class="form-control" name="end_date" type="date" required value="{{old('end_date')}}" />
                               </div>
+                              <div class="form-check">
+                                <label class="form-radio-label ml-3">
+                                  <input class="form-radio-input" type="radio" name="current_certification" value="Pursuing the certification currently">
+                                  <span class="form-radio-sign">Pursuing the certification currently</span>
+                                </label>
+                              </div>
                             </div>
                           </div>
                           <button type="submit" class="btn btn-secondary pull-right">Save</button>
                         </form><br><br>
-                        <form method="Post" action="#">
+                        <form method="Post" action="{{route('jobseeker.awards.store')}}">
                           @csrf
                           <div class="row">
                             <div class="col-md-8">                                
                               <div class="form-group">
                                 <p>Please add any award or honor you have achieved</p>                         
-                                <input class="form-control" name="name" type="text" required value="{{old('name')}}" />
+                                <input class="form-control" name="award_name" type="text" required value="{{old('name')}}" />
                               </div>
                             </div>
                             <div class="col-md-4">
@@ -369,7 +375,7 @@
                   <div class="tab-pane fade" id="skills" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
                     <div class="row">
                       <div class="col-md-8">
-                        <form method="Post" action="#">
+                        <form method="Post" action="{{route('jobseeker.skills.store')}}">
                           @csrf
                           <div class="form-group">
                             <label>Add all the diverse skills you have</label>

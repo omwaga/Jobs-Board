@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Azzara Bootstrap 4 Admin Dashboard</title>
+  <title>RecruitAble Bootstrap 4 Admin Dashboard</title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
 
@@ -29,12 +29,12 @@
     <!--
       Tip 1: You can change the background color of the main header using: data-background-color="blue | purple | light-blue | green | orange | red"
     -->
-    <div class="main-header" data-background-color="purple">
+    <div class="main-header" data-background-color="light-blue">
       <!-- Logo Header -->
       <div class="logo-header">
 
         <a href="#" class="logo">
-          <img src="{{asset('assets/img/logoazzara.svg')}}" alt="navbar brand" class="navbar-brand">
+          <img src="{{asset('assets/img/logo.png')}}" alt="navbar brand" class="navbar-brand" height=100%>
         </a>
         <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon">
@@ -218,7 +218,7 @@
               <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                 <span>
                   Hizrian
-                  <span class="user-level">Administrator</span>
+                  <span class="user-level text-white">Administrator</span>
                   <span class="caret"></span>
                 </span>
               </a>
@@ -250,14 +250,12 @@
               <a href="{{route('admin.dashboard')}}">
                 <i class="fas fa-home"></i>
                 <p>Dashboard</p>
-                <span class="badge badge-count">5</span>
               </a>
             </li>
-            <li class="nav-item active">
-              <a href="{{route('jobseeker.fillDetails')}}">
-                <i class="fas fa-home"></i>
+            <li class="nav-item">
+              <a href="{{route('jobseeker.levelSelection')}}">
+                <i class="fas fa-book"></i>
                 <p>My Resume</p>
-                <span class="badge badge-count">5</span>
               </a>
             </li>
             @can('manage-users')
@@ -281,7 +279,7 @@
             @endcan
             <li class="nav-item">
               <a data-toggle="collapse" href="#vacancies">
-                <i class="fas fa-pen-square"></i>
+                <i class="fas fa-list"></i>
                 <p>Job Listings</p>
                 <span class="caret"></span>
               </a>
@@ -327,14 +325,14 @@
             </li>
             <li class="nav-item">
               <a href="#">
-                <i class="fas fa-desktop"></i>
+                <i class="fas fa-paper-plane"></i>
                 <p>Applications</p>
                 <span class="badge badge-count badge-success">4</span>
               </a>
             </li>
             <li class="nav-item">
               <a href="#">
-                <i class="fas fa-desktop"></i>
+                <i class="fas fa-database"></i>
                 <p>Talent Pools</p>
                 <span class="badge badge-count badge-success">4</span>
               </a>
@@ -374,7 +372,7 @@
             @endcan
             <li class="nav-item">
               <a href="#">
-                <i class="fas fa-desktop"></i>
+                <i class="fas fa-users"></i>
                 <p>Candidates</p>
                 <span class="badge badge-count badge-success">4</span>
               </a>
@@ -456,7 +454,7 @@
 <!-- Sweet Alert -->
 <script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
-<!-- Azzara JS -->
+<!-- RecruitAble JS -->
 <script src="{{asset('assets/js/ready.min.js')}}"></script>
 <script >
   $(document).ready(function() {
