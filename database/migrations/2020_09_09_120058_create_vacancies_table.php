@@ -22,6 +22,9 @@ class CreateVacanciesTable extends Migration
             $table->unsignedBigInteger('category');
             $table->unsignedBigInteger('job_type');
             $table->string('job_title');
+            $table->string('required_experience');
+            $table->string('application_deadline');
+            $table->ENUM('status', ['published', 'unpublished', 'pending approval'])->default('pending');
             $table->string('slug');
             $table->string('salary');
             $table->text('description');

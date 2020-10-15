@@ -78,6 +78,16 @@
 												@endforeach
 											</select>
 										</div>
+
+										<div class="col-lg-6">
+											<label class="control-label">Required Exerience <span class="required">*</span></label>
+										<input class="form-control" name="required_experience" type="text" value="{{old('required_experience')}}" />
+										</div>
+
+										<div class="col-lg-6">
+											<label class="control-label">Application Deadline <span class="required">*</span></label>
+										<input class="form-control" name="application_deadline" type="text" value="{{old('application_deadline')}}" />
+										</div>
 										
 										<div class="col-lg-6">
 											<label class="control-label">Subscription <span class="required">*</span></label>

@@ -49,8 +49,20 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasAnyRoles(['admin']);
         });
 
+        Gate::define('manage-talent-pools', function($user){
+            return $user->hasAnyRoles(['admin', 'company']);
+        });
+
+        Gate::define('manage-candidates', function($user){
+            return $user->hasAnyRoles(['admin', 'company']);
+        });
+
         Gate::define('manage-vacancies', function($user){
             return $user->hasAnyRoles(['admin', 'company']);
+        });
+
+        Gate::define('create-resume', function($user){
+            return $user->hasAnyRoles(['user']);
         });
 
         Gate::define('apply-job', function($user){

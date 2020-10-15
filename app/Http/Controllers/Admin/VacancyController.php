@@ -112,8 +112,10 @@ class VacancyController extends Controller
         'country' => 'required',
         'city' => 'required',
         'job_type' => 'required',
-        'salary' => 'required',
+        'salary' => 'nullable',
         'description' => 'required',
+        'required_experience' => 'nullable',
+        'application_deadline' => 'nullable'
     ]);  
 
      $slug = Str::slug($request->job_title.'-'.auth()->user()->id);
@@ -143,6 +145,8 @@ class VacancyController extends Controller
             'city' => $request->city,
             'salary' => $request->salary,
             'description' => $request->description,
+            'required_experience' => $request->required_experience,
+            'application_deadline' => $request->application_deadline,
         ]);
 
         Alert::Success('Success!', 'Job vacancy updated successfully')->position('top-right')->toToast();

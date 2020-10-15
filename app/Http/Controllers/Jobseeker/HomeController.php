@@ -46,6 +46,10 @@ class HomeController extends Controller
 
     public function professionalProfile()
     {
-        return view('backend.jobseeker.professional-profile');
+        $categories = Category::all();
+        $locations = City::all();
+        $job_types = JobType::all();
+
+        return view('backend.jobseeker.professional-profile', compact('categories', 'locations', 'job_types'));
     }
 }

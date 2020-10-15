@@ -81,6 +81,16 @@
 										</div>
 
 										<div class="col-lg-6">
+											<label class="control-label">Required Exerience <span class="required">*</span></label>
+										<input class="form-control" name="required_experience" type="text" value="{{$vacancy->required_experience}}" />
+										</div>
+
+										<div class="col-lg-6">
+											<label class="control-label">Application Deadline <span class="required">*</span></label>
+										<input class="form-control" name="application_deadline" type="text" value="{{$vacancy->application_deadline}}" />
+										</div>
+
+										<div class="col-lg-6">
 											<label class="control-label">Subscription <span class="required">*</span></label>
 											<select class="form-control m-bot15" name="subscription">
 												<option value="{{$vacancy->subscription}}">{{$vacancy->postsubscription->name ?? 'Select Subscription'}}</option>

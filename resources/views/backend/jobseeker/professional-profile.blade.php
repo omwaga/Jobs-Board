@@ -41,22 +41,12 @@
                 </div>
               </div>
               <div class="col-7 col-md-10">
-                <div class="tab-content" id="v-pills-with-icon-tabContent">
-                  <div class="tab-pane fade show active" id="personal-&-professional-details" role="tabpanel" aria-labelledby="v-pills-home-tab-icons">
-                    <p>Personal & Professional Details Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                  </div>
-                  <div class="tab-pane fade" id="education-details" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
-                    <p>Education Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                  </div>
-                  <div class="tab-pane fade" id="work-experience" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
-                    <p>Work Experience Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                  </div>
-                  <div class="tab-pane fade" id="achievements" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
-                    <p>Achievements Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                  </div>
-                  <div class="tab-pane fade" id="skills" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
-                    <p>Skills Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                  </div>
+                <div class="tab-content" id="v-pills-with-icon-tabContent">                  
+                  @include('backend.jobseeker.profile.details')
+                  @include('backend.jobseeker.profile.education')
+                  @include('backend.jobseeker.profile.experience')
+                  @include('backend.jobseeker.profile.achievement')
+                  @include('backend.jobseeker.profile.skills')
                 </div>
               </div>
             </div>

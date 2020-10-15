@@ -13,8 +13,8 @@ class InternshipController extends Controller
     public function store(Request $request)
     {
     	$attributes = request()->validate([
-    		'organization' => 'required',
-    		'position' => 'required',
+    		'organization' => 'required|min:3',
+    		'position' => 'required|min:3',
     		'start_date' => 'required',
     		'end_date' => 'nullable',
     		'current_internship' => 'nullable',

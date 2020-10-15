@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Jobseeker;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Vacancy;
+use App\Documents;
 
 class ApplicationController extends Controller
 {    
@@ -16,8 +18,11 @@ class ApplicationController extends Controller
     	dd('hello');
     }
 
-    public function create()
+    public function create($job)
     {
-    	return view('backend.jobseeker.create-application');
+        $vacancy = Vacancy::findOrFail($job);
+        $cv = Documents::where('user_id', auth()->user()->id)->first();
+
+    	return view('backend.jobseeker.create-application', compact('vacancy', 'cv'));
     }
 }

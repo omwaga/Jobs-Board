@@ -25,14 +25,16 @@ Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(functio
 	Route::get('/professional-profile', 'HomeController@professionalProfile')->name('professionalProfile');
 	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
 	Route::get('/job/{slug}', 'PagesController@singleJob')->name('singlejob');
-	Route::resource('applications', 'ApplicationController');
+	Route::get('/application/{job}', 'ApplicationController@create')->name('application.create');
 	Route::resource('details', 'JobseekerDetailController');
 	Route::resource('educations', 'EducationController');
 	Route::resource('internships', 'InternshipController');
+	Route::resource('experiences', 'ExperienceController');
 	Route::resource('projects', 'ProjectController');
 	Route::resource('certifications', 'CertificationController');
 	Route::resource('awards', 'AwardController');
 	Route::resource('skills', 'SkillController');
+	Route::resource('documents', 'DocumentsController');
 	Route::get('/fill-details', 'PagesController@fillDetails')->name('fillDetails');
 	Route::get('/dashboard', 'HomeController@index')->name('home');
 	Route::get('/category/{categorySlug}', 'PagesController@categorySlug')->name('category');

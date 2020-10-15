@@ -32,5 +32,9 @@
   <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
   <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
   <script src="{{asset('  assets/js/ready.js')}}"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script src="{{asset('assets/js/resume.js')}}"></script>
 </body>
 </html>

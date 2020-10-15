@@ -13,9 +13,9 @@ class JobseekerDetailController extends Controller
 	public function store(Request $request)
 	{
 		$attributes = request()->validate([
-			'first_name' => 'required',
-			'last_name' => 'required',
-			'phone_number' => 'required',
+			'first_name' => 'required|min:3',
+			'last_name' => 'required|min:3',
+			'phone_number' => 'required|min:9',
 			'gender' => 'required',
 			'date_of_birth' => 'required',
 			'email' => 'required',

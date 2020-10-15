@@ -1,92 +1,71 @@
 @extends('layouts.backend-master')
-
 @section('content')<div class="main-panel">
   <div class="content">
     <div class="page-inner">
       <div class="page-header">
         <h4 class="page-title">Welcome back, {{auth()->user()->name}}</h4>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-md-3">
-          <div class="card card-stats card-round">
-            <div class="card-body ">
-              <div class="row align-items-center">
-                <div class="col-icon">
-                  <div class="icon-big text-center icon-primary bubble-shadow-small">
-                    <i class="fas fa-users"></i>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="card card-stats card-round">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col-icon">
+                    <div class="icon-big text-center icon-info bubble-shadow-small">
+                      <i class="far fa-newspaper"></i>
+                    </div>
+                  </div>
+                  <h4> Upload Resume/CV and Cover Letter</h4>
                 </div>
+                <form method="POST" action="{{route('jobseeker.documents.store')}}" enctype="multipart/form-data">
+                  @csrf
+                  <div class="form-group">
+                    <label class="control-label">Document Name <span class="required text-danger">*</span></label>
+                    <input class="form-control" name="name" type="text" value="{{old('name')}}" />
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">File to Upload<span class="required text-danger">*</span></label>
+                    <input class="form-control" name="document_file" type="file" value="{{old('document_file')}}" />
+                  </div>
+                  <button class="btn btn-secondary float-right">Save</button>
+                </form>
+              </div>
             </div>
-            <div class="col col-stats ml-3 ml-sm-0">
-              <div class="numbers">
-                <p class="card-category">Visitors</p>
-                <h4 class="card-title">1,294</h4>
+            <div class="card card-stats card-round">
+            <div class="card-body">
+              <h4>Invite Friends</h4>
+              <p>Add multiple email ids separated by comma(,)</p>
+              <a href="#" class="btn btn-secondary">Send Invite</a>
             </div>
+          </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div class="card card-stats card-round">
+              <div class="card-body">
+                <h4>Personalized Interview Answers</h4>
+                <p>Based on your profile we have created your personalized answers to most common interview questions</p>
+                <a href="#" class="btn btn-secondary">View Interview Answers</a>
+              </div>
+            </div>
+            <div class="card card-stats card-round">
+              <div class="card-body">
+                <h4>Resume Writing</h4>
+                <p>Give a strong start to your career, get our experts to write your resume !</p>
+                <a href="#" class="btn btn-secondary">Know More</a>
+              </div>
+            </div>
+            <div class="card card-stats card-round">
+              <div class="card-body">
+                <h4>Notification & Mailer Settings</h4>
+                <p>Give a strong start to your career, get our experts to write your resume !</p>
+                <a href="#" class="btn btn-secondary">Know More</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3">
-  <div class="card card-stats card-round">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-icon">
-          <div class="icon-big text-center icon-info bubble-shadow-small">
-            <i class="far fa-newspaper"></i>
-        </div>
-    </div>
-    <div class="col col-stats ml-3 ml-sm-0">
-      <div class="numbers">
-        <p class="card-category">Subscribers</p>
-        <h4 class="card-title">1303</h4>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3">
-  <div class="card card-stats card-round">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-icon">
-          <div class="icon-big text-center icon-success bubble-shadow-small">
-            <i class="far fa-chart-bar"></i>
-        </div>
-    </div>
-    <div class="col col-stats ml-3 ml-sm-0">
-      <div class="numbers">
-        <p class="card-category">Sales</p>
-        <h4 class="card-title">$ 1,345</h4>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3">
-  <div class="card card-stats card-round">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-icon">
-          <div class="icon-big text-center icon-secondary bubble-shadow-small">
-            <i class="far fa-check-circle"></i>
-        </div>
-    </div>
-    <div class="col col-stats ml-3 ml-sm-0">
-      <div class="numbers">
-        <p class="card-category">Order</p>
-        <h4 class="card-title">576</h4>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+  </div>
 </div>
 @endsection

@@ -175,8 +175,8 @@
                   <div class="user-box">
                     <div class="avatar-lg"><img src="{{asset('assets/img/profile.jpg')}}" alt="image profile" class="avatar-img rounded"></div>
                     <div class="u-text">
-                      <h4>Hizrian</h4>
-                      <p class="text-muted">hello@example.com</p><a href="#" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                      <h4>{{auth()->user()->name}}</h4>
+                      <p class="text-muted">{{auth()->user()->email}}</p><a href="#" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
                     </div>
                   </div>
                 </li>
@@ -217,8 +217,8 @@
             <div class="info">
               <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                 <span>
-                  Hizrian
-                  <span class="user-level text-white">Administrator</span>
+                  {{auth()->user()->name}}
+                  <span class="user-level">Administrator</span>
                   <span class="caret"></span>
                 </span>
               </a>
@@ -252,24 +252,28 @@
                 <p>Dashboard</p>
               </a>
             </li>
+
+            @can('create-resume')
             <li class="nav-item">
               <a href="{{route('jobseeker.levelSelection')}}">
                 <i class="fas fa-book"></i>
                 <p>My Resume</p>
               </a>
             </li>
+            @endcan
+
             @can('manage-users')
             <li class="nav-item">
               <a data-toggle="collapse" href="#forms">
-                <i class="fas fa-pen-square"></i>
-                <p>Users</p>
+                <i class="fas fa-users"></i>
+                <p>User Management</p>
                 <span class="caret"></span>
               </a>
               <div class="collapse" id="forms">
                 <ul class="nav nav-collapse">
                   <li>
                     <a href="{{route('admin.users.index')}}">
-                      <span class="sub-item">User Management</span>
+                      <span class="sub-item">All Users</span>
                     </a>
                   </li>
                   
@@ -277,6 +281,7 @@
               </div>
             </li>
             @endcan
+
             <li class="nav-item">
               <a data-toggle="collapse" href="#vacancies">
                 <i class="fas fa-list"></i>
@@ -319,10 +324,21 @@
                       <span class="sub-item">Job Listings</span>
                     </a>
                   </li> 
+                  <li>
+                    <a href="#">
+                      <span class="sub-item">Saved Jobs</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="sub-item">Recommended Jobs</span>
+                    </a>
+                  </li> 
                   @endcan                 
                 </ul>
               </div>
             </li>
+
             <li class="nav-item">
               <a href="#">
                 <i class="fas fa-paper-plane"></i>
@@ -330,6 +346,8 @@
                 <span class="badge badge-count badge-success">4</span>
               </a>
             </li>
+
+            @can('manage-talent-pools')
             <li class="nav-item">
               <a href="#">
                 <i class="fas fa-database"></i>
@@ -337,6 +355,8 @@
                 <span class="badge badge-count badge-success">4</span>
               </a>
             </li>
+            @endcan
+
             @can('manage-companies')
             <li class="nav-item">
               <a data-toggle="collapse" href="#companies">
@@ -370,14 +390,16 @@
               </div>
             </li>
             @endcan
+
+            @can('manage-candidates')
             <li class="nav-item">
               <a href="#">
                 <i class="fas fa-users"></i>
                 <p>Candidates</p>
-                <span class="badge badge-count badge-success">4</span>
+                <span class="badge badge-count badge-success">767889794</span>
               </a>
             </li>
-
+            @endcan
 
             @can('manage-locations')
             <li class="nav-item">

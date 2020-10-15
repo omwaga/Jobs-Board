@@ -23,13 +23,19 @@
           <li class="nav-item">
             <a href="#">Job Listings</a>
           </li>
+          <li class="separator">
+            <i class="flaticon-right-arrow"></i>
+          </li>
+          <li class="nav-item">
+            <a href="#">Create Application</a>
+          </li>
         </ul>
       </div>
 
       <div class="container">
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Apply for --</div>
+            <div class="card-title">Apply for <a href="">{{$vacancy->job_title ?? ''}}</a></div>
           </div>
           <div class="card-body">
             <div class="row">
@@ -37,15 +43,13 @@
                 <div class="bg-light p-3 border rounded mb-4">
                   <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
                   <ul class="list-unstyled pl-3 mb-0">
-                    <li class="mb-2"><strong class="text-black">Published on:</strong> April 14, 2019</li>
-                    <li class="mb-2"><strong class="text-black">Vacancy:</strong> 20</li>
-                    <li class="mb-2"><strong class="text-black">Employment Status:</strong> Full-time</li>
-                    <li class="mb-2"><strong class="text-black">Experience:</strong> 2 to 3 year(s)</li>
-                    <li class="mb-2"><strong class="text-black">Job Location:</strong> New ork City</li>
-                    <li class="mb-2"><strong class="text-black">Salary:</strong> $60k - $100k</li>
-                    <li class="mb-2"><strong class="text-black">Gender:</strong> Any</li>
-                    <li class="mb-2"><strong class="text-black">Application Deadline:</strong> April 28, 2019</li>
-                  </ul>
+                  <li class="mb-2"><strong class="text-black">Published on:</strong> {{$vacancy->created_at->diffForHumans() ?? ''}}</li>
+                  <li class="mb-2"><strong class="text-black">Employment Status:</strong> {{$vacancy->postjobtype->name ?? ''}}</li>
+                  <li class="mb-2"><strong class="text-black">Experience:</strong> {{$vacancy->required_experience ?? ''}}</li>
+                  <li class="mb-2"><strong class="text-black">Job Location:</strong> {{$vacancy->postcity->name ?? ''}}</li>
+                  <li class="mb-2"><strong class="text-black">Salary:</strong> {{$vacancy->salary ?? ''}}</li>
+                  <li class="mb-2"><strong class="text-black">Application Deadline:</strong> {{$vacancy->application_deadline ?? ''}}</li>
+                </ul>
                 </div>
 
                 <div class="bg-light p-3 border rounded">
@@ -86,7 +90,7 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlFile1">Upload CV</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" value="{{$cv->document_file}}">
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlFile1">Upload Cover Letter</label>

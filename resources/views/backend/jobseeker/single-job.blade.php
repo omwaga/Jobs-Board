@@ -27,7 +27,6 @@
         </ul>
       </div>
 
-
       <section class="site-section card">
         <div class="container p-3">
           <div class="row align-items-center mb-5">
@@ -54,7 +53,7 @@
                   Job</a>
                 </div>
                 <div class="col-6">
-                  <a href="{{route('jobseeker.applications.create')}}" class="btn btn-block btn-primary btn-md">Apply Now</a>
+                  <a href="{{route('jobseeker.application.create', $job->id)}}" class="btn btn-block btn-primary btn-md">Apply Now</a>
                 </div>
               </div>
             </div>
@@ -71,10 +70,10 @@
                 <ul class="list-unstyled pl-3 mb-0">
                   <li class="mb-2"><strong class="text-black">Published on:</strong> {{$job->created_at->diffForHumans() ?? ''}}</li>
                   <li class="mb-2"><strong class="text-black">Employment Status:</strong> {{$job->postjobtype->name ?? ''}}</li>
-                  <li class="mb-2"><strong class="text-black">Experience:</strong> 2 to 3 year(s)</li>
+                  <li class="mb-2"><strong class="text-black">Experience:</strong> {{$job->required_experience ?? ''}}</li>
                   <li class="mb-2"><strong class="text-black">Job Location:</strong> {{$job->postcity->name ?? ''}}</li>
                   <li class="mb-2"><strong class="text-black">Salary:</strong> {{$job->salary ?? ''}}</li>
-                  <li class="mb-2"><strong class="text-black">Application Deadline:</strong> April 28, 2019</li>
+                  <li class="mb-2"><strong class="text-black">Application Deadline:</strong> {{$job->application_deadline ?? ''}}</li>
                 </ul>
               </div>
 
