@@ -255,10 +255,17 @@
 
             @can('create-resume')
             <li class="nav-item">
-              <a href="{{route('jobseeker.levelSelection')}}">
+              @if(!auth()->user()->selectedLevel)
+              <a  href="{{route('jobseeker.levelSelection')}}">
                 <i class="fas fa-book"></i>
                 <p>My Resume</p>
-              </a>
+              </a> 
+              @else
+              <a  href="{{route('jobseeker.'.auth()->user()->selectedLevel->level)}}">
+                <i class="fas fa-book"></i>
+                <p>My Resume</p>
+              </a> 
+              @endif
             </li>
             @endcan
 
@@ -340,7 +347,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="#">
+              <a href="{{route('admin.applications')}}">
                 <i class="fas fa-paper-plane"></i>
                 <p>Applications</p>
                 <span class="badge badge-count badge-success">4</span>

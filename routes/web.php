@@ -21,12 +21,15 @@ Route::name('front.')->group(function(){
 Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(function(){
 	Route::get('/profile', 'PagesController@userProfile')->name('profile');
 	Route::get('/level-selection', 'HomeController@levelSelection')->name('levelSelection');
-	Route::get('/fresher-profile', 'HomeController@fresherProfile')->name('fresherProfile');
-	Route::get('/professional-profile', 'HomeController@professionalProfile')->name('professionalProfile');
+	Route::get('/fresher-profile', 'HomeController@fresherProfile')->name('fresher');
+	Route::get('/professional-profile', 'HomeController@professionalProfile')->name('professional');
 	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
 	Route::get('/job/{slug}', 'PagesController@singleJob')->name('singlejob');
 	Route::get('/application/{job}', 'ApplicationController@create')->name('application.create');
+	Route::POST('/application/{job}', 'ApplicationController@store')->name('application.store');
+	Route::get('/job-application/success', 'ApplicationController@success')->name('application.success');
 	Route::resource('details', 'JobseekerDetailController');
+	Route::resource('levels', 'UserLevelController');
 	Route::resource('educations', 'EducationController');
 	Route::resource('internships', 'InternshipController');
 	Route::resource('experiences', 'ExperienceController');
@@ -51,6 +54,7 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 	Route::resource('/jobtypes', 'JobTypeController');
 	Route::resource('/postingsubscriptions', 'PostingSubscriptionController');
 	Route::resource('vacancies', 'VacancyController');
+	Route::get('applications', 'AdminController@applications')->name('applications');
 });
 
 Route::get('/portfolio', function () {

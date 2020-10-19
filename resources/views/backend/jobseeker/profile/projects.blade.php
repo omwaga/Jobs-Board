@@ -7,11 +7,14 @@
         <p>Did you undertake any projects ? If Yes, please add the details below</p>
         <div class="form-group">
           <label>Project Name</label>                          
-          <input class="form-control" name="project_name" type="text" required value="{{old('project_name')}}" />
+          <input class="form-control" name="project_name" type="text" required value="{{old('project_name')}}" v-model="projects.project_name"/>
+          <span class="help text-danger" v-if="projects.errors.has('project_name')" v-text="projects.errors.get('project_name')"></span>
         </div>
+        
         <div class="form-group">
           <label>Description</label>  
-          <textarea class="form-control" name="description"></textarea>
+          <textarea class="form-control" name="description" v-model="projects.description"></textarea>
+          <span class="help text-danger" v-if="projects.errors.has('description')" v-text="projects.errors.get('description')"></span>
         </div>
         <button type="submit" class="btn btn-secondary pull-right">Save</button>
       </form>

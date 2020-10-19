@@ -24,7 +24,7 @@ class CreateVacanciesTable extends Migration
             $table->string('job_title');
             $table->string('required_experience');
             $table->string('application_deadline');
-            $table->ENUM('status', ['published', 'unpublished', 'pending approval'])->default('pending');
+            $table->ENUM('status', ['published', 'unpublished', 'pending approval'])->default('pending approval');
             $table->string('slug');
             $table->string('salary');
             $table->text('description');

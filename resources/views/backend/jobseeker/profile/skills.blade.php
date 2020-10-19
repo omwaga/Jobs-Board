@@ -6,7 +6,8 @@
         @csrf
         <div class="form-group">
           <label>Add all the diverse skills you have</label>
-          <input type="text" class="form-control" name="name">
+          <input type="text" class="form-control" name="name" v-model="skills.name">
+          <span class="help text-danger" v-if="skills.errors.has('name')" v-text="skills.errors.get('name')"></span>
         </div>
         <button type="submit" class="btn btn-secondary pull-right">Add</button>
       </form>

@@ -9,30 +9,34 @@
         <div class="container">    
           <div class="row">
             <div class="col-sm-6 col-md-6">
-              <a href="{{route('jobseeker.fresherProfile')}}">
+              <form method="POST" action="{{route('jobseeker.levels.store')}}">
+                @csrf
+                <input type="hidden" name="level" value="fresher">
                 <div class="card card-stats card-round">
                   <div class="card-body text-center">
                     <div class="icon-big text-center">
                       <i class="fas fa-suitcase"></i>
                     </div>
-                    <h4 class="card-title">I am a Fresher</h4>
+                    <button class="btn btn-info">I am a Fresher</button>
                     <p class="card-category">I have just graduated/ I haven't worked after graduation</p>
                   </div>
                 </div>
-              </a>
+              </form>
             </div>
             <div class="col-sm-6 col-md-6">
-              <a href="{{route('jobseeker.professionalProfile')}}">
+              <form method="POST" action="{{route('jobseeker.levels.store')}}">
+                @csrf
+                <input type="hidden" name="level" value="professional">
                 <div class="card card-stats card-round">
                   <div class="card-body text-center">
                     <div class="icon-big text-center">
                       <i class="fas fa-suitcase"></i>
                     </div>
-                    <h4 class="card-title">I am a Professional</h4>
+                    <button class="btn btn-info"> I am a Professional</button>
                     <p class="card-category">I have at least one month of work experience</p>
                   </div>
                 </div>
-              </a>
+              </form>
             </div>
           </div>
           <h4>After you register you can:</h4>

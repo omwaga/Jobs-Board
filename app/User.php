@@ -42,6 +42,16 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function selectedLevel()
+    {
+        return $this->belongsTo(UserLevel::class, 'id', 'user_id');
+    }
+
+    public function vacancies()
+    {
+        return $this->hasMany(Vacancy::class, 'id', 'user_id');
+    }
+
     public function hasRole($role)
     {
         if($this->roles()->where('name', $role)->first())
@@ -59,4 +69,5 @@ class User extends Authenticatable
         }
         return false;
     }
+
 }

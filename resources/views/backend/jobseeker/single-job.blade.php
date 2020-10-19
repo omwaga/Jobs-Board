@@ -80,10 +80,11 @@
               <div class="bg-light p-3 border rounded">
                 <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
                 <div class="px-3">
-                  <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="fas fa-facebook"></span></a>
-                  <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
-                  <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
-                  <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-pinterest"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-success"><span class="fab fa-whatsapp"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-primary"><span class="fab fa-facebook"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-info"><span class="fab fa-twitter"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-secondary"><span class="fab fa-linkedin"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-warning"><span class="fab fa-instagram"></span></a>
                 </div>
               </div>
               @include('backend.jobseeker.singlejob-sidebar')

@@ -17,6 +17,13 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('vacancy_id');
+            $table->string('full_name');
+            $table->string('phone_number');
+            $table->string('email');
+            $table->unsignedBigInteger('country');
+            $table->unsignedBigInteger('city');
+            $table->string('resume');
+            $table->string('cover_letter')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -27,6 +34,16 @@ class CreateApplicationsTable extends Migration
             $table->foreign('vacancy_id')
             ->references('id')
             ->on('vacancies')
+            ->onDelete('cascade');
+
+            $table->foreign('country')
+            ->references('id')
+            ->on('countries')
+            ->onDelete('cascade');
+
+            $table->foreign('city')
+            ->references('id')
+            ->on('cities')
             ->onDelete('cascade');
         });
     }

@@ -212,24 +212,51 @@ new Vue({
         }),
 
         projects: new Form({
+            project_name:'',
+            description:'',
         }),
 
         education: new Form({
+            education_level: '',
+            score: '',
+            course_type: '',
+            graduation_year: '',
+            institution: '',
+            course: '',
         }),
 
         internships: new Form({
+            organization: '',
+            position: '',
+            start_date: '',
+            end_date: '',
+            current_internship: '',
+            responsibilities: ''
         }),
 
         experiences: new Form({
+            organization: '',
+            position: '',
+            start_date: '',
+            end_date: '',
+            current_work: '',
+            responsibilities: ''
         }),
 
         skills: new Form({
+            name:''
         }),
 
         certifications: new Form({
+            certification_name: '',
+            start_date: '',
+            end_date: '',
+            current_certification: ''
         }),
 
         awards: new Form({
+            award_name: '',
+            degree_name: ''
         })
     },
 
@@ -237,40 +264,40 @@ new Vue({
         detailsSubmit() {
             this.details.post('/user/details')
             .then(response => alert('Wahoo!'));
-        }
+        },
 
         projectsSubmit() {
-            this.details.post('/user/projects')
+            this.projects.post('/user/projects')
             .then(response => alert('Wahoo!'));
-        }
+        },
 
         educationSubmit() {
-            this.details.post('/user/projects')
+            this.education.post('/user/educations')
             .then(response => alert('Wahoo!'));
-        }
+        },
 
         internshipsSubmit() {
-            this.details.post('/user/projects')
+            this.internships.post('/user/internships')
             .then(response => alert('Wahoo!'));
-        }
+        },
 
         experiencesSubmit() {
-            this.details.post('/user/projects')
+            this.experiences.post('/user/experiences')
             .then(response => alert('Wahoo!'));
-        }
+        },
 
         skillsSubmit() {
-            this.details.post('/user/projects')
+            this.skills.post('/user/skills')
             .then(response => alert('Wahoo!'));
-        }
+        },
 
         certificationsSubmit() {
-            this.details.post('/user/projects')
+            this.certifications.post('/user/certifications')
             .then(response => alert('Wahoo!'));
-        }
+        },
 
         awardsSubmit() {
-            this.details.post('/user/projects')
+            this.awards.post('/user/awards')
             .then(response => alert('Wahoo!'));
         }
     }

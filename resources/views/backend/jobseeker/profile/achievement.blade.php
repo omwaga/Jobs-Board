@@ -6,25 +6,29 @@
         @csrf
         <div class="form-group">
           <p>If you have done any certification course add them below</p>                   
-          <input class="form-control" name="certification_name" type="text" required value="{{old('certification_name')}}" />
+          <input class="form-control" name="certification_name" type="text" required value="{{old('certification_name')}}" v-model="certifications.certification_name"/>
+          <span class="help text-danger" v-if="certifications.errors.has('certification_name')" v-text="certifications.errors.get('certification_name')"></span>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label>Starting Date</label>                        
-              <input class="form-control" name="start_date" type="date" required value="{{old('start_date')}}" />
+              <input class="form-control" name="start_date" type="date" required value="{{old('start_date')}}" v-model="certifications.start_date"/>
+              <span class="help text-danger" v-if="certifications.errors.has('start_date')" v-text="certifications.errors.get('start_date')"></span>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Ending Date</label>                        
-              <input class="form-control" name="end_date" type="date" required value="{{old('end_date')}}" />
+              <input class="form-control" name="end_date" type="date" value="{{old('end_date')}}" v-model="certifications.end_date" />
+              <span class="help text-danger" v-if="certifications.errors.has('end_date')" v-text="certifications.errors.get('end_date')"></span>
             </div>
             <div class="form-check">
               <label class="form-radio-label ml-3">
-                <input class="form-radio-input" type="radio" name="current_certification" value="Pursuing the certification currently">
+                <input class="form-radio-input" type="radio" name="current_certification" value="Pursuing the certification currently" v-model="certifications.current_certification">
                 <span class="form-radio-sign">Pursuing the certification currently</span>
               </label>
+              <span class="help text-danger" v-if="certifications.errors.has('current_certification')" v-text="certifications.errors.get('current_certification')"></span>
             </div>
           </div>
         </div>
@@ -36,7 +40,8 @@
           <div class="col-md-8">                                
             <div class="form-group">
               <p>Please add any award or honor you have achieved</p>                         
-              <input class="form-control" name="award_name" type="text" required value="{{old('name')}}" />
+              <input class="form-control" name="award_name" type="text" required value="{{old('name')}}"  v-model="awards.award_name"/>
+              <span class="help text-danger" v-if="awards.errors.has('name')" v-text="awards.errors.get('name')"></span>
             </div>
           </div>
           <div class="col-md-4">
@@ -45,7 +50,8 @@
         </div>
         <div class="form-group">
           <label>You got this award for which degree</label>                         
-          <input class="form-control" name="degree_name" type="text" required value="{{old('degree_name')}}" />
+          <input class="form-control" name="degree_name" type="text" required value="{{old('degree_name')}}" v-model="awards.degree_name"/>
+          <span class="help text-danger" v-if="awards.errors.has('degree_name')" v-text="awards.errors.get('degree_name')"></span>
         </div>
         <button type="submit" class="btn btn-secondary pull-right">Save</button>
       </form>

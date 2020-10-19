@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{asset('front/css/ionicons.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('front/css/bootstrap-datepicker.css')}}">
-    <link rel="stylesheet" href="{{asset('front/css/jquery.timepicker.css')}}">
 
     
     <link rel="stylesheet" href="{{asset('front/css/flaticon.css')}}">
@@ -154,7 +153,6 @@
   <script src="{{asset('front/js/jquery-migrate-3.0.1.min.js')}}"></script>
   <script src="{{asset('front/js/popper.min.js')}}"></script>
   <script src="{{asset('front/js/bootstrap.min.js')}}"></script>
-  <script src="js/jquery.easing.1.3.js')}}"></script>
   <script src="{{asset('front/js/jquery.waypoints.min.js')}}"></script>
   <script src="{{asset('front/js/jquery.stellar.min.js')}}"></script>
   <script src="{{asset('front/js/owl.carousel.min.js')}}"></script>
@@ -162,9 +160,7 @@
   <script src="{{asset('front/js/aos.js')}}"></script>
   <script src="{{asset('front/js/jquery.animateNumber.min.js')}}"></script>
   <script src="{{asset('front/js/bootstrap-datepicker.js')}}"></script>
-  <script src="{{asset('front/js/jquery.timepicker.min.js')}}"></script>
   <script src="{{asset('front/js/scrollax.min.js')}}"></script>
-  <script src="{{asset('front/js/google-map.js')}}"></script>
   <script src="{{asset('front/js/main.js')}}"></script>
     
   </body>

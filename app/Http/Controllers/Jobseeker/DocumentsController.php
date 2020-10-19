@@ -18,7 +18,7 @@ class DocumentsController extends Controller
 
         if ($request->hasFile('document_file')) {
             $attributes['document_file'] = $request->document_file->getClientOriginalName();
-            $request->document_file->storeAs('public/documents', $attributes['document_file']);
+            $request->document_file->storeAs('public/resumes', $attributes['document_file']);
         }
 
 		Documents::create($attributes + ['user_id' => auth()->user()->id]);

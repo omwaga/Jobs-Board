@@ -43,67 +43,80 @@
                 <div class="bg-light p-3 border rounded mb-4">
                   <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
                   <ul class="list-unstyled pl-3 mb-0">
-                  <li class="mb-2"><strong class="text-black">Published on:</strong> {{$vacancy->created_at->diffForHumans() ?? ''}}</li>
-                  <li class="mb-2"><strong class="text-black">Employment Status:</strong> {{$vacancy->postjobtype->name ?? ''}}</li>
-                  <li class="mb-2"><strong class="text-black">Experience:</strong> {{$vacancy->required_experience ?? ''}}</li>
-                  <li class="mb-2"><strong class="text-black">Job Location:</strong> {{$vacancy->postcity->name ?? ''}}</li>
-                  <li class="mb-2"><strong class="text-black">Salary:</strong> {{$vacancy->salary ?? ''}}</li>
-                  <li class="mb-2"><strong class="text-black">Application Deadline:</strong> {{$vacancy->application_deadline ?? ''}}</li>
-                </ul>
+                    <li class="mb-2"><strong class="text-black">Published on:</strong> {{$vacancy->created_at->diffForHumans() ?? ''}}</li>
+                    <li class="mb-2"><strong class="text-black">Employment Status:</strong> {{$vacancy->postjobtype->name ?? ''}}</li>
+                    <li class="mb-2"><strong class="text-black">Experience:</strong> {{$vacancy->required_experience ?? ''}}</li>
+                    <li class="mb-2"><strong class="text-black">Job Location:</strong> {{$vacancy->postcity->name ?? ''}}</li>
+                    <li class="mb-2"><strong class="text-black">Salary:</strong> {{$vacancy->salary ?? ''}}</li>
+                    <li class="mb-2"><strong class="text-black">Application Deadline:</strong> {{$vacancy->application_deadline ?? ''}}</li>
+                  </ul>
                 </div>
 
                 <div class="bg-light p-3 border rounded">
                   <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
                   <div class="px-3">
-                    <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="fas fa-facebook"></span></a>
-                    <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
-                    <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
-                    <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-pinterest"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-success"><span class="fab fa-whatsapp"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-primary"><span class="fab fa-facebook"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-info"><span class="fab fa-twitter"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-secondary"><span class="fab fa-linkedin"></span></a>
+                  <a href="#" class="pt-3 pb-3 pr-3 pl-0 h1 text-warning"><span class="fab fa-instagram"></span></a>
                   </div>
                 </div>
               </div>
               <div class="col-md-8">
-                <form action="" method="">
+                <form action="{{route('jobseeker.application.store', $vacancy->id)}}" method="POST" enctype="multipart/form-data">
+                  @csrf
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="email2">Full Name</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Enter Email">
+                        <input type="text" class="form-control" name="full_name" value="{{old('full_name')}}" placeholder="Enter Full Name">
                       </div>
                       <div class="form-group">
                         <label for="email2">Phone Number</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Enter Email">
+                        <input type="text" class="form-control" name="phone_number" value="{{old('phone_number')}}"  placeholder="Enter Phone Number">
                       </div>
                       <div class="form-group">
                         <label for="email2">Country</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Enter Email">
+                        <select class="form-control" name="country">
+                          <option value="">Select Country</option>
+                          @foreach($countries as $country)
+                          <option value="{{$country->id ?? ''}}">{{$country->name ?? ''}}</option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="form-group">
-                        <label for="email2">City</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Enter Email">
+                        <label for="email2">City/State</label>
+                        <select class="form-control" name="city">
+                          <option value="">Select City/State</option>
+                          @foreach($cities as $city)
+                          <option value="{{$city->id ?? ''}}">{{$city->name ?? ''}}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="email2">Email Address</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Enter Email">
+                        <input type="email" class="form-control" name="email" value="{{old('email')}}"  placeholder="Enter Email">
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlFile1">Upload CV</label>
-                        <input type="file" class="form-control-file" value="{{$cv->document_file}}">
+                        <input type="file" class="form-control-file" name="resume">
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlFile1">Upload Cover Letter</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" name="cover_letter">
                       </div>
                     </div>
+                  </div>
+                  <div class="card-action">
+                    <a href="#" class="btn btn-info">Back to Job Description</a>
+                    <button class="btn btn-success" type="submit">Submit Application</button>
                   </div>
                 </form>
               </div>
             </div>
-          </div>
-          <div class="card-action">
-            <button class="btn btn-success">Submit</button>
           </div>
         </div>
       </div>

@@ -32,13 +32,38 @@
                 </form>
               </div>
             </div>
-            <div class="card card-stats card-round">
-            <div class="card-body">
-              <h4>Invite Friends</h4>
-              <p>Add multiple email ids separated by comma(,)</p>
-              <a href="#" class="btn btn-secondary">Send Invite</a>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <h4>Update Career Level</h4>
+                    <form>
+                      <div class="form-check">
+                        <label class="form-radio-label">
+                          <input class="form-radio-input" type="radio" v-model="details.gender" name="gender" value="Male">
+                          <span class="form-radio-sign">I am a fresher</span>
+                        </label>
+                        <label class="form-radio-label">
+                          <input class="form-radio-input" type="radio" v-model="details.gender" name="gender" value="Female">
+                          <span class="form-radio-sign">I am a professional</span>
+                        </label>
+                        <span class="help text-danger" v-if="details.errors.has('gender')" v-text="details.errors.get('gender')"></span>
+                      </div>
+                    </form>
+                    <a href="#" class="btn btn-secondary">Update Level</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <h4>Invite Friends</h4>
+                    <p>Add multiple email ids separated by comma(,)</p>
+                    <a href="#" class="btn btn-secondary">Send Invite</a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
           </div>
           <div class="col-sm-12 col-md-6">
             <div class="card card-stats card-round">
