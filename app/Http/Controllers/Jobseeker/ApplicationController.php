@@ -19,7 +19,9 @@ class ApplicationController extends Controller
 
     public function index()
     {
-    	dd('hello');
+        $applications = Application::where('user_id', auth()->user()->id)->get();
+        
+        return view('backend.jobseeker.applications', compact('applications'));
     }
 
     public function create($job)
@@ -41,6 +43,7 @@ class ApplicationController extends Controller
             'country' => 'required',
             'city' => 'required',
             'resume' => 'required',
+            'employer_id' => 'required',
             'cover_letter' => 'nullable'
         ]);
 

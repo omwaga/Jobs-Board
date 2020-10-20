@@ -11,6 +11,11 @@ use App\Category;
 class CategoryController extends Controller
 {
 
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +34,7 @@ class CategoryController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function create(Category $category)
+    public function create()
     {
         return view('backend.vacancies.create-category');
     }

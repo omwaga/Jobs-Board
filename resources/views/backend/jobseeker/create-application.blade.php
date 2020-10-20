@@ -68,6 +68,7 @@
                   @csrf
                   <div class="row">
                     <div class="col-md-6">
+                      <input type="hidden" name="employer_id" value="{{$vacancy->user->id}}">
                       <div class="form-group">
                         <label for="email2">Full Name</label>
                         <input type="text" class="form-control" name="full_name" value="{{old('full_name')}}" placeholder="Enter Full Name">

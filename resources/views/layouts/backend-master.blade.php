@@ -346,20 +346,29 @@
               </div>
             </li>
 
+            @can('manage-applications')
             <li class="nav-item">
               <a href="{{route('admin.applications')}}">
                 <i class="fas fa-paper-plane"></i>
-                <p>Applications</p>
-                <span class="badge badge-count badge-success">4</span>
+                <p>Manage Applications</p>
               </a>
             </li>
+            @endcan
+
+            @can('manage-user-applications')
+            <li class="nav-item">
+              <a href="{{route('jobseeker.applications.index')}}">
+                <i class="fas fa-paper-plane"></i>
+                <p>Job Applications</p>
+              </a>
+            </li>
+            @endcan
 
             @can('manage-talent-pools')
             <li class="nav-item">
-              <a href="#">
+              <a href="{{route('admin.talents.index')}}">
                 <i class="fas fa-database"></i>
                 <p>Talent Pools</p>
-                <span class="badge badge-count badge-success">4</span>
               </a>
             </li>
             @endcan

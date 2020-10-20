@@ -17,6 +17,7 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('vacancy_id');
+            $table->unsignedBigInteger('employer_id');
             $table->string('full_name');
             $table->string('phone_number');
             $table->string('email');
@@ -27,6 +28,11 @@ class CreateApplicationsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+
+            $table->foreign('employer_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');

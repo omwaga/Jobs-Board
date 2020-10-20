@@ -25,6 +25,7 @@ Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(functio
 	Route::get('/professional-profile', 'HomeController@professionalProfile')->name('professional');
 	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
 	Route::get('/job/{slug}', 'PagesController@singleJob')->name('singlejob');
+	Route::get('/applications', 'ApplicationController@index')->name('applications.index');
 	Route::get('/application/{job}', 'ApplicationController@create')->name('application.create');
 	Route::POST('/application/{job}', 'ApplicationController@store')->name('application.store');
 	Route::get('/job-application/success', 'ApplicationController@success')->name('application.success');
@@ -52,6 +53,7 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 	Route::resource('/countries', 'CountryController');
 	Route::resource('/companies', 'CompanyTypeController');
 	Route::resource('/jobtypes', 'JobTypeController');
+	Route::resource('/talents', 'TalentPoolController');
 	Route::resource('/postingsubscriptions', 'PostingSubscriptionController');
 	Route::resource('vacancies', 'VacancyController');
 	Route::get('applications', 'AdminController@applications')->name('applications');

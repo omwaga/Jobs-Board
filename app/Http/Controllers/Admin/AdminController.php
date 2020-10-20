@@ -26,9 +26,9 @@ class AdminController extends Controller
 			$applications = Application::orderby('created_at', 'DESC')->get();
 		}
 		else{
-			$applications = Application::orderby('created_at', 'DESC')->get();
+			$applications = Application::where('employer_id', auth()->user()->id)->orderby('created_at', 'DESC')->get();
 		}
 
-		return $applications;
+		return view('backend.applications', compact('applications'));
 	}
 }
