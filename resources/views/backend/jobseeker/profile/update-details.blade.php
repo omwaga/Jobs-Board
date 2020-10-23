@@ -1,6 +1,4 @@
 
-<div class="tab-pane fade show active" id="personal-&-professional-details" role="tabpanel" aria-labelledby="v-pills-home-tab-icons">
-  @include('backend.jobseeker.profile.update-details')
   <form method="Post" action="{{route('jobseeker.details.store')}}" @submit.prevent="detailsSubmit" @keydown="details.errors.clear($event.target.name)">
     @csrf
     <div class="row">
@@ -109,6 +107,5 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-secondary pull-right">Save</button>
+    <button type="submit" class="btn btn-secondary pull-right">Update Details</button>
   </form>
-</div>

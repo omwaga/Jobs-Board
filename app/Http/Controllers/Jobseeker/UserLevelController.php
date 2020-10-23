@@ -17,4 +17,8 @@ class UserLevelController extends Controller
     	}
     	return redirect(route('jobseeker.fresher'));
     }
+
+    public function update(){
+    	dd('hello');
+    }
 }

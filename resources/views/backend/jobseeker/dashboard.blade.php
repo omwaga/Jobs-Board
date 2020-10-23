@@ -37,20 +37,21 @@
                 <div class="card card-stats card-round">
                   <div class="card-body">
                     <h4>Update Career Level</h4>
-                    <form>
+                    <form method="POST" action="{{route('jobseeker.levels.update', auth()->user()->id)}}">
+                      @csrf
+                      @method('PATCH')
                       <div class="form-check">
                         <label class="form-radio-label">
-                          <input class="form-radio-input" type="radio" v-model="details.gender" name="gender" value="Male">
+                          <input class="form-radio-input" type="radio" name="level" value="fresher" @if($level = 'fresher') checked @endif>
                           <span class="form-radio-sign">I am a fresher</span>
                         </label>
                         <label class="form-radio-label">
-                          <input class="form-radio-input" type="radio" v-model="details.gender" name="gender" value="Female">
+                          <input class="form-radio-input" type="radio" name="level" value="professional" @if($level = 'professional') checked @endif>
                           <span class="form-radio-sign">I am a professional</span>
                         </label>
-                        <span class="help text-danger" v-if="details.errors.has('gender')" v-text="details.errors.get('gender')"></span>
                       </div>
+                    <button type="submit" class="btn btn-secondary">Update Level</button>
                     </form>
-                    <a href="#" class="btn btn-secondary">Update Level</a>
                   </div>
                 </div>
               </div>

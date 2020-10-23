@@ -1,5 +1,6 @@
 
 <div class="tab-pane fade" id="internships" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
+  @include('backend.jobseeker.profile.display-internships')
   <div class="row">
     <div class="col-md-8">
       <form method="Post" action="{{route('jobseeker.internships.store')}}" @submit.prevent="internshipsSubmit"  @keydown="internships.errors.clear($event.target.name)">
