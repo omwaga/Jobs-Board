@@ -192,113 +192,127 @@ class Form {
     }
 }
 
-
 new Vue({
     el: '#app',
 
     data: {
-        details: new Form({
-            first_name: '',
-            last_name: '',
-            home_city: '',
-            gender: '',
-            date_of_birth: '',
-            phone_number: '',
-            email: '',
-            current_location: '',
-            when_to_start: '',
-            preferred_location: '',
-            job_type: ''
-        }),
+      Internships:[],
 
-        projects: new Form({
-            project_name:'',
-            description:'',
-        }),
+      details: new Form({
+        first_name: '',
+        last_name: '',
+        home_city: '',
+        gender: '',
+        date_of_birth: '',
+        phone_number: '',
+        email: '',
+        current_location: '',
+        when_to_start: '',
+        preferred_location: '',
+        job_type: ''
+    }),
 
-        education: new Form({
-            education_level: '',
-            score: '',
-            course_type: '',
-            graduation_year: '',
-            institution: '',
-            course: '',
-        }),
+      projects: new Form({
+        project_name:'',
+        description:'',
+    }),
 
-        internships: new Form({
-            organization: '',
-            position: '',
-            start_date: '',
-            end_date: '',
-            current_internship: '',
-            responsibilities: ''
-        }),
+      education: new Form({
+        education_level: '',
+        score: '',
+        course_type: '',
+        graduation_year: '',
+        institution: '',
+        course: '',
+    }),
 
-        experiences: new Form({
-            organization: '',
-            position: '',
-            start_date: '',
-            end_date: '',
-            current_work: '',
-            responsibilities: ''
-        }),
+      internships: new Form({
+        organization: '',
+        position: '',
+        start_date: '',
+        end_date: '',
+        current_internship: '',
+        responsibilities: ''
+    }),
 
-        skills: new Form({
-            name:''
-        }),
+      experiences: new Form({
+        organization: '',
+        position: '',
+        start_date: '',
+        end_date: '',
+        current_work: '',
+        responsibilities: ''
+    }),
 
-        certifications: new Form({
-            certification_name: '',
-            start_date: '',
-            end_date: '',
-            current_certification: ''
-        }),
+      skills: new Form({
+        name:''
+    }),
 
-        awards: new Form({
-            award_name: '',
-            degree_name: ''
-        })
+      certifications: new Form({
+        certification_name: '',
+        start_date: '',
+        end_date: '',
+        current_certification: ''
+    }),
+
+      awards: new Form({
+        award_name: '',
+        degree_name: ''
+    })
+  },
+
+
+  mounted() {    
+      axios.get('/user/internships').then(response => this.Internships = response.data);
+  },
+
+  methods: {
+    detailsSubmit() {
+        this.details.post('/user/details')
+        .then(response => alert('Wahoo!'));
     },
 
-    methods: {
-        detailsSubmit() {
-            this.details.post('/user/details')
-            .then(response => alert('Wahoo!'));
-        },
+    projectsSubmit() {
+        this.projects.post('/user/projects')
+        .then(response => alert('Wahoo!'));
+    },
 
-        projectsSubmit() {
-            this.projects.post('/user/projects')
-            .then(response => alert('Wahoo!'));
-        },
+    educationSubmit() {
+        this.education.post('/user/educations')
+        .then(response => alert('Wahoo!'));
+    },
 
-        educationSubmit() {
-            this.education.post('/user/educations')
-            .then(response => alert('Wahoo!'));
-        },
+    internshipsSubmit() {
+        this.internships.post('/user/internships')
+        .then(response => alert('Wahoo!'));
 
-        internshipsSubmit() {
-            this.internships.post('/user/internships')
-            .then(response => alert('Wahoo!'));
-        },
+        this.addInternship()
+    },
 
-        experiencesSubmit() {
-            this.experiences.post('/user/experiences')
-            .then(response => alert('Wahoo!'));
-        },
+    experiencesSubmit() {
+        this.experiences.post('/user/experiences')
+        .then(response => alert('Wahoo!'));
+    },
 
-        skillsSubmit() {
-            this.skills.post('/user/skills')
-            .then(response => alert('Wahoo!'));
-        },
+    skillsSubmit() {
+        this.skills.post('/user/skills')
+        .then(response => alert('Wahoo!'));
+    },
 
-        certificationsSubmit() {
-            this.certifications.post('/user/certifications')
-            .then(response => alert('Wahoo!'));
-        },
+    certificationsSubmit() {
+        this.certifications.post('/user/certifications')
+        .then(response => alert('Wahoo!'));
+    },
 
-        awardsSubmit() {
-            this.awards.post('/user/awards')
-            .then(response => alert('Wahoo!'));
-        }
-    }
+    awardsSubmit() {
+        this.awards.post('/user/awards')
+        .then(response => alert('Wahoo!'));
+    },
+
+    addInternship()
+    {        
+      axios.get('/user/internships').then(response => this.Internships = response.data);
+      
+  },
+}
 });
