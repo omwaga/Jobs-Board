@@ -1,170 +1,98 @@
-@extends('layouts.front')
-@section('content')
-@include('front.banner')
 
-<section class="ftco-section bg-light">
-	<div class="container">
-		<div class="row">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Login</title>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
 
-			<div class="col-md-12 col-lg-6 mb-5">
+  <!-- Fonts and icons -->
+  <script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
+  <script>
+    WebFont.load({
+      google: {"families":["Open+Sans:300,400,600,700"]},
+      custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['assets/css/fonts.css']},
+      active: function() {
+        sessionStorage.fonts = true;
+      }
+    });
+  </script>
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/azzara.min.css')}}">
+</head>
+<body class="login">
+  <div class="wrapper wrapper-login">
+    <div class="container container-login animated fadeIn">
+      <h3 class="text-center">Company Registration</h3>
+      
+      <form method="POST" action="{{ route('register') }}">
+        @csrf
+      <div class="login-form">
+        <div class="form-group form-floating-label">
+          <input id="name" type="text" class="form-control input-border-bottom @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-				<form action="{{ route('register') }}" method="POST" class="p-5 bg-white">
-					@csrf
+              @error('name')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+          <label for="fullname" class="placeholder">Company Name</label>
+        </div>
+        <div class="form-group form-floating-label">
+          <input id="email" type="email" class="form-control input-border-bottom @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold" for="fullname">Company Name</label>					
-							<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+              @error('email')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+          <label for="email" class="placeholder">Company Email</label>
+        </div>
+        <div class="form-group form-floating-label">
+          <input id="password" type="password" class="form-control input-border-bottom @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-							@error('name')
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-							@enderror
-						</div>
-					</div>
+              @error('password')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+          <label for="passwordsignin" class="placeholder">Password</label>
+          <div class="show-password">
+            <i class="flaticon-interface"></i>
+          </div>
+        </div>
+        <div class="form-group form-floating-label">
+          <input id="password-confirm" type="password" class="form-control input-border-bottom" name="password_confirmation" required autocomplete="new-password">
+          <label for="confirmpassword" class="placeholder">Confirm Password</label>
+          <div class="show-password">
+            <i class="flaticon-interface"></i>
+          </div>
+        </div>
+        <div class="row form-sub m-0">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="agree" id="agree">
+            <label class="custom-control-label" for="agree">I Agree the terms and conditions.</label>
+          </div>
+        </div>
+        <div class="form-action">
+          <a href="{{route('login')}}" class="btn btn-danger btn-rounded mr-3">Already Registered?</a>
+          <button type="submit" class="btn btn-primary btn-rounded btn-login">Sign Up</button>
+        </div>
+      </div>
+      </form>
+    </div>
 
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold" for="fullname">Official Email</label>
-							<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-							@error('email')
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-							@enderror
-						</div>
-					</div> 
-
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold">Password</label>
-							<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-							@error('password')
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-							@enderror
-						</div>
-					</div> 
-
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold">Confirm Password</label>				
-							<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-						</div>
-					</div>
-
-
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold" for="fullname">Mobile/Landline</label>
-							<input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{old('phone_number')}}" required>
-
-							@error('phone_number')
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-							@enderror
-						</div>
-					</div> 
-
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold">Contact Person's Name</label>
-							<input id="contact_person" type="text" class="form-control @error('contact_person') is-invalid @enderror" name="contact_person" value="{{old('contact_person')}}" required>
-
-							@error('contact_person')
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-							@enderror
-						</div>
-					</div> 
-				</div>
-
-				<div class="col-md-12 col-lg-6 mb-5">
-
-					<div class="p-5 bg-white">
-						<div class="row form-group">
-							<label class="font-weight-bold">Company Type</label>
-							@foreach($company_types as $company_type)
-							<div class="col-md-12 mb-3 mb-md-0">
-								<label for="option-job-type-1">
-									<input type="radio" id="option-job-type-1" value="{{$company_type->id}}" name="company_type"> {{$company_type->name}}
-								</label>
-							</div>
-							@endforeach
-
-						</div>
-
-						<div class="row form-group">
-							<div class="col-md-12 mb-md-0">
-								<label class="font-weight-bold" for="fullname">Industry</label>
-								<select id="industry_id" class="form-control @error('industry_id') is-invalid @enderror" name="industry_id">
-									<option value="">Select Industry</option>
-									@foreach($industries as $industry)
-									<option value="{{$industry->id}}">{{$industry->name}}</option>
-									@endforeach
-								</select>
-
-								@error('industry_id')
-								<span class="invalid-feedback" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-								@enderror
-							</div>
-						</div> 
-
-						<div class="row form-group">
-							<div class="col-md-12 mb-md-0">
-								<label class="font-weight-bold">Country</label>
-
-								<select id="country_id" class="form-control @error('country_id') is-invalid @enderror" name="country_id">
-									<option value="">Select Country</option>
-									@foreach($countries as $key => $value)
-									<option value="{{$key}}">{{$value}}</option>
-									@endforeach
-								</select>
-
-								@error('country_id')
-								<span class="invalid-feedback" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-								@enderror
-							</div>
-						</div> 
-
-						<div class="row form-group">
-							<div class="col-md-12 mb-md-0">
-								<label class="font-weight-bold" for="fullname">City</label>	
-								<select id="city_id" class="form-control @error('city_id') is-invalid @enderror" name="city_id">
-									<option value="">Select City</option>
-									@foreach($cities as $city)
-									<option value="{{$city->id}}">{{$city->name}}</option>
-									@endforeach
-								</select>
-
-								@error('city_id')
-								<span class="invalid-feedback" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-								@enderror
-							</div>
-						</div> 
-						<input type="hidden" name="company" value="company">
-
-						<div class="row form-group">
-							<div class="col-md-12">
-								<input type="submit" value="Register" class="btn btn-primary  py-2 px-5 float-right">
-							</div>
-						</div> 
-					</div>         
-				</form>
-			</div>
-		</div>
-	</div>
-</section>
-@endsection
+    <div class="container container-signup animated fadeIn">
+      <h3 class="text-center">Sign In</h3>
+    </div>
+  </div>
+  <script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}"></script>
+  <script src="{{asset('assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
+  <script src="{{asset('assets/js/ready.js')}}"></script>
+</body>
+</html>

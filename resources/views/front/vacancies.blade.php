@@ -1,84 +1,105 @@
 @extends('layouts.front')
 @section('content')
-<!-- HOME -->
-<section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('{{asset('front/images/hero_1.jpg')}}');"
-id="home-section">
 
-<div class="container">
-	<div class="row align-items-center justify-content-center">
-		<div class="col-md-12">
-			<div class="mb-5 text-center">
-				<h1 class="text-white font-weight-bold">Job Listings</h1>
-				<p>Find your dream jobs in our powerful career website template.</p>
+@include('front.banner')
+
+
+<section class="ftco-section ftco-counter">
+	<div class="container">
+		<div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+				<span class="subheading">Categories work wating for you</span>
+				<h2 class="mb-4"><span>Current</span> Job Posts</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 ftco-animate">
+				<ul class="category">
+					<li><a href="#">Web Development <span class="number" data-number="1000">0</span></a></li>
+					<li><a href="#">Graphic Designer <span class="number" data-number="1000">0</span></a></li>
+					<li><a href="#">Multimedia <span class="number" data-number="2000">0</span></a></li>
+					<li><a href="#">Advertising <span class="number" data-number="900">0</span></a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 ftco-animate">
+				<ul class="category">
+					<li><a href="#">Education &amp; Training <span class="number" data-number="3500">0</span></a></li>
+					<li><a href="#">English <span class="number" data-number="1560">0</span></a></li>
+					<li><a href="#">Social Media <span class="number" data-number="1000">0</span></a></li>
+					<li><a href="#">Writing <span class="number" data-number="2500">0</span></a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 ftco-animate">
+				<ul class="category">
+					<li><a href="#">PHP Programming <span class="number" data-number="5500">0</span></a></li>
+					<li><a href="#">Project Management <span class="number" data-number="2000">0</span></a></li>
+					<li><a href="#">Finance Management <span class="number" data-number="800">0</span></a></li>
+					<li><a href="#">Office &amp; Admin <span class="number" data-number="7000">0</span></a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 ftco-animate">
+				<ul class="category">
+					<li><a href="#">Web Designer <span><span class="number" data-number="8000">0</span></span></a></li>
+					<li><a href="#">Customer Service <span class="number" data-number="4000">0</span></a></li>
+					<li><a href="#">Marketing &amp; Sales <span class="number" data-number="3300">0</span></a></li>
+					<li><a href="#">Software Development <span class="number" data-number="1356">0</span></a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
-</div>
-
-
 </section>
 
-<section class="site-section">
+<section class="ftco-section bg-light">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-
-				<div class="row mb-5 justify-content-center">
-					<div class="col-md-7 text-center">
-						<h2 class="section-title mb-2">109,234 Job Listed</h2>
-					</div>
-				</div>
-
-
-				<div class="mb-5">
-
-					@foreach($vacancies as $vacancy)
-					<div class="card border-light shadow-sm border-bottom pb-3 mb-3 pt-3">
-						<div class="row align-items-start job-item">
-							<div class="col-md-2">
-								<a href="{{route('front.singlejob', $vacancy->slug)}}"><img src="front/images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
-							</div>
-							<div class="col-md-6">
-								<span class="badge badge-secondary px-2 py-1 mb-3">{{$vacancy->postjobtype->name}}</span>
-								<h2><a href="{{route('front.singlejob', $vacancy->slug)}}">{{$vacancy->job_title}}</a> </h2>
-								<p class="meta"><strong>{{$vacancy->user->name}}</strong></p>
-								<p>{{$vacancy->postcity->name}}, {{$vacancy->postcountry->name}}</p>
-							</div>
-							<div class="col-md-4 text-md-right">
-								<div class="row">
-									<div class="col-6">
-										<a href="{{route('front.singlejob', $vacancy->slug)}}" class="btn btn-light"><span class="icon-heart-o mr-2 text-danger"></span>Save</a>
-									</div>
-									<div class="col-6 text-left">
-										<a href="{{route('front.singlejob', $vacancy->slug)}}" class="btn btn-primary">Apply</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					@endforeach
-
-				</div>
-
-				<div class="row pagination-wrap">
-
-					<div class="col-md-6 text-center text-md-left">
-						<div class="custom-pagination ml-auto">
-							<a href="#" class="prev">Previous</a>
-							<div class="d-inline-block">
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-							</div>
-							<a href="#" class="next">Next</a>
-						</div>
-					</div>
-				</div>
-
+		<div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+				<span class="subheading">Recently Added Jobs</span>
+				<h2 class="mb-4"><span>Recent</span> Jobs</h2>
 			</div>
-			<div class="col-md-4">
-				@include('front.jobs-sidebar')
+		</div>
+		<div class="row">
+			@forelse($vacancies as $vacancy)
+			<div class="col-md-12 ftco-animate">
+
+				<div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+					<div class="mb-4 mb-md-0 mr-5">
+						<div class="job-post-item-header d-flex align-items-center">
+							<h2 class="mr-3 text-black h3">{{$vacancy->job_title ?? ''}}</h2>
+							<div class="badge-wrap">
+								<span class="bg-primary text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+							</div>
+						</div>
+						<div class="job-post-item-body d-block d-md-flex">
+							<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->user->name ?? ''}}</a></div>
+							<div><span class="icon-my_location"></span> <span>{{$vacancy->postcity->name ?? ''}}, {{$vacancy->postcountry->name ?? ''}}</span></div>
+						</div>
+					</div>
+
+					<div class="ml-auto d-flex">
+						<a href="{{route('front.singlejob', $vacancy->slug)}}" class="btn btn-primary py-2 mr-1">Apply Job</a>
+						<a href="#" class="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
+							<span class="icon-heart"></span>
+						</a>
+					</div>
+				</div>
+			</div><!-- end -->
+			@empty
+			@endforelse
+		</div>
+		<div class="row mt-5">
+			<div class="col text-center">
+				<div class="block-27">
+					<ul>
+						<li><a href="#">&lt;</a></li>
+						<li class="active"><span>1</span></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">&gt;</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

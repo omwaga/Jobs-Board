@@ -1,70 +1,98 @@
-@extends('layouts.front')
-@section('content')
-@include('front.banner')
 
-<section class="ftco-section bg-light">
-	<div class="container">
-		<div class="row">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Login</title>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
 
-			<div class="col-md-12 col-lg-12 mb-5">
+  <!-- Fonts and icons -->
+  <script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
+  <script>
+    WebFont.load({
+      google: {"families":["Open+Sans:300,400,600,700"]},
+      custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['assets/css/fonts.css']},
+      active: function() {
+        sessionStorage.fonts = true;
+      }
+    });
+  </script>
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/azzara.min.css')}}">
+</head>
+<body class="login">
+  <div class="wrapper wrapper-login">
+    <div class="container container-login animated fadeIn">
+      <h3 class="text-center">Sign Up </h3>
+      
+      <form method="POST" action="{{ route('register') }}">
+        @csrf
+      <div class="login-form">
+        <div class="form-group form-floating-label">
+          <input id="name" type="text" class="form-control input-border-bottom @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-				<form action="{{ route('register') }}" method="POST" class="p-5 bg-white">
-					@csrf
+              @error('name')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+          <label for="fullname" class="placeholder">Full Name</label>
+        </div>
+        <div class="form-group form-floating-label">
+          <input id="email" type="email" class="form-control input-border-bottom @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold" for="fullname">Name</label>					
-							<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+              @error('email')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+          <label for="email" class="placeholder">Email</label>
+        </div>
+        <div class="form-group form-floating-label">
+          <input id="password" type="password" class="form-control input-border-bottom @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-							@error('name')
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-							@enderror
-						</div>
-					</div>
+              @error('password')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+          <label for="passwordsignin" class="placeholder">Password</label>
+          <div class="show-password">
+            <i class="flaticon-interface"></i>
+          </div>
+        </div>
+        <div class="form-group form-floating-label">
+          <input id="password-confirm" type="password" class="form-control input-border-bottom" name="password_confirmation" required autocomplete="new-password">
+          <label for="confirmpassword" class="placeholder">Confirm Password</label>
+          <div class="show-password">
+            <i class="flaticon-interface"></i>
+          </div>
+        </div>
+        <div class="row form-sub m-0">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="agree" id="agree">
+            <label class="custom-control-label" for="agree">I Agree the terms and conditions.</label>
+          </div>
+        </div>
+        <div class="form-action">
+          <a href="{{route('login')}}" class="btn btn-danger btn-rounded mr-3">Already Registered?</a>
+          <button type="submit" class="btn btn-primary btn-rounded btn-login">Sign Up</button>
+        </div>
+      </div>
+      </form>
+    </div>
 
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold" for="fullname">Email Address</label>
-							<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-							@error('email')
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-							@enderror
-						</div>
-					</div> 
-
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold" for="fullname">Password</label>
-							<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-							@error('password')
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-							@enderror
-						</div>
-					</div> 
-
-					<div class="row form-group">
-						<div class="col-md-12 mb-md-0">
-							<label class="font-weight-bold" for="fullname">Confirm Password</label>				
-							<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-						</div>
-					</div> 
-
-					<div class="row form-group">
-						<div class="col-md-12">
-							<input type="submit" value="Register" class="btn btn-primary  py-2 px-5 float-right">
-						</div>
-					</div>          
-				</form>
-			</div>
-		</div>
-	</div>
-</section>
-@endsection
+    <div class="container container-signup animated fadeIn">
+      <h3 class="text-center">Sign In</h3>
+    </div>
+  </div>
+  <script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}"></script>
+  <script src="{{asset('assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
+  <script src="{{asset('assets/js/ready.js')}}"></script>
+</body>
+</html>

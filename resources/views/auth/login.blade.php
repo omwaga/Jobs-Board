@@ -26,7 +26,7 @@
 <body class="login">
   <div class="wrapper wrapper-login">
     <div class="container container-login animated fadeIn">
-      <h3 class="text-center">Sign In To Admin</h3>
+      <h3 class="text-center">Sign In </h3>
       <form method="POST" class="login-form" action="{{ route('login') }}">
         @csrf
         <div class="login-form">

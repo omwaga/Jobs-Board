@@ -10,6 +10,12 @@ use App\JobseekerDetail;
 
 class JobseekerDetailController extends Controller
 {
+    public function index()
+    {
+        $details = JobseekerDetail::where('user_id', auth()->user()->id)->first();
+        return $details;
+    }
+
 	public function store(Request $request)
 	{
 		$attributes = request()->validate([

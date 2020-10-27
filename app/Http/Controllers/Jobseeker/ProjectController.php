@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    public function index()
+    {
+        $projects = Project::where('user_id', auth()->user()->id)->get();
+        return $projects;
+    }
+
     public function store(Request $request)
     {
     	$attributes = request()->validate([

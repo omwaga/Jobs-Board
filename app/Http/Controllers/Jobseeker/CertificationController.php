@@ -9,6 +9,12 @@ use App\Certification;
 
 class CertificationController extends Controller
 {
+    public function index()
+    {
+        $certifications = Certification::where('user_id', auth()->user()->id)->get();
+        return $certifications;
+    }
+
     public function store(Request $request)
     {
     	$attributes = $request->validate([

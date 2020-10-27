@@ -9,6 +9,12 @@ use App\Skill;
 
 class SkillController extends Controller
 {
+    public function index()
+    {
+        $skills = Skill::where('user_id', auth()->user()->id)->get();
+        return $skills;
+    }
+
     public function store(Request $request)
     {
     	$attributes = $request->validate([

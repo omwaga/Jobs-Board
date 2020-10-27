@@ -9,6 +9,12 @@ use App\Experience;
 
 class ExperienceController extends Controller
 {
+    public function index()
+    {
+        $experiences = Experience::where('user_id', auth()->user()->id)->get();
+        return $experiences;
+    }
+
     public function store(Request $request)
     {
     	$attributes = $request->validate([

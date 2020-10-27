@@ -196,7 +196,14 @@ new Vue({
     el: '#app',
 
     data: {
+      Details:[],
+      Educations:[],
       Internships:[],
+      Projects:[],
+      Experiences:[],
+      Skills:[],
+      Certifications:[],
+      Awards:[],
 
       details: new Form({
         first_name: '',
@@ -210,6 +217,10 @@ new Vue({
         when_to_start: '',
         preferred_location: '',
         job_type: ''
+    }),
+
+      updateDetails: new Form({
+        first_name: '',
     }),
 
       projects: new Form({
@@ -263,56 +274,103 @@ new Vue({
 
 
   mounted() {    
+      axios.get('/user/details').then(response => this.Details = response.data);
       axios.get('/user/internships').then(response => this.Internships = response.data);
+      axios.get('/user/educations').then(response => this.Educations = response.data);
+      axios.get('/user/projects').then(response => this.Projects = response.data);
+      axios.get('/user/experiences').then(response => this.Experiences = response.data);
+      axios.get('/user/skills').then(response => this.Skills = response.data);
+      axios.get('/user/certifications').then(response => this.Certifications = response.data);
+      axios.get('/user/awards').then(response => this.Awards = response.data);
   },
 
   methods: {
     detailsSubmit() {
         this.details.post('/user/details')
         .then(response => alert('Wahoo!'));
+
+        this.showDetails()
     },
 
     projectsSubmit() {
         this.projects.post('/user/projects')
         .then(response => alert('Wahoo!'));
+
+        this.showProjects()
     },
 
     educationSubmit() {
         this.education.post('/user/educations')
         .then(response => alert('Wahoo!'));
+
+        this.showEducations()
     },
 
     internshipsSubmit() {
         this.internships.post('/user/internships')
         .then(response => alert('Wahoo!'));
 
-        this.addInternship()
+        this.showInternships()
     },
 
     experiencesSubmit() {
         this.experiences.post('/user/experiences')
         .then(response => alert('Wahoo!'));
+
+        this.showExperiences()
     },
 
     skillsSubmit() {
         this.skills.post('/user/skills')
         .then(response => alert('Wahoo!'));
+
+        this.showSkills()
     },
 
     certificationsSubmit() {
         this.certifications.post('/user/certifications')
         .then(response => alert('Wahoo!'));
+
+        this.showCertifications()
     },
 
     awardsSubmit() {
         this.awards.post('/user/awards')
         .then(response => alert('Wahoo!'));
+
+        this.showAwards()
     },
 
-    addInternship()
-    {        
-      axios.get('/user/internships').then(response => this.Internships = response.data);
-      
-  },
+    showInternships(){        
+        axios.get('/user/internships').then(response => this.Internships = response.data);      
+    },
+
+    showDetails(){        
+        axios.get('/user/details').then(response => this.Details = response.data);     
+    },
+
+    showEducations(){        
+        axios.get('/user/educations').then(response => this.Educations = response.data);     
+    },
+
+    showProjects(){        
+        axios.get('/user/projects').then(response => this.Projects = response.data);     
+    },
+
+    showExperiences(){        
+        axios.get('/user/experiences').then(response => this.Experiences = response.data);     
+    },
+
+    showSkills(){        
+        axios.get('/user/skills').then(response => this.Skills = response.data);     
+    },
+
+    showCertifications(){        
+        axios.get('/user/certifications').then(response => this.Certifications = response.data);     
+    },
+
+    showAwards(){        
+        axios.get('/user/awards').then(response => this.Awards = response.data);     
+    },
 }
 });

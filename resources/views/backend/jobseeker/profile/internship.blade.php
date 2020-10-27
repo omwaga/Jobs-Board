@@ -1,6 +1,6 @@
 
 <div class="tab-pane fade" id="internships" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
-  <div class="card"  v-if="Internships.length">
+  <div class="card" v-if="Internships.length">
     <div class="card-header">
       <div class="card-head-row">
         <div class="card-title">Internships</div>
@@ -18,8 +18,8 @@
           <span class="avatar-title rounded-circle border border-white bg-info">J</span>
         </div>
         <div class="flex-1 ml-3 pt-1">
-          <h5 class="text-uppercase fw-bold mb-1">@{{internship.organization}} Subianto <span class="text-warning pl-3">pending</span></h5>
-          <span class="text-muted">I am facing some trouble with my viewport. When i start my</span>
+          <h5 class="text-uppercase fw-bold mb-1">@{{internship.position}} at @{{internship.organization}}  <span class="text-warning pl-3">@{{internship.start_date}} - @{{internship.end_date}}</span></h5>
+          <span class="text-muted">@{{internship.responsibilities}}</span>
         </div>
         <div class="float-right pt-1">
           <small class="text-muted">

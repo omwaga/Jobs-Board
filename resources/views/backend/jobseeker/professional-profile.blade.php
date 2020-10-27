@@ -1,6 +1,6 @@
 @extends('layouts.career-profile')
 @section('content')
-<div class="container">
+<div class="container" id="app">
   <div class="content">
     <div class="page-inner">
       <h4 class="page-title text-center">Welcome {{auth()->user()->name ?? ''}},</h4>
@@ -35,7 +35,6 @@
                     Skills
                   </a>
                   <a class="nav-link" href="{{route('jobseeker.home')}}">
-                    <!-- <i class="flaticon-user-4"></i> -->
                     Skip to Dashboard
                   </a>
                 </div>

@@ -9,6 +9,12 @@ use App\Award;
 
 class AwardController extends Controller
 {
+    public function index()
+    {
+        $awards = Award::where('user_id', auth()->user()->id)->get();
+        return $awards;
+    }
+
     public function store(Request $request)
     {
     	$attributes = $request->validate([

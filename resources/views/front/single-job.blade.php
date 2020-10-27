@@ -1,20 +1,9 @@
 @extends('layouts.front')
 @section('content')
 
-<!-- HOME -->
-<section class="section-hero overlay inner-page bg-image" style="background-image: url('{{asset('front/images/hero_1.jpg')}}');"
-id="home-section">
-<div class="container">
-  <div class="row">
-    <div class="col-md-7">
-      <h1 class="text-white font-weight-bold">{{$job->job_title ?? ''}}</h1>
-    </div>
-  </div>
-</div>
-</section>
+@include('front.banner')
 
-
-<section class="site-section">
+<section class="site-section pt-5">
   <div class="container">
     <div class="row align-items-center mb-5">
       <div class="col-lg-8 mb-4 mb-lg-0">
@@ -38,7 +27,7 @@ id="home-section">
             <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
           </div>
           <div class="col-6">
-            <a href="#" class="btn btn-block btn-primary btn-md">Apply Now</a>
+            <a href="{{route('login')}}" class="btn btn-block btn-primary btn-md">Apply Now</a>
           </div>
         </div>
       </div>
@@ -51,10 +40,10 @@ id="home-section">
 
         <div class="row">
           <div class="col-6">
-            <a href="#" class="btn btn-warning">Login to Apply</a>
+            <a href="{{route('login')}}" class="btn btn-danger">Login to Apply</a>
           </div>
           <div class="col-6 text-left">
-            <a href="#" class="btn btn-primary">Register to Apply</a>
+            <a href="{{route('front.jobseeker.register')}}" class="btn btn-primary">Register to Apply</a>
           </div>
         </div>
       </div>

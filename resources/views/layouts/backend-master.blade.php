@@ -246,12 +246,23 @@
             </div>
           </div>
           <ul class="nav">
+
+            @can('view-admin-dashboard')
             <li class="nav-item active">
               <a href="{{route('admin.dashboard')}}">
                 <i class="fas fa-home"></i>
                 <p>Dashboard</p>
               </a>
             </li>
+            @endcan
+            @can('view-user-dashboard')
+            <li class="nav-item active">
+              <a href="{{route('jobseeker.home')}}">
+                <i class="fas fa-home"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            @endcan
 
             @can('create-resume')
             <li class="nav-item">
@@ -484,13 +495,6 @@
 <!-- Bootstrap Toggle -->
 <script src="{{asset('assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
-
-<!-- jQuery Vector Maps -->
-<script src="assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-<script src="assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
-
-<!-- Sweet Alert -->
-<script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
 <!-- RecruitAble JS -->
 <script src="{{asset('assets/js/ready.min.js')}}"></script>
