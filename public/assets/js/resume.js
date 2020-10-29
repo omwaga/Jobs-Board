@@ -219,6 +219,20 @@ new Vue({
         job_type: ''
     }),
 
+      userDetails: new Form({
+        first_name: this.Details,
+        last_name: '',
+        home_city: '',
+        gender: '',
+        date_of_birth: '',
+        phone_number: '',
+        email: '',
+        current_location: '',
+        when_to_start: '',
+        preferred_location: '',
+        job_type: ''
+    }),
+
       updateDetails: new Form({
         first_name: '',
     }),
@@ -341,6 +355,16 @@ new Vue({
         this.showAwards()
     },
 
+    // 
+
+    detailsUpdate(id) {
+        this.userDetails.patch('/user/details/' + id)
+        .then(response => alert('Wahoo!'));
+
+        this.showDetails()
+    },
+
+// Show mwthods
     showInternships(){        
         axios.get('/user/internships').then(response => this.Internships = response.data);      
     },

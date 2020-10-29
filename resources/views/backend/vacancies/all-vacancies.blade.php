@@ -60,7 +60,17 @@
                 <td>{{$vacancy->status}}</td>
                 <td>
                   <div class="btn-group">
+                    <a class="btn btn-success btn-sm" target="blank" href="{{route('front.singlejob', $vacancy->slug)}}"><i class="fas fa-edit"></i> View</a>
+
                     <a class="btn btn-primary btn-sm" href="{{route('admin.vacancies.edit', $vacancy->id)}}"><i class="fas fa-edit"></i> Edit</a>
+
+                    @can('publish-vacancies')
+                    <form method="POST" action="{{route('admin.vacancies.publish', $vacancy->id)}}">
+                      @csrf
+                      @method('PATCH')
+                      <button class="btn btn-warning btn-sm"><i class="fas fa-trash"></i> Publish</button>
+                    </form>
+                    @endcan
 
                     <form method="POST" action="{{route('admin.vacancies.destroy', $vacancy->id)}}">
                       @csrf

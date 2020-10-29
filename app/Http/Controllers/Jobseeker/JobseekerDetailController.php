@@ -12,7 +12,7 @@ class JobseekerDetailController extends Controller
 {
     public function index()
     {
-        $details = JobseekerDetail::where('user_id', auth()->user()->id)->first();
+        $details = JobseekerDetail::with(['city', 'home'])->where('user_id', auth()->user()->id)->first();
         return $details;
     }
 
@@ -37,5 +37,11 @@ class JobseekerDetailController extends Controller
 		Alert::Success('Success!', 'Details saved successfully')->position('top-right')->toToast();
 
 		return back();
+	}
+
+	public function update(JobseekerDetail $detail,Request $request)
+	{
+		$detail->update(request(['first_name', 'last_name', 'phone_number', 'gender', 'date_of_birth', 'email', 'home_city', 'current_location', 'when_to_start', 'preferred_location', 'job_type']));
+
 	}
 }

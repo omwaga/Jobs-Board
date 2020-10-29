@@ -26,8 +26,56 @@
 <body class="login">
   <div class="wrapper wrapper-login">
     <div class="container container-login animated fadeIn">
-      <h3 class="text-center">Company Registration</h3>
-      
+      <h3 class="text-center">Employer/Recruiter Sign In </h3>
+      <form method="POST" class="login-form" action="{{ route('login') }}">
+        @csrf
+        <div class="login-form">
+          <div class="form-group form-floating-label">
+            <input id="username" name="email" type="text" class="form-control input-border-bottom @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            <label for="username" class="placeholder">Username</label>
+          </div>
+          <div class="form-group form-floating-label">
+            <input id="password" name="password" type="password" class="form-control input-border-bottom @error('password') is-invalid @enderror" required autocomplete="current-password">
+
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            <label for="password" class="placeholder">Password</label>
+            <div class="show-password">
+              <i class="flaticon-interface"></i>
+            </div>
+          </div>
+          <div class="row form-sub m-0">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+              <label class="custom-control-label" for="rememberme">Remember Me</label>
+            </div>
+
+            @if (Route::has('password.request'))
+            <a href="{{ route('password.request') }}" class="link float-right">Forget Password ?</a>
+            @endif
+          </div>
+          <div class="form-action mb-3">
+            <button type="submit" class="btn btn-primary btn-rounded btn-login">Sign In</button>
+          </div>
+          <div class="login-account">
+            <span class="msg">Don't have an account yet ?</span>
+            <a href="#" id="show-signup" class="link">Sign Up</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="container container-signup animated fadeIn">
+      <h3 class="text-center">Sign Up</h3>
       <form method="POST" action="{{ route('register') }}">
         @csrf
       <div class="login-form">
@@ -39,7 +87,7 @@
                 <strong>{{ $message }}</strong>
               </span>
               @enderror
-          <label for="fullname" class="placeholder">Company Name</label>
+          <label for="fullname" class="placeholder">Full Name</label>
         </div>
         <div class="form-group form-floating-label">
           <input id="email" type="email" class="form-control input-border-bottom @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -49,7 +97,7 @@
                 <strong>{{ $message }}</strong>
               </span>
               @enderror
-          <label for="email" class="placeholder">Company Email</label>
+          <label for="email" class="placeholder">Email</label>
         </div>
         <div class="form-group form-floating-label">
           <input id="password" type="password" class="form-control input-border-bottom @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -78,15 +126,11 @@
           </div>
         </div>
         <div class="form-action">
-          <a href="{{route('login')}}" class="btn btn-danger btn-rounded mr-3">Already Registered?</a>
+          <a href="#" id="show-signin" class="btn btn-danger btn-rounded btn-login mr-3">Cancel</a>
           <button type="submit" class="btn btn-primary btn-rounded btn-login">Sign Up</button>
         </div>
       </div>
       </form>
-    </div>
-
-    <div class="container container-signup animated fadeIn">
-      <h3 class="text-center">Sign In</h3>
     </div>
   </div>
   <script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}"></script>

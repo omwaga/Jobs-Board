@@ -308,6 +308,13 @@
               </a>
               <div class="collapse" id="vacancies">
                 <ul class="nav nav-collapse">
+                  @can('manage-vacancies')
+                  <li>
+                    <a href="{{route('admin.vacancies.index')}}">
+                      <span class="sub-item">Manage Vacancies</span>
+                    </a>
+                  </li> 
+                  @endcan
                   @can('manage-categories')
                   <li>
                     <a href="{{route('admin.categories.index')}}">
@@ -326,13 +333,6 @@
                   <li>
                     <a href="{{route('admin.postingsubscriptions.index')}}">
                       <span class="sub-item">Posting Subscriptions</span>
-                    </a>
-                  </li> 
-                  @endcan
-                  @can('manage-vacancies')
-                  <li>
-                    <a href="{{route('admin.vacancies.index')}}">
-                      <span class="sub-item">Manage Vacancies</span>
                     </a>
                   </li> 
                   @endcan

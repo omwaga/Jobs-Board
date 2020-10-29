@@ -32,7 +32,7 @@ class VacancyController extends Controller
             $vacancies = Vacancy::orderby('created_at', 'DESC')->get();
         }
         else{
-        $vacancies = Vacancy::where('user_id', auth()->user()->id)->orderby('created_at', 'DESC')->get();
+            $vacancies = Vacancy::where('user_id', auth()->user()->id)->orderby('created_at', 'DESC')->get();
         }
 
         return view('backend.vacancies.all-vacancies', compact('vacancies'));
@@ -105,7 +105,7 @@ class VacancyController extends Controller
      */
     public function store(Request $request)
     {
-     $attributes = $request->validate([
+       $attributes = $request->validate([
         'subscription' => 'required',
         'job_title' => ['required', 'min:3'],
         'category' => 'required',
@@ -118,14 +118,14 @@ class VacancyController extends Controller
         'application_deadline' => 'nullable'
     ]);  
 
-     $slug = Str::slug($request->job_title.'-'.auth()->user()->id);
+       $slug = Str::slug($request->job_title.'-'.auth()->user()->id);
 
-     Vacancy::create($attributes + ['user_id' => auth()->user()->id]);
+       Vacancy::create($attributes + ['user_id' => auth()->user()->id]);
 
-     Alert::Success('Success!', 'Job vacancy added successfully')->position('top-right')->toToast();
+       Alert::Success('Success!', 'Job vacancy added successfully')->position('top-right')->toToast();
 
-     return redirect(route('admin.vacancies.index'));
- }
+       return redirect(route('admin.vacancies.index'));
+   }
 
     /**
      * Update the specified resource in storage.
@@ -162,9 +162,20 @@ class VacancyController extends Controller
      */
     public function destroy(Vacancy $vacancy)
     {
-     $vacancy->delete();
+       $vacancy->delete();
 
-     Alert::Success('Success!', 'Vacancy deleted successfully')->position('top-right')->toToast();
+       Alert::Success('Success!', 'Vacancy deleted successfully')->position('top-right')->toToast();
+
+       return redirect(route('admin.vacancies.index'));
+   }
+
+   public function publish($id)
+   {
+     $vacancy = Vacancy::findOrFail($id);
+
+     $vacancy->update(['status' => 'published']);
+
+     Alert::Success('Success!', 'Job vacancy published successfully')->position('top-right')->toToast();
 
      return redirect(route('admin.vacancies.index'));
  }

@@ -9,7 +9,6 @@ Route::name('front.')->group(function(){
 	Route::get('/', 'PagesController@home')->name('home');
 	Route::get('/candidates', 'PagesController@candidates')->name('candidates');
 	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
-	Route::get('/post', 'PagesController@post')->name('post');
 	Route::get('/job/{slug}', 'PagesController@singlejob')->name('singlejob');
 	Route::get('/category/{categorySlug}', 'PagesController@categorySlug')->name('category');
 	Route::get('/location/{locationSlug}', 'PagesController@locationSlug')->name('location');
@@ -56,6 +55,7 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 	Route::resource('/talents', 'TalentPoolController');
 	Route::resource('/postingsubscriptions', 'PostingSubscriptionController');
 	Route::resource('vacancies', 'VacancyController');
+	Route::patch('vacancy/publish/{id}', 'VacancyController@publish')->name('vacancies.publish');
 	Route::get('applications', 'AdminController@applications')->name('applications');
 });
 

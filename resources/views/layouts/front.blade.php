@@ -44,11 +44,7 @@
           <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
           <!-- Authentication Links -->
           @guest
-          @if (Route::has('register'))                                
-          <li class="nav-item"><a href="{{route('register')}}" class="nav-link">Register</a></li>
-          @endif
-
-          <li class="nav-item cta mr-md-2"><a href="{{route('front.post')}}" class="nav-link">Post a Job</a></li>
+          <li class="nav-item cta mr-md-2"><a href="{{route('front.employer.register')}}" class="nav-link">Post a Job</a></li>
           <li class="nav-item cta cta-colored"><a href="{{route('login')}}" class="nav-link">Want a Job</a></li>
           @else
           <li class="nav-item dropdown">
