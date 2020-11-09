@@ -32,6 +32,7 @@
 							<h4 class="card-title">New Vacancy</h4>
 						</div>
 						<div class="card-body">
+							<p>All fields marked <span class="text-danger">*</span> are required</p>
 							<div class="form">
 								<form method="Post" action="{{route('admin.vacancies.store')}}">
 									@csrf
@@ -40,9 +41,9 @@
 										<input class="form-control" name="job_title" type="text" required value="{{old('job_title')}}" />
 									</div>
 
-									<div class="row">
+									<div class="row p-3">
 										<div class="col-lg-6">
-											<label class="control-label">Job Category <span class="required">*</span></label>
+											<label class="control-label">Job Category <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="category">
 												<option value="">Select Category</option>
 												@foreach($categories as $category)
@@ -51,7 +52,7 @@
 											</select>
 										</div>
 										<div class="col-lg-6">
-											<label class="control-label">Job Type <span class="required">*</span></label>
+											<label class="control-label">Job Type <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="job_type">
 												<option value="">Select Job Type</option>
 												@foreach($job_types as $job_type)
@@ -61,7 +62,7 @@
 										</div>
 
 										<div class="col-lg-6">
-											<label class="control-label">Country <span class="required">*</span></label>
+											<label class="control-label">Country <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="country">
 												<option value="">Select Country</option>
 												@foreach($countries as $country)
@@ -70,7 +71,7 @@
 											</select>
 										</div>
 										<div class="col-lg-6">
-											<label class="control-label">City <span class="required">*</span></label>
+											<label class="control-label">City <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="city">
 												<option value="">Select City</option>
 												@foreach($cities as $city)
@@ -80,17 +81,17 @@
 										</div>
 
 										<div class="col-lg-6">
-											<label class="control-label">Required Exerience <span class="required">*</span></label>
-										<input class="form-control" name="required_experience" type="text" value="{{old('required_experience')}}" />
+											<label class="control-label">Required Exerience <span class="text-danger">*</span></label>
+											<input class="form-control" name="required_experience" type="text" value="{{old('required_experience')}}" />
 										</div>
 
 										<div class="col-lg-6">
-											<label class="control-label">Application Deadline <span class="required">*</span></label>
-										<input class="form-control" name="application_deadline" type="text" value="{{old('application_deadline')}}" />
+											<label class="control-label">Application Deadline <span class="text-danger">*</span></label>
+											<input class="form-control" name="application_deadline" type="text" value="{{old('application_deadline')}}" />
 										</div>
 										
 										<div class="col-lg-6">
-											<label class="control-label">Subscription <span class="required">*</span></label>
+											<label class="control-label">Subscription <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="subscription">
 												<option value="">Select Subscription</option>
 												@foreach($subscriptions as $subscription)
@@ -99,13 +100,24 @@
 											</select>
 										</div>
 										<div class="col-lg-6">
-											<label class="control-label">Salary <span class="required">*</span></label>
+											<label class="control-label">Salary <span class="text-danger">*</span></label>
 											<input class="form-control" name="salary" value="{{old('salary')}}" type="text" required/>
 										</div>
 									</div>
 									<div class="form-group ">
-										<label class="control-label">Description <span class="required">*</span></label>									
-										<textarea class="form-control ckeditor" name="description" rows="10"></textarea>
+										<label class="control-label">Description <span class="text-danger">*</span></label>									
+										<textarea class="form-control ckeditor" name="description" rows="10">{{old('description')}}</textarea>
+									</div>
+									<div class="form-group ">
+										<label class="control-label">Applications Details <span class="text-danger">*</span></label>	
+
+										<div class="form-check">
+											<label class="form-check-label">
+												<input class="form-check-input" name="recruitable_apply" type="checkbox" value="No">
+												<span class="form-check-sign">Check if you dont want to receive and manage applications on Recruitable System</span>
+											</label>
+										</div>								
+										<textarea class="form-control ckeditor" name="how_to_apply" rows="10">{{old('how_to_apply')}}</textarea>
 									</div>
 									<div class="form-group">
 										<div class="col-lg-offset-2 col-lg-10">

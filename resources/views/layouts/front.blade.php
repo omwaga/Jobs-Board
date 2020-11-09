@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>JobPortal - Free Bootstrap 4 Template by Colorlib</title>
+    {!! SEOMeta::generate() !!}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -124,27 +124,26 @@
     </div>
     <div class="col-md">
       <div class="ftco-footer-widget mb-4">
-        <h2 class="ftco-heading-2">Employers</h2>
+        <h2 class="ftco-heading-2">Employers Services</h2>
         <ul class="list-unstyled">
           <li><a href="#" class="py-2 d-block">How it works</a></li>
-          <li><a href="#" class="py-2 d-block">Register</a></li>
-          <li><a href="#" class="py-2 d-block">Post a Job</a></li>
+          <li><a href="#" class="py-2 d-block">Recruiter Register</a></li>
+          <li><a href="#" class="py-2 d-block">Job Posting </a></li>
           <li><a href="#" class="py-2 d-block">Advance Skill Search</a></li>
           <li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
-          <li><a href="#" class="py-2 d-block">Blog</a></li>
-          <li><a href="#" class="py-2 d-block">Faq</a></li>
         </ul>
       </div>
     </div>
     <div class="col-md">
       <div class="ftco-footer-widget mb-4 ml-md-4">
-        <h2 class="ftco-heading-2">Workers</h2>
+        <h2 class="ftco-heading-2">Jobseekers Seervices</h2>
         <ul class="list-unstyled">
-          <li><a href="#" class="py-2 d-block">How it works</a></li>
+          <li><a href="#" class="py-2 d-block">Priority Applicant</a></li>
           <li><a href="#" class="py-2 d-block">Register</a></li>
           <li><a href="#" class="py-2 d-block">Post Your Skills</a></li>
           <li><a href="#" class="py-2 d-block">Job Search</a></li>
-          <li><a href="#" class="py-2 d-block">Emploer Search</a></li>
+          <li><a href="#" class="py-2 d-block">Resume Display</a></li>
+          <li><a href="#" class="py-2 d-block">Create Job Alerts</a></li>
         </ul>
       </div>
     </div>

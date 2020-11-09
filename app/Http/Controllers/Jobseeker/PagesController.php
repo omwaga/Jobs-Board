@@ -8,6 +8,7 @@ use App\Vacancy;
 use App\Category;
 use App\City;
 use App\JobType;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class PagesController extends Controller
 {
@@ -42,5 +43,21 @@ class PagesController extends Controller
     public function fillDetails()
     {
         return view('backend.jobseeker.details-master');
+    }
+
+    public function categorySlug($categorySlug)
+    {
+        $categoryId = Category::where('slug', $categorySlug)->value('id');
+        $page_banner = Category::where('slug', $categorySlug)->first();
+        $vacancies = Vacancy::where([['category', $categoryId],['status', 'published']])->orderBy('created_at', 'DESC')->get();
+        $categories = Category::all();
+        $locations = City::all();
+        $job_types = JobType::all();
+
+
+
+        SEOMeta::setTitle($page_banner->name.' Jobs in Kenya');
+
+        return view('backend.jobseeker.categories', compact('vacancies', 'page_banner', 'categories', 'locations', 'job_types'));
     }
 }

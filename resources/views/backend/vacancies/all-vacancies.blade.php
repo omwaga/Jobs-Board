@@ -65,11 +65,19 @@
                     <a class="btn btn-primary btn-sm" href="{{route('admin.vacancies.edit', $vacancy->id)}}"><i class="fas fa-edit"></i> Edit</a>
 
                     @can('publish-vacancies')
+                    @if($vacancy->status === 'published')
+                    <form method="POST" action="#">
+                      @csrf
+                      @method('PATCH')
+                      <button class="btn btn-warning btn-sm"><i class="fas fa-trash"></i> Unpublish</button>
+                    </form>
+                    @else
                     <form method="POST" action="{{route('admin.vacancies.publish', $vacancy->id)}}">
                       @csrf
                       @method('PATCH')
                       <button class="btn btn-warning btn-sm"><i class="fas fa-trash"></i> Publish</button>
                     </form>
+                    @endif
                     @endcan
 
                     <form method="POST" action="{{route('admin.vacancies.destroy', $vacancy->id)}}">

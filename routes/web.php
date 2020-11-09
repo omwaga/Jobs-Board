@@ -8,13 +8,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 Route::name('front.')->group(function(){
 	Route::get('/', 'PagesController@home')->name('home');
 	Route::get('/candidates', 'PagesController@candidates')->name('candidates');
-	Route::get('/vacancies', 'PagesController@vacancies')->name('vacancies');
+	Route::get('/jobs-in-kenya', 'PagesController@vacancies')->name('vacancies');
 	Route::get('/job/{slug}', 'PagesController@singlejob')->name('singlejob');
 	Route::get('/category/{categorySlug}', 'PagesController@categorySlug')->name('category');
 	Route::get('/location/{locationSlug}', 'PagesController@locationSlug')->name('location');
 	Route::get('/type/{typeSlug}', 'PagesController@typeSlug')->name('type');
 	Route::get('/employer/register', 'PagesController@employerregister')->name('employer.register');
 	Route::get('/jobseeker/register', 'PagesController@jobseekerregister')->name('jobseeker.register');
+	Route::get('/search', 'PagesController@search')->name('jobseeker.search');
 });
 
 Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(function(){
@@ -41,6 +42,7 @@ Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(functio
 	Route::get('/fill-details', 'PagesController@fillDetails')->name('fillDetails');
 	Route::get('/dashboard', 'HomeController@index')->name('home');
 	Route::get('/category/{categorySlug}', 'PagesController@categorySlug')->name('category');
+	Route::resource('savedjobs', 'SavedJobsController');
 });
 
 Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function(){

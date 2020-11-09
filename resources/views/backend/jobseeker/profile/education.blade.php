@@ -1,4 +1,3 @@
-
 <div class="tab-pane fade" id="education-details" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
   <!-- show the educations -->
   <div class="card" v-if="Educations.length">
@@ -29,6 +28,10 @@
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" :data-target="'#editeducation-'+index">
               <i class="fas fa-edit"></i> Edit
             </button></small>
+          <small class="text-muted">
+            <a href="#" class="btn btn-danger btn-sm">
+              <i class="fas fa-trash"></i> Delete
+            </a></small>
           </div>
         </div>
         <div class="separator-dashed"></div>

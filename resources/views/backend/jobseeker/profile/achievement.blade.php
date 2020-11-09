@@ -29,6 +29,10 @@
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" :data-target="'#editcertification-'+index">
                   <i class="fas fa-edit"></i> Edit
                 </button></small>
+          <small class="text-muted">
+            <a href="#" class="btn btn-danger btn-sm">
+              <i class="fas fa-trash"></i> Delete
+            </a></small>
               </div>
             </div>
             <div class="separator-dashed"></div>
@@ -94,6 +98,10 @@
                   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" :data-target="'#editaward-'+index">
                     <i class="fas fa-edit"></i> Edit
                   </button></small>
+          <small class="text-muted">
+            <a href="#" class="btn btn-danger btn-sm">
+              <i class="fas fa-trash"></i> Delete
+            </a></small>
                 </div>
               </div>
               <div class="separator-dashed"></div>

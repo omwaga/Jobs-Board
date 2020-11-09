@@ -4,7 +4,7 @@
 	<div class="content">
 		<div class="page-inner">
 			<div class="page-header">
-				<h4 class="page-title">Job Listings</h4>
+				<h4 class="page-title">{{$page_banner->name ?? 'Search Vacancies and Jobs in Kenya'}}</h4>
 				<ul class="breadcrumbs">
 					<li class="nav-home">
 						<a href="{{route('admin.dashboard')}}">
@@ -21,7 +21,7 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">Job Listings</a>
+						<a href="#">{{$page_banner->name ?? $page_banner->job_title ?? 'Search Vacancies and Jobs in Kenya'}}</a>
 					</li>
 				</ul>
 			</div>
@@ -31,6 +31,8 @@
 					<h2 class="section-title mb-2">Recently Added Jobs</h2>
 				</div>
 			</div>
+
+
 			<div class="row">
 				<div class="col-md-8">
 					@foreach($vacancies as $vacancy)

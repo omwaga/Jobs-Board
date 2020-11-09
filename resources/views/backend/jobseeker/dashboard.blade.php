@@ -42,11 +42,11 @@
                       @method('PATCH')
                       <div class="form-check">
                         <label class="form-radio-label">
-                          <input class="form-radio-input" type="radio" name="level" value="fresher" @if($level = 'fresher') checked @endif>
+                          <input class="form-radio-input" type="radio" name="level" value="fresher" @if($level = "fresher") checked @endif>
                           <span class="form-radio-sign">I am a fresher</span>
                         </label>
                         <label class="form-radio-label">
-                          <input class="form-radio-input" type="radio" name="level" value="professional" @if($level = 'professional') checked @endif>
+                          <input class="form-radio-input" type="radio" name="level" value="professional" @if($level = "professional") checked @endif>
                           <span class="form-radio-sign">I am a professional</span>
                         </label>
                       </div>

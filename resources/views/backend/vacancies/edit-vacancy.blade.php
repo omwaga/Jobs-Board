@@ -64,7 +64,7 @@
 										<div class="col-lg-6">
 											<label class="control-label">Country <span class="required">*</span></label>
 											<select class="form-control m-bot15" name="country">
-												<option value="{{$vacancy->country_id}}">{{$vacancy->postcountry->name ?? 'Select Country'}}</option>
+												<option value="{{$vacancy->country}}">{{$vacancy->postcountry->name ?? 'Select Country'}}</option>
 												@foreach($countries as $country)
 												<option value="{{$country->id}}">{{$country->name}}</option>
 												@endforeach
@@ -73,7 +73,7 @@
 										<div class="col-lg-6">
 											<label class="control-label">City <span class="required">*</span></label>
 											<select class="form-control m-bot15" name="city">
-												<option value="{{$vacancy->city_id}}">{{$vacancy->postcity->name ?? 'Select City'}}</option>
+												<option value="{{$vacancy->city}}">{{$vacancy->postcity->name ?? 'Select City'}}</option>
 												@foreach($cities as $city)
 												<option value="{{$city->id}}">{{$city->name}}</option>
 												@endforeach
@@ -110,6 +110,17 @@
 										<div class="col-lg-12">										
 											<textarea class="form-control ckeditor" name="description" rows="10">{{$vacancy->description}}</textarea>
 										</div>
+									</div>
+									<div class="form-group ">
+										<label class="control-label">Applications Details <span class="text-danger">*</span></label>	
+
+										<div class="form-check">
+											<label class="form-check-label">
+												<input class="form-check-input" name="recruitable_apply" type="checkbox" value="No">
+												<span class="form-check-sign">Check if you dont want to receive and manage applications on Recruitable System</span>
+											</label>
+										</div>								
+										<textarea class="form-control ckeditor" name="how_to_apply" rows="10">{{$vacancy->how_to_apply}}</textarea>
 									</div>
 									<div class="form-group">
 										<div class="col-lg-offset-2 col-lg-10">

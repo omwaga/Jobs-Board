@@ -1,15 +1,7 @@
 
-<div class="sidebar-box">
-	<form action="#" class="search-form">
-		<div class="form-group">
-			<span class="icon icon-search"></span>
-			<input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-		</div>
-	</form>
-</div>
 <div class="sidebar-box ftco-animate">
 	<div class="categories">
-		<h3 class="heading-3">Related Jobs</h3>
+		<h3 class="heading-3 text-primary text-center">Similar Jobs</h3>
 		@foreach($related_jobs as $related_job)
 		<li><a href="{{route('front.singlejob', $related_job->slug)}}">{{$related_job->job_title}}</a></li>
 		@endforeach
@@ -18,9 +10,9 @@
 
 <div class="sidebar-box ftco-animate">
 	<div class="categories">
-		<h3 class="heading-3">Job Categories</h3>
+		<h3 class="heading-3 text-center text-primary">Job by Category</h3>
 		@foreach($categories as $category)
-		<li><a href="#">{{$category->name}}<span>(12)</span></a></li>
+		<li><a href="{{route('front.category', $category->slug)}}">{{$category->name ?? ''}}<span>(12)</span></a></li>
 		@endforeach
 	</div>
 </div>

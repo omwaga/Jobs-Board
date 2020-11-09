@@ -3,46 +3,41 @@
 
 @include('front.banner')
 
-
 <section class="ftco-section ftco-counter">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
-				<span class="subheading">Categories work wating for you</span>
-				<h2 class="mb-4"><span>Current</span> Job Posts</h2>
+				<span class="subheading">Find an opportunity anywhere</span>
+				<h2 class="mb-4"><span>Trending</span> Job Categories</h2>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
-					<li><a href="#">Web Development <span class="number" data-number="1000">0</span></a></li>
-					<li><a href="#">Graphic Designer <span class="number" data-number="1000">0</span></a></li>
-					<li><a href="#">Multimedia <span class="number" data-number="2000">0</span></a></li>
-					<li><a href="#">Advertising <span class="number" data-number="900">0</span></a></li>
+					@foreach($top_categories1 as $category)
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="10">0</span></a></li>
+					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
-					<li><a href="#">Education &amp; Training <span class="number" data-number="3500">0</span></a></li>
-					<li><a href="#">English <span class="number" data-number="1560">0</span></a></li>
-					<li><a href="#">Social Media <span class="number" data-number="1000">0</span></a></li>
-					<li><a href="#">Writing <span class="number" data-number="2500">0</span></a></li>
+					@foreach($top_categories2 as $category)
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="10">0</span></a></li>
+					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
-					<li><a href="#">PHP Programming <span class="number" data-number="5500">0</span></a></li>
-					<li><a href="#">Project Management <span class="number" data-number="2000">0</span></a></li>
-					<li><a href="#">Finance Management <span class="number" data-number="800">0</span></a></li>
-					<li><a href="#">Office &amp; Admin <span class="number" data-number="7000">0</span></a></li>
+					@foreach($top_categories3 as $category)
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="10">0</span></a></li>
+					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
-					<li><a href="#">Web Designer <span><span class="number" data-number="8000">0</span></span></a></li>
-					<li><a href="#">Customer Service <span class="number" data-number="4000">0</span></a></li>
-					<li><a href="#">Marketing &amp; Sales <span class="number" data-number="3300">0</span></a></li>
-					<li><a href="#">Software Development <span class="number" data-number="1356">0</span></a></li>
+					@foreach($top_categories4 as $category)
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="{{$category->jobs->count()}}">0</span></a></li>
+					@endforeach
 				</ul>
 			</div>
 		</div>
@@ -65,9 +60,19 @@
 
 					<div class="mb-4 mb-md-0 mr-5">
 						<div class="job-post-item-header d-flex align-items-center">
-							<h2 class="mr-3 text-black h3">{{$vacancy->job_title ?? ''}}</h2>
+							<a href="{{route('front.singlejob', $vacancy->slug)}}"><h2 class="mr-3 text-black h3">{{$vacancy->job_title ?? ''}}</h2></a>
 							<div class="badge-wrap">
+								@if($vacancy->postjobtype->name === 'Full Time')
+								<span class="bg-warning text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+								@elseif($vacancy->postjobtype->name === 'Part Time')
 								<span class="bg-primary text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+								@elseif($vacancy->postjobtype->name === 'Internship')
+								<span class="bg-secondary text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+								@elseif($vacancy->postjobtype->name === 'Freelance')
+								<span class="bg-info text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+								@elseif($vacancy->postjobtype->name === 'Temporary')
+								<span class="bg-danger text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+								@endif
 							</div>
 						</div>
 						<div class="job-post-item-body d-block d-md-flex">
@@ -89,16 +94,8 @@
 		</div>
 		<div class="row mt-5">
 			<div class="col text-center">
-				<div class="block-27">
-					<ul>
-						<li><a href="#">&lt;</a></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">&gt;</a></li>
-					</ul>
+				<div class="block-27">					
+					{{$vacancies->links()}}
 				</div>
 			</div>
 		</div>

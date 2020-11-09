@@ -3,9 +3,9 @@
 
 @include('front.banner')
 
-<section class="site-section pt-5">
+<section class="site-section bg-light pt-5">
   <div class="container">
-    <div class="row align-items-center mb-5">
+    <div class="row align-items-center mb-5 pb-3 bg-white">
       <div class="col-lg-8 mb-4 mb-lg-0">
         <div class="d-flex align-items-center">
           <div class="border p-2 d-inline-block mr-3 rounded">
@@ -33,22 +33,25 @@
       </div>
     </div>
     <div class="row pb-5">
-      <div class="col-lg-8">
+      <div class="col-lg-8 bg-white">
         <div class="mb-5">
+          {!!$job->description!!}
+
+          <h4>Application Details</h4>          
           {!!$job->description!!}
         </div>
 
-        <div class="row">
+        <div class="row mt-5">
           <div class="col-6">
             <a href="{{route('login')}}" class="btn btn-danger">Login to Apply</a>
           </div>
           <div class="col-6 text-left">
-            <a href="{{route('front.jobseeker.register')}}" class="btn btn-primary">Register to Apply</a>
+            <a href="{{route('front.jobseeker.register')}}" class="btn btn-primary float-right">Register to Apply</a>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="bg-light p-3 border rounded mb-4">
+        <div class="p-3 border rounded mb-4 bg-white">
           <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
           <ul class="list-unstyled pl-3 mb-0">
             <li class="mb-2"><strong class="text-black">Published on:</strong> {{$job->created_at->diffForHumans() ?? ''}}</li>
@@ -60,7 +63,7 @@
           </ul>
         </div>
 
-        <div class="bg-light p-3 border rounded">
+        <div class="mb-3 p-3 border rounded bg-white">
           <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
           <div class="px-3">
             <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>

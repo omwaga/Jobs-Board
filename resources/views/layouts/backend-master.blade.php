@@ -167,13 +167,13 @@
             <li class="nav-item dropdown hidden-caret">
               <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                 <div class="avatar-sm">
-                  <img src="{{asset('assets/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
+                  <img src="{{asset('assets/img/profile.png')}}" alt="..." class="avatar-img rounded-circle">
                 </div>
               </a>
               <ul class="dropdown-menu dropdown-user animated fadeIn">
                 <li>
                   <div class="user-box">
-                    <div class="avatar-lg"><img src="{{asset('assets/img/profile.jpg')}}" alt="image profile" class="avatar-img rounded"></div>
+                    <div class="avatar-lg"><img src="{{asset('assets/img/profile.png')}}" alt="image profile" class="avatar-img rounded"></div>
                     <div class="u-text">
                       <h4>{{auth()->user()->name}}</h4>
                       <p class="text-muted">{{auth()->user()->email}}</p><a href="#" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
@@ -182,11 +182,16 @@
                 </li>
                 <li>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{route('jobseeker.profile')}}">My Profile</a>
-                  <a class="dropdown-item" href="#">My Balance</a>
-                  <a class="dropdown-item" href="#">Inbox</a>
+                  <a class="dropdown-item" href="{{route('jobseeker.profile')}}">My Account</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Account Setting</a>
+                  @can('create-resume')
+                  @if(!auth()->user()->selectedLevel)
+                  <a  href="{{route('jobseeker.levelSelection')}}" class="dropdown-item">My Resume</a> 
+                  @else
+                  <a  href="{{route('jobseeker.'.auth()->user()->selectedLevel->level)}}" class="dropdown-item">My Resume
+                  </a> 
+                  @endif
+                  @endcan
                   <div class="dropdown-divider"></div>
                   <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();"> Log Out</a>
@@ -212,7 +217,7 @@
         <div class="sidebar-content">
           <div class="user">
             <div class="avatar-sm float-left mr-2">
-              <img src="{{asset('assets/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
+              <img src="{{asset('assets/img/profile.png')}}" alt="..." class="avatar-img rounded-circle">
             </div>
             <div class="info">
               <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -227,18 +232,8 @@
               <div class="collapse in" id="collapseExample">
                 <ul class="nav">
                   <li>
-                    <a href="#profile">
-                      <span class="link-collapse">My Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#edit">
-                      <span class="link-collapse">Edit Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#settings">
-                      <span class="link-collapse">Settings</span>
+                    <a href="{{route('jobseeker.profile')}}">
+                      <span class="link-collapse">My Account</span>
                     </a>
                   </li>
                 </ul>
@@ -343,7 +338,7 @@
                     </a>
                   </li> 
                   <li>
-                    <a href="#">
+                    <a href="{{route('jobseeker.savedjobs.index')}}">
                       <span class="sub-item">Saved Jobs</span>
                     </a>
                   </li>

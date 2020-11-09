@@ -5,10 +5,10 @@
   <div class="content">
     <div class="page-inner">
       <div class="page-header">
-        <h4 class="page-title">Job Listings</h4>
+        <h4 class="page-title">{{$job->job_title ?? 'Job Vacancy'}}</h4>
         <ul class="breadcrumbs">
           <li class="nav-home">
-            <a href="{{route('admin.dashboard')}}">
+            <a href="{{route('jobseeker.home')}}">
               <i class="flaticon-home"></i>
             </a>
           </li>
@@ -16,13 +16,19 @@
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="{{route('admin.dashboard')}}">Dashboard</a>
+            <a href="{{route('jobseeker.home')}}">Dashboard</a>
           </li>
           <li class="separator">
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="#">Job Listings</a>
+            <a href="{{route('jobseeker.vacancies')}}">Job Listings</a>
+          </li>
+          <li class="separator">
+            <i class="flaticon-right-arrow"></i>
+          </li>
+          <li class="nav-item">
+            <a href="#">{{$job->job_title ?? 'Job Vacancy'}}</a>
           </li>
         </ul>
       </div>
@@ -33,7 +39,7 @@
             <div class="col-lg-8 mb-4 mb-lg-0">
               <div class="d-flex align-items-center">
                 <div class="border p-2 d-inline-block mr-3 rounded">
-                  <img src="{{asset('front/images/featured-listing-1.jpg')}}" alt="Free Website Template By Free-Template.co">
+                  <img src="{{asset('assets/img/logo.png')}}" width="100px" alt="{{$job->job_title ?? 'job vacancy'}}">
                 </div>
                 <div>
                   <h2>{{$job->job_title ?? ''}}</h2>
@@ -48,9 +54,13 @@
             <div class="col-lg-4">
               <div class="row">
                 <div class="col-6">
-                  <a href="#" class="btn btn-block btn-secondary btn-md">
-                    <i class="fas fa-heart"></i> Save
-                  Job</a>
+                  <form method="POST" action="{{route('jobseeker.savedjobs.store')}}">
+                    @csrf
+                    <input type="hidden" name="vacancy_id" value="{{$job->id}}">
+                    <button type="submit" class="btn btn-secondary align-items-center">
+                      <i class="fas fa-heart"></i> Save Job
+                    </button>
+                  </form>
                 </div>
                 <div class="col-6">
                   <a href="{{route('jobseeker.application.create', $job->id)}}" class="btn btn-block btn-primary btn-md">Apply Now</a>
@@ -62,6 +72,12 @@
             <div class="col-lg-8">
               <div class="mb-5">
                 {!!$job->description!!}
+                <h4>Application Details</h4>          
+                {!!$job->description!!}
+              </div>
+              <hr>
+              <div class="col-4">
+                <a href="{{route('jobseeker.application.create', $job->id)}}" class="btn btn-block btn-primary btn-md">Apply Now</a>
               </div>
             </div>
             <div class="col-lg-4">

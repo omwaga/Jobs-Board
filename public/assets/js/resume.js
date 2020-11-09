@@ -220,7 +220,7 @@ new Vue({
     }),
 
       userDetails: new Form({
-        first_name: this.Details,
+        first_name: '',
         last_name: '',
         home_city: '',
         gender: '',

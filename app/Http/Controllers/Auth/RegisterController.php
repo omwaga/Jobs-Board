@@ -71,45 +71,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        if(in_array('company', $data))
-        {
-            return Validator::make($data, [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-                'phone_number' => 'required',
-                'contact_person' => ['required', 'string', 'max:255'],
-                'company_type' => 'required',
-                'industry_id' => 'required',
-                'country_id' => 'required',
-                'city_id' => 'required',
-            ]);
-        }elseif (in_array('JobPost', $data)) {
-            return Validator::make($data, [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-                'phone_number' => 'required',
-                'contact_person' => ['required', 'string', 'max:255'],
-                'company_type' => 'required',
-                'industry_id' => 'required',
-                'country_id' => 'required',
-                'city_id' => 'required',
-                'logo' => 'nullable',
-                'subscription' => 'required',
-                'job_title' => ['required', 'min:3'],
-                'category' => 'required',
-                'country' => 'required',
-                'city' => 'required',
-                'job_type' => 'required',
-                'salary' => 'required',
-                'description' => 'required',
-            ]);
-        }
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'employer' => ['nullable'],
         ]);
     }
 
@@ -127,49 +93,15 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        if(in_array('company', $data))
-        {
-            CompanyProfile::create([    
-                'user_id' => $user->id,            
-                'phone_number' => $data['phone_number'],
-                'contact_person' => $data['contact_person'],
-                'company_type' => $data['company_type'],
-                'industry_id' => $data['industry_id'],
-                'country_id' => $data['country_id'],
-                'city_id' => $data['city_id'],
-            ]);
 
+        if(in_array('employer', $data))
+        {
             $role = Role::select('id')->where('name', 'company')->first();
             $user->roles()->attach($role);
-        }elseif (in_array('JobPost', $data)) {
-            CompanyProfile::create([    
-                'user_id' => $user->id,            
-                'phone_number' => $data['phone_number'],
-                'contact_person' => $data['contact_person'],
-                'company_type' => $data['company_type'],
-                'industry_id' => $data['industry_id'],
-                'country_id' => $data['country_id'],
-                'city_id' => $data['city_id'],
-            ]);
-
-            Vacancy::create([
-                'user_id' => $user->id,
-                'subscription' => $data['subscription'],
-                'job_title' => $data['job_title'],
-                'category' => $data['category'],
-                'country' => $data['country'],
-                'city' => $data['city'],
-                'job_type' => $data['job_type'],
-                'salary' => $data['salary'],
-                'description' => $data['description'],
-            ]);
-
-            $role = Role::select('id')->where('name', 'company')->first();
+        }else{
+            $role = Role::select('id')->where('name', 'user')->first();
             $user->roles()->attach($role);
         }
-
-        $role = Role::select('id')->where('name', 'user')->first();
-        $user->roles()->attach($role);
 
         return $user;
     }

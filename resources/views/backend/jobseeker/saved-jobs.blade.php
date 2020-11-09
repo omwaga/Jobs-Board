@@ -40,33 +40,18 @@
 
 							<div class="mb-4 mb-md-0 mr-5">
 								<div class="job-post-item-header d-flex align-items-center">
-									<a href="{{route('jobseeker.singlejob', $vacancy->slug)}}"><h2 class="mr-3 text-black h3">{{$vacancy->job_title ?? ''}}</h2></a>
-									<div class="badge-wrap">
-										@if($vacancy->postjobtype->name === 'Full Time')
-										<span class="bg-warning text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
-										@elseif($vacancy->postjobtype->name === 'Part Time')
-										<span class="bg-primary text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
-										@elseif($vacancy->postjobtype->name === 'Internship')
-										<span class="bg-secondary text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
-										@elseif($vacancy->postjobtype->name === 'Freelance')
-										<span class="bg-info text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
-										@elseif($vacancy->postjobtype->name === 'Temporary')
-										<span class="bg-danger text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
-										@endif
-									</div>
-								</div>
-								<div class="job-post-item-body d-block d-md-flex">
-									<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->user->name ?? ''}}</a></div>
-									<div><span class="icon-my_location"></span> <span>{{$vacancy->postcity->name ?? ''}}, {{$vacancy->postcountry->name ?? ''}}</span></div>
+									<a href="{{route('jobseeker.singlejob', $vacancy->job->slug)}}"><h2 class="mr-3 text-black h3">{{$vacancy->job->job_title ?? ''}}</h2></a>
+									
 								</div>
 							</div>
 
 							<div class="ml-auto d-flex">
-								<a href="{{route('jobseeker.singlejob', $vacancy->slug)}}" class="btn btn-primary py-2 mr-1">Apply Job</a>
+								<a href="{{route('jobseeker.singlejob', $vacancy->job->slug)}}" class="btn btn-primary py-2 mr-1">Apply Job</a>
 
-								<form method="POST" action="{{route('jobseeker.savedjobs.store')}}">
+								<form method="POST" action="{{route('jobseeker.savedjobs.destroy', $vacancy->id)}}">
 									@csrf
-									<input type="hidden" name="vacancy_id" value="{{$vacancy->id}}">
+									@method('DELETE')
+									<input type="hidden" name="vacancy_id" value="{{$vacancy->job->id}}">
 									<button type="submit" class="btn btn-secondary rounded-circle d-flex align-items-center">
 										<span class="fas fa-heart"></span>
 									</button>
