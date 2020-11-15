@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>RecruitAble Bootstrap 4 Admin Dashboard</title>
+  
+    {!! SEOMeta::generate() !!}
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
 
@@ -408,6 +409,34 @@
                       <span class="sub-item">Company Profiles</span>
                     </a>
                   </li>                  
+                </ul>
+              </div>
+            </li>
+            @endcan
+            @can('manage-interviews')
+            <li class="nav-item">
+              <a data-toggle="collapse" href="#interviews">
+                <i class="fas fa-graduation-cap"></i>
+                <p>Interview Q&A</p>
+                <span class="caret"></span>
+              </a>
+              <div class="collapse" id="interviews">
+                <ul class="nav nav-collapse">
+                  <li>
+                    <a href="{{route('admin.interviewCategories.index')}}">
+                      <span class="sub-item">Categories</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{route('admin.interviewCategories.index')}}">
+                      <span class="sub-item">Sub Categories</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{route('admin.interviews.index')}}">
+                      <span class="sub-item">Quizes  & Answers</span>
+                    </a>
+                  </li>                 
                 </ul>
               </div>
             </li>

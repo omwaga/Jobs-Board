@@ -33,4 +33,9 @@ class EducationController extends Controller
 		return back();
 
     }
+
+    public function destroy(Education $education)
+    {
+        $education->delete();
+    }
 }

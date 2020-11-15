@@ -41,6 +41,9 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="{{route('front.vacancies')}}" class="nav-link">Job Listings</a></li>
+          <li class="nav-item"><a href="{{route('front.interviews')}}" class="nav-link">Interview Q&A</a></li>
+          <!-- <li class="nav-item"><a href="#" class="nav-link">Resume Maker</a></li> -->
+          <!-- <li class="nav-item"><a href="#" class="nav-link">Career Guidance</a></li> -->
           <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
           <!-- Authentication Links -->
           @guest

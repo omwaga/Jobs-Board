@@ -13,6 +13,7 @@ use App\Category;
 use App\JobType;
 use App\PostingSubscription;
 use App\Vacancy;
+use App\InterviewCategories;
 
 class PagesController extends Controller
 {
@@ -128,30 +129,88 @@ class PagesController extends Controller
 
     public function search(Request $request)
     {
-        if($request->search !== null)
+        if($request->search === null && $request->category === null && $request->location === null && $request->job_type === null)
         {
-            $search = Vacancy::where('job_title', 'LIKE', "%{$request->search}%")->get();
+            $vacancies = Vacancy::orderBy('created_at', 'DESC')->paginate(15);
+            $categories = Category::all();
+            $locations = City::all();
+            $job_types = JobType::all();
+            $top_categories1 = Category::all()->random(4);
+            $top_categories2 = Category::all()->random(4);
+            $top_categories3 = Category::all()->random(4);
+            $top_categories4 = Category::all()->random(4);
 
-            return $search;  
+            SEOMeta::setTitle('Jobs In Kenya');
+
+            return view('front.search-result', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));
         }
-        else if($request->category !== null)
+        else if($request->search !== null && $request->category === null && $request->location === null && $request->job_type === null)
         {
-            $search = Vacancy::where('category', $request->category)->get();
+            $vacancies = Vacancy::where('job_title', 'LIKE', "%{$request->search}%")->orderBy('created_at', 'DESC')->paginate(15);
+            $categories = Category::all();
+            $locations = City::all();
+            $job_types = JobType::all();
+            $top_categories1 = Category::all()->random(4);
+            $top_categories2 = Category::all()->random(4);
+            $top_categories3 = Category::all()->random(4);
+            $top_categories4 = Category::all()->random(4);
 
-            return $search;  
+            SEOMeta::setTitle('Jobs In Kenya');
+
+            return view('front.search-result', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));
         }
-        else if($request->location !== null)
+        else if($request->category !== null && $request->search === null && $request->location === null && $request->job_type === null)
         {
-            $search = Vacancy::where('city', $request->location)->get();
+            $vacancies = Vacancy::where('category', $request->category)->orderBy('created_at', 'DESC')->paginate(15);
+            $categories = Category::all();
+            $locations = City::all();
+            $job_types = JobType::all();
+            $top_categories1 = Category::all()->random(4);
+            $top_categories2 = Category::all()->random(4);
+            $top_categories3 = Category::all()->random(4);
+            $top_categories4 = Category::all()->random(4);
 
-            return $search;  
+            SEOMeta::setTitle('Jobs In Kenya');
+
+            return view('front.search-result', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));
         }
-        else if($request->job_type !== null)
+        else if($request->location !== null  && $request->category === null && $request->search === null && $request->job_type === null)
         {
-            $search = Vacancy::where('job_type', $request->job_type)->get();
+            $vacancies = Vacancy::where('city', $request->location)->orderBy('created_at', 'DESC')->paginate(15);
+            $categories = Category::all();
+            $locations = City::all();
+            $job_types = JobType::all();
+            $top_categories1 = Category::all()->random(4);
+            $top_categories2 = Category::all()->random(4);
+            $top_categories3 = Category::all()->random(4);
+            $top_categories4 = Category::all()->random(4);
 
-            return $search;  
+            SEOMeta::setTitle('Jobs In Kenya');
+
+            return view('front.search-result', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));  
         }
+        else if($request->job_type !== null && $request->category === null && $request->location === null && $request->search === null)
+        {
+            $vacancies = Vacancy::where('job_type', $request->job_type)->orderBy('created_at', 'DESC')->paginate(15);
+            $categories = Category::all();
+            $locations = City::all();
+            $job_types = JobType::all();
+            $top_categories1 = Category::all()->random(4);
+            $top_categories2 = Category::all()->random(4);
+            $top_categories3 = Category::all()->random(4);
+            $top_categories4 = Category::all()->random(4);
+
+            SEOMeta::setTitle('Jobs In Kenya');
+
+            return view('front.search-result', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types')); 
+        }
+    }
+
+    public function interviews()
+    {
+        $categories = InterviewCategories::paginate(20);
+
+        return view('front.interviews', compact('categories'));
     }
 
 }

@@ -39,4 +39,9 @@ class ProjectController extends Controller
 
 		return back();
     }
+
+    public function destroy(Project $project)
+    {
+        $project->delete();
+    }
 }

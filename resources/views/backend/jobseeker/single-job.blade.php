@@ -72,8 +72,8 @@
             <div class="col-lg-8">
               <div class="mb-5">
                 {!!$job->description!!}
-                <h4>Application Details</h4>          
-                {!!$job->description!!}
+                <h3 class="text-primary b">Application Details</h3>          
+                {!!$job->how_to_apply!!}
               </div>
               <hr>
               <div class="col-4">

@@ -27,4 +27,9 @@ class SkillController extends Controller
 
 		return back();
     }
+
+    public function destroy(Skill $skill)
+    {
+        $skill->delete();
+    }
 }

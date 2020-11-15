@@ -28,19 +28,59 @@
               <small class="text-muted">
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" :data-target="'#editproject-'+index">
                   <i class="fas fa-edit"></i> Edit
-                </button></small>
-          <small class="text-muted">
-            <a href="#" class="btn btn-danger btn-sm">
-              <i class="fas fa-trash"></i> Delete
-            </a></small>
-              </div>
+                </button>
+              </small>
+              <small class="text-muted">
+                <button @click="deleteProject(project.id)" class="btn btn-danger btn-sm">
+                  <i class="fas fa-trash"></i> Delete
+                </button>
+              </small>
             </div>
-            <div class="separator-dashed"></div>
           </div>
+          <div class="separator-dashed"></div>
+        </div>
+      </div>
+
+      <form method="Post" action="{{route('jobseeker.projects.store')}}" @submit.prevent="projectsSubmit"  @keydown="projects.errors.clear($event.target.name)" v-if="!Projects.length">
+        @csrf
+        <p>Did you undertake any projects ? If Yes, please add the details below</p>
+        <div class="form-group">
+          <label>Project Name</label>                          
+          <input class="form-control" name="project_name" type="text" required value="{{old('project_name')}}" v-model="projects.project_name"/>
+          <span class="help text-danger" v-if="projects.errors.has('project_name')" v-text="projects.errors.get('project_name')"></span>
         </div>
 
-        <form method="Post" action="{{route('jobseeker.projects.store')}}" @submit.prevent="projectsSubmit"  @keydown="projects.errors.clear($event.target.name)" v-if="!Projects.length">
-          @csrf
+        <div class="form-group">
+          <label>Description</label>  
+          <textarea class="form-control" name="description" v-model="projects.description"></textarea>
+          <span class="help text-danger" v-if="projects.errors.has('description')" v-text="projects.errors.get('description')"></span>
+        </div>
+        <button type="submit" class="btn btn-secondary pull-right">Save</button>
+      </form>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-3 bg-secondary">
+        <h4 class="text-center text-white">Why add Projects?</h4>
+        <p class="text-white">If you have done any project in college, mentioning those will increase your profile views to recruiters</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Add Project Modal -->
+<div class="modal fade" id="addproject" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Project</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <form method="Post" action="{{route('jobseeker.projects.store')}}" @submit.prevent="projectsSubmit"  @keydown="projects.errors.clear($event.target.name)">
+        @csrf
+        <div class="modal-body">
           <p>Did you undertake any projects ? If Yes, please add the details below</p>
           <div class="form-group">
             <label>Project Name</label>                          
@@ -53,51 +93,13 @@
             <textarea class="form-control" name="description" v-model="projects.description"></textarea>
             <span class="help text-danger" v-if="projects.errors.has('description')" v-text="projects.errors.get('description')"></span>
           </div>
-          <button type="submit" class="btn btn-secondary pull-right">Save</button>
-        </form>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3 bg-secondary">
-          <h4 class="text-center text-white">Why add Projects?</h4>
-          <p class="text-white">If you have done any project in college, mentioning those will increase your profile views to recruiters</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--Add Project Modal -->
-  <div class="modal fade" id="addproject" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add Project</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        
-        <form method="Post" action="{{route('jobseeker.projects.store')}}" @submit.prevent="projectsSubmit"  @keydown="projects.errors.clear($event.target.name)">
-          @csrf
-          <div class="modal-body">
-            <p>Did you undertake any projects ? If Yes, please add the details below</p>
-            <div class="form-group">
-              <label>Project Name</label>                          
-              <input class="form-control" name="project_name" type="text" required value="{{old('project_name')}}" v-model="projects.project_name"/>
-              <span class="help text-danger" v-if="projects.errors.has('project_name')" v-text="projects.errors.get('project_name')"></span>
-            </div>
-
-            <div class="form-group">
-              <label>Description</label>  
-              <textarea class="form-control" name="description" v-model="projects.description"></textarea>
-              <span class="help text-danger" v-if="projects.errors.has('description')" v-text="projects.errors.get('description')"></span>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save Project</button>
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save Project</button>
           </div>
-        </form>
+        </div>
+      </form>
 
-      </div>
     </div>
   </div>
+</div>

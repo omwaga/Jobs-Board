@@ -34,7 +34,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('manage-users', function($user){
-            return $user->hasAnyRoles(['admin', 'company']);
+            return $user->hasAnyRoles(['admin']);
         });
 
         Gate::define('manage-companies', function($user){
@@ -53,6 +53,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasAnyRoles(['admin']);
         });
 
+        Gate::define('manage-interviews', function($user){
+            return $user->hasAnyRoles(['admin']);
+        });
+
         Gate::define('manage-posting-subscriptions', function($user){
             return $user->hasAnyRoles(['admin']);
         });
@@ -62,7 +66,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('manage-candidates', function($user){
-            return $user->hasAnyRoles(['admin', 'company']);
+            return $user->hasAnyRoles(['admin']);
         });
 
         Gate::define('manage-vacancies', function($user){

@@ -16,6 +16,11 @@ class InternshipController extends Controller
         return $internships;
     }
 
+    public function show(Internship $internship)
+    {
+        return $internship;
+    }
+
     public function store(Request $request)
     {
     	$attributes = request()->validate([
@@ -32,5 +37,10 @@ class InternshipController extends Controller
 		Alert::Success('Success!', 'Internship details saved successfully')->position('top-right')->toToast();
 
 		return back();
+    }
+
+    public function destroy(Internship $internship)
+    {
+        $internship->delete();
     }
 }

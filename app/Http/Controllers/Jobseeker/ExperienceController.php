@@ -32,4 +32,9 @@ class ExperienceController extends Controller
 
 		return back();
     }
+
+    public function destroy(Experience $experience)
+    {
+        $experience->delete();
+    }
 }

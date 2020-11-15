@@ -28,4 +28,9 @@ class AwardController extends Controller
 
 		return back();
     }
+
+    public function destroy(Award $award)
+    {
+        $award->delete();
+    }
 }

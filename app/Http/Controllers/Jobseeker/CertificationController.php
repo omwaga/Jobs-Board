@@ -30,4 +30,9 @@ class CertificationController extends Controller
 
 		return back();
     }
+
+    public function destroy(Certification $certification)
+    {
+        $certification->delete();
+    }
 }

@@ -24,7 +24,7 @@
       <div class="col-lg-4">
         <div class="row">
           <div class="col-6">
-            <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
+            <a href="{{route('login')}}" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
           </div>
           <div class="col-6">
             <a href="{{route('login')}}" class="btn btn-block btn-primary btn-md">Apply Now</a>
@@ -37,8 +37,8 @@
         <div class="mb-5">
           {!!$job->description!!}
 
-          <h4>Application Details</h4>          
-          {!!$job->description!!}
+          <h5 class="text-primary">Application Details</h5>          
+          {!!$job->how_to_apply!!}
         </div>
 
         <div class="row mt-5">

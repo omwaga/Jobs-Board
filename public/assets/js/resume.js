@@ -199,6 +199,7 @@ new Vue({
       Details:[],
       Educations:[],
       Internships:[],
+      editedInternship:[],
       Projects:[],
       Experiences:[],
       Skills:[],
@@ -252,6 +253,15 @@ new Vue({
     }),
 
       internships: new Form({
+        organization: '',
+        position: '',
+        start_date: '',
+        end_date: '',
+        current_internship: '',
+        responsibilities: ''
+    }),
+
+      editInternships: new Form({
         organization: '',
         position: '',
         start_date: '',
@@ -395,6 +405,63 @@ new Vue({
 
     showAwards(){        
         axios.get('/user/awards').then(response => this.Awards = response.data);     
+    },
+// Editing
+    editInternship(id){
+      axios.get('/user/internships/' + id).then(response => this.editedInternship = response.data);
+     this.editInternships.organization = this.editedInternship.organization;  
+     this.editInternships.position = this.editedInternship.position;  
+     this.editInternships.responsibilities = this.editedInternship.responsibilities;   
+    },
+
+// Delete Methods
+    deleteEducation(id){        
+        axios.delete('/user/educations/' + id)
+        .then(response => alert('Wahoo!'));
+
+        this.showEducations()    
+    },
+
+    deleteInternship(id){        
+        axios.delete('/user/internships/' + id)
+        .then(response => alert('Wahoo!'));
+
+        this.showInternships()    
+    },
+
+    deleteProject(id){        
+        axios.delete('/user/projects/' + id)
+        .then(response => alert('Wahoo!'));
+
+        this.showProjects()    
+    },
+
+    deleteExperience(id){        
+        axios.delete('/user/experiences/' + id)
+        .then(response => alert('Wahoo!'));
+
+        this.showExperiences()    
+    },
+
+    deleteSkill(id){        
+        axios.delete('/user/skills/' + id)
+        .then(response => alert('Wahoo!'));
+
+        this.showSkills()    
+    },
+
+    deleteCertification(id){        
+        axios.delete('/user/certifications/' + id)
+        .then(response => alert('Wahoo!'));
+
+        this.showCertifications()    
+    },
+
+    deleteAward(id){        
+        axios.delete('/user/awards/' + id)
+        .then(response => alert('Wahoo!'));
+
+        this.showAwards()    
     },
 }
 });

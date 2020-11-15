@@ -15,53 +15,65 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<div class="row mt-3">
-								<div class="col-md-6">
-									<div class="form-group form-group-default">
-										<label>Upload Profile Picture</label>
-										<input type="file" class="form-control" name="name" placeholder="Name" value="{{auth()->user()->name}}">
+							<form method="POST" action="{{route('jobseeker.updateUser', auth()->user()->id)}}">
+								@csrf
+								@method('PATCH')
+								<div class="row mt-3">
+									<div class="col-md-6">
+										<div class="form-group form-group-default">
+											<label>Upload Profile Picture</label>
+											<input type="file" class="form-control" name="name" placeholder="Profile Picture" value="{{auth()->user()->name}}">
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row mt-3">
-								<div class="col-md-6">
-									<div class="form-group form-group-default">
-										<label>Job Title/Designation</label>
-										<input type="text" class="form-control" name="name" placeholder="Name" value="{{auth()->user()->name}}">
+								<div class="row mt-3">
+									<div class="col-md-6">
+										<div class="form-group form-group-default">
+											<label>Job Title/Designation</label>
+											<input type="text" class="form-control" name="name" placeholder="Designation" value="{{auth()->user()->designation}}">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group form-group-default">
+											<div class="form-check">
+												<label class="form-radio-label">
+													<input class="form-radio-input" type="radio" name="show_profile" value="Yes"  checked="">
+													<span class="form-radio-sign">Show My Profile to Employers</span>
+												</label>
+												<label class="form-radio-label">
+													<input class="form-radio-input" type="radio" name="show_profile" value="No" >
+													<span class="form-radio-sign">Don't Show My Profile to Employers</span>
+												</label>
+											</div>
+										</div>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="form-group form-group-default">
-										<label>Show My Profile to Employers</label>
-										<input type="email" class="form-control" name="email" placeholder="Name" value="{{auth()->user()->email}}">
+								<div class="row mt-3">
+									<div class="col-md-6">
+										<div class="form-group form-group-default">
+											<label>Name</label>
+											<input type="text" class="form-control" name="name" placeholder="Full Name" value="{{auth()->user()->name}}">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group form-group-default">
+											<label>Email</label>
+											<input type="email" disabled="" class="form-control" name="email" placeholder="Email" value="{{auth()->user()->email}}">
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row mt-3">
-								<div class="col-md-6">
-									<div class="form-group form-group-default">
-										<label>Name</label>
-										<input type="text" class="form-control" name="name" placeholder="Name" value="{{auth()->user()->name}}">
+								<div class="row mt-3 mb-1">
+									<div class="col-md-12">
+										<div class="form-group form-group-default">
+											<label>About Me</label>
+											<textarea class="form-control" name="about" placeholder="About Me" rows="3">{{auth()->user()->about ?? ''}}</textarea>
+										</div>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="form-group form-group-default">
-										<label>Email</label>
-										<input type="email" disabled="" class="form-control" name="email" placeholder="Name" value="{{auth()->user()->email}}">
-									</div>
+								<div class="text-right mt-3 mb-3">
+									<button class="btn btn-success">Save</button>
 								</div>
-							</div>
-							<div class="row mt-3 mb-1">
-								<div class="col-md-12">
-									<div class="form-group form-group-default">
-										<label>About Me</label>
-										<textarea class="form-control" name="about" placeholder="About Me" rows="3">{{auth()->user()->about ?? ''}}</textarea>
-									</div>
-								</div>
-							</div>
-							<div class="text-right mt-3 mb-3">
-								<button class="btn btn-success">Save</button>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>

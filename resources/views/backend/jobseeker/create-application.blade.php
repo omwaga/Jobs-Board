@@ -112,7 +112,7 @@
                     </div>
                   </div>
                   <div class="card-action">
-                    <a href="#" class="btn btn-info">Back to Job Description</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-info">Back to Job Description</a>
                     <button class="btn btn-success" type="submit">Submit Application</button>
                   </div>
                 </form>

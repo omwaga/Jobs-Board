@@ -15,19 +15,19 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Organization @{{internship.organization}}</label>                          
-                  <input class="form-control" name="organization" type="text" required v-model="internships.organization"/>
+                  <input class="form-control" name="organization" type="text" required v-model="editInternships.organization"/>
                   <span class="help text-danger" v-if="internships.errors.has('organization')" v-text="internships.errors.get('organization')"></span>
                 </div>
 
                 <div class="form-group">
                   <label>Position </label>                          
-                  <input class="form-control" name="position" type="text" required value="{{old('position')}}" v-model="internships.position"/>
+                  <input class="form-control" name="position" type="text" required value="{{old('position')}}" v-model="editInternships.position"/>
                   <span class="help text-danger" v-if="internships.errors.has('position')" v-text="internships.errors.get('position')"></span>
                 </div>
 
                 <div class="form-group">
                   <label>Duties and Responsibilities</label>  
-                  <textarea class="form-control" name="responsibilities" v-model="internships.responsibilities"></textarea>
+                  <textarea class="form-control" name="responsibilities" v-model="editInternships.responsibilities"></textarea>
                   <span class="help text-danger" v-if="internships.errors.has('responsibilities')" v-text="internships.errors.get('responsibilities')"></span>
                 </div>
               </div>

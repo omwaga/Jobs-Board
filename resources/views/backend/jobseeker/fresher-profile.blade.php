@@ -1,6 +1,6 @@
 @extends('layouts.career-profile')
 @section('content')
-<div class="container" id="app">
+<div class="container" id="app" v-cloak>
   <div class="content">
     <div class="page-inner">
       <h4 class="page-title text-center">Welcome {{auth()->user()->name ?? ''}},</h4>

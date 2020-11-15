@@ -16,6 +16,7 @@ Route::name('front.')->group(function(){
 	Route::get('/employer/register', 'PagesController@employerregister')->name('employer.register');
 	Route::get('/jobseeker/register', 'PagesController@jobseekerregister')->name('jobseeker.register');
 	Route::get('/search', 'PagesController@search')->name('jobseeker.search');
+	Route::get('/interview-questions', 'PagesController@interviews')->name('interviews');
 });
 
 Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(function(){
@@ -43,6 +44,7 @@ Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(functio
 	Route::get('/dashboard', 'HomeController@index')->name('home');
 	Route::get('/category/{categorySlug}', 'PagesController@categorySlug')->name('category');
 	Route::resource('savedjobs', 'SavedJobsController');
+	Route::patch('/user/{id}', 'HomeController@updateUser')->name('updateUser');
 });
 
 Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function(){
@@ -59,6 +61,8 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 	Route::resource('vacancies', 'VacancyController');
 	Route::patch('vacancy/publish/{id}', 'VacancyController@publish')->name('vacancies.publish');
 	Route::get('applications', 'AdminController@applications')->name('applications');
+	Route::resource('/interviewCategories', 'InterviewCategoriesController');
+	Route::resource('/interviews', 'InterviewsController');
 });
 
 Route::get('/portfolio', function () {
