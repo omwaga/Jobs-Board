@@ -9,11 +9,16 @@ class City extends Model
 {
     use Sluggable;
 
-    protected $fillable = ['name', 'country_id', 'slug'];
+    protected $fillable = ['name', 'country_id', 'slug', 'description'];
 
     public function country()
     {
     	return $this->belongsTo(Country::class);
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany(Vacancy::class, 'id', 'city');
     }
 
     /**

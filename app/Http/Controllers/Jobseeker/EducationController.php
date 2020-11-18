@@ -9,6 +9,12 @@ use App\Education;
 
 class EducationController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index()
     {
         $educations = Education::where('user_id', auth()->user()->id)->get();

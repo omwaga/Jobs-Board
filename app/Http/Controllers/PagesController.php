@@ -29,6 +29,7 @@ class PagesController extends Controller
         $job_types = JobType::all();
 
         SEOMeta::setTitle('Recruitable Jobs In Kenya');
+        SEOMeta::setDescription('Recruitable Jobs In Kenya');
         return view('front.index', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));
     }
 
@@ -51,6 +52,7 @@ class PagesController extends Controller
         $top_categories4 = Category::all()->random(4);
 
         SEOMeta::setTitle('Jobs In Kenya');
+        SEOMeta::setDescription('Recruitable Jobs In Kenya');
 
         return view('front.vacancies', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));
     }
@@ -67,6 +69,7 @@ class PagesController extends Controller
 
 
         SEOMeta::setTitle($job->job_title);
+        SEOMeta::setDescription($job->job_title.' job in kenya');
 
         return view('front.single-job', compact('related_jobs', 'page_banner', 'categories', 'locations', 'job_types', 'job', 'similar_jobs'));
     }
@@ -74,15 +77,15 @@ class PagesController extends Controller
     public function categorySlug($categorySlug)
     {
         $categoryId = Category::where('slug', $categorySlug)->value('id');
+        $category= Category::where('slug', $categorySlug)->first();
         $page_banner = Category::where('slug', $categorySlug)->first();
         $vacancies = Vacancy::where([['category', $categoryId],['status', 'published']])->orderBy('created_at', 'DESC')->get();
         $categories = Category::all();
         $locations = City::all();
         $job_types = JobType::all();
 
-
-
         SEOMeta::setTitle($page_banner->name.' Jobs in Kenya');
+        SEOMeta::setDescription($category->description);
 
         return view('front.categories', compact('vacancies', 'page_banner', 'categories', 'locations', 'job_types'));
     }
@@ -97,6 +100,7 @@ class PagesController extends Controller
         $job_types = JobType::all();
 
         SEOMeta::setTitle(' Jobs in '. $location->name);
+        SEOMeta::setDescription($location->description);
 
         return view('front.locations', compact('vacancies', 'categories', 'locations', 'job_types'));
     }
@@ -104,10 +108,15 @@ class PagesController extends Controller
     public function typeSlug($typeSlug)
     {
         $typeId = JobType::where('slug', $typeSlug)->value('id');
+        $type = JobType::where('slug', $typeSlug)->first();
         $vacancies = Vacancy::where([['job_type', $typeId ],['status', 'published']])->orderBy('created_at', 'DESC')->get();
         $categories = Category::all();
         $locations = City::all();
         $job_types = JobType::all();
+
+
+        SEOMeta::setTitle($type->name. ' Jobs in Kenya');
+        SEOMeta::setDescription($type->description);
 
         return view('front.job-types', compact('vacancies', 'categories', 'locations', 'job_types'));
     }
@@ -209,6 +218,9 @@ class PagesController extends Controller
     public function interviews()
     {
         $categories = InterviewCategories::paginate(20);
+
+        SEOMeta::setTitle('Interview Questions and Answers');
+        SEOMeta::setDescription('Interview Questions and Answers');
 
         return view('front.interviews', compact('categories'));
     }

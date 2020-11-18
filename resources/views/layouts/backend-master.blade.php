@@ -405,7 +405,7 @@
                     </a>
                   </li> 
                   <li>
-                    <a href="#">
+                    <a href="{{route('admin.companys')}}">
                       <span class="sub-item">Company Profiles</span>
                     </a>
                   </li>                  

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInterviewsTable extends Migration
+class CreateBlogPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateInterviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('interviews', function (Blueprint $table) {
-            $table->id();
+        Schema::create('blog_posts', function (Blueprint $table) {
+            $table->id();   
             $table->unsignedBigInteger('category_id');
-            $table->string('question');
+            $table->string('title');
             $table->string('slug');
-            $table->text('answer');
+            $table->text('description');
+            $table->string('cover_image')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')
             ->references('id')
-            ->on('interview_categories')
-            ->onDelete('cascade');
+            ->on('blog_categories')
+            ->onDelete('cascade'); 
         });
     }
 
@@ -35,6 +36,6 @@ class CreateInterviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interviews');
+        Schema::dropIfExists('blog_posts');
     }
 }

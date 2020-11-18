@@ -49,6 +49,7 @@ Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(functio
 
 Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function(){
 	Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
+	Route::get('/companys', 'AdminController@companys')->name('companys');
 	Route::resource('/users', 'UsersController');
 	Route::resource('/categories', 'CategoryController');
 	Route::resource('/industries', 'IndustryController');

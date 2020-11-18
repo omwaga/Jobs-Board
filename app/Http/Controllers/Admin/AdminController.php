@@ -31,4 +31,9 @@ class AdminController extends Controller
 
 		return view('backend.applications', compact('applications'));
 	}
+
+	public function companys()
+	{
+		dd ('hello');
+	}
 }

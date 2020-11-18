@@ -9,6 +9,12 @@ use App\Award;
 
 class AwardController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index()
     {
         $awards = Award::where('user_id', auth()->user()->id)->get();

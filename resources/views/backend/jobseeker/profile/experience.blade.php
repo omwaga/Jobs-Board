@@ -1,4 +1,3 @@
-
 <div class="tab-pane fade" id="work-experience" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
   <div class="row">
     <div class="col-md-8">

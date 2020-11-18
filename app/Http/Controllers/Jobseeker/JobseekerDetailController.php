@@ -10,6 +10,12 @@ use App\JobseekerDetail;
 
 class JobseekerDetailController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index()
     {
         $details = JobseekerDetail::with(['city', 'home'])->where('user_id', auth()->user()->id)->first();

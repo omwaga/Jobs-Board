@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     /**
      * Create a new controller instance.
      *

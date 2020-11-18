@@ -9,6 +9,12 @@ use App\Experience;
 
 class ExperienceController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index()
     {
         $experiences = Experience::where('user_id', auth()->user()->id)->get();

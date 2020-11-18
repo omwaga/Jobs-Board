@@ -2,7 +2,7 @@
 	<div class="categories">
 		<h3 class="heading-3 text-center text-primary">Job by Category</h3>
 		@foreach($categories as $category)
-		<li><a href="{{route('front.category', $category->slug)}}">{{$category->name ?? ''}}<span>(12)</span></a></li>
+		<li><a href="{{route('front.category', $category->slug)}}">{{$category->name ?? ''}}<span class="text-success">({{$category->jobs->count()}} jobs)</span></a></li>
 		@endforeach
 	</div>
 </div>
@@ -11,7 +11,7 @@
 	<div class="categories pt-3">
 		<h3 class="heading-3 text-center text-primary">Job by Location</h3>
 		@foreach($locations as $location)
-		<li><a href="{{route('front.location', $location->slug)}}">{{$location->name ?? ''}}, {{$location->country->name ?? ''}}<span>(12)</span></a></li>
+		<li><a href="{{route('front.location', $location->slug)}}">{{$location->name ?? ''}}, {{$location->country->name ?? ''}}<span class="text-success">({{$location->jobs->count()}} jobs)</span></a></li>
 		@endforeach
 	</div>
 </div>
@@ -20,7 +20,7 @@
 	<div class="categories pt-3">
 		<h3 class="heading-3 text-center text-primary">Jobs by Type</h3>
 		@foreach($job_types as $type)
-		<li><a href="{{route('front.type', $type->slug)}}">{{$type->name}}<span>(12)</span></a></li>
+		<li><a href="{{route('front.type', $type->slug)}}">{{$type->name}}<span class="text-success">({{$type->jobs->count()}} jobs)</span></a></li>
 		@endforeach
 	</div>
 </div>

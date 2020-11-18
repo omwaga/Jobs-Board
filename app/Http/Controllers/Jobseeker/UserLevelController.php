@@ -10,6 +10,12 @@ use User;
 
 class UserLevelController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function store(Request $request)
     {
     	UserLevel::create(['level' => $request->level, 'user_id' => auth()->user()->id]);

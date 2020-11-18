@@ -9,6 +9,12 @@ use App\Certification;
 
 class CertificationController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index()
     {
         $certifications = Certification::where('user_id', auth()->user()->id)->get();

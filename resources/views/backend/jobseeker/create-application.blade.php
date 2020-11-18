@@ -64,6 +64,9 @@
                 </div>
               </div>
               <div class="col-md-8">
+                <div align="center">
+                <a href="#" class="btn btn-info">Apply using your recruitable career profile</a>
+                </div>
                 <form action="{{route('jobseeker.application.store', $vacancy->id)}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="row">

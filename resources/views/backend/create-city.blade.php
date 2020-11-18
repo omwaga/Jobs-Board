@@ -42,17 +42,21 @@
 							<form method="Post" action="{{route('admin.cities.store')}}">
 								@csrf
 								<div class="form-group">
-									<label for="email2">Name</label>
+									<label>Name</label>
 									<input class="form-control" name="name" type="text" required value="{{old('name')}}" />
 								</div>
 								<div class="form-group">
-									<label for="email2">Country</label>
+									<label>Country</label>
 									<select class="form-control m-bot15" name="country_id">
 										<option value="">Select Country</option>
 										@foreach($countries as $country)
 										<option value="{{$country->id}}">{{$country->name}}</option>
 										@endforeach
 									</select>
+								</div>
+								<div class="form-group">
+									<label>Description</label>
+									<textarea class="form-control" name="description">{{old('description')}}</textarea>
 								</div>
 								<div class="form-group">
 									<div class="col-lg-offset-2 col-lg-10">

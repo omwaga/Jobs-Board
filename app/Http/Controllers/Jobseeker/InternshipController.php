@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class InternshipController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index()
     {
         $internships = Internship::where('user_id', auth()->user()->id)->get();

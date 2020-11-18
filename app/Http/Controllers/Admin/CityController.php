@@ -10,6 +10,9 @@ use App\Country;
 
 class CityController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -72,6 +75,7 @@ class CityController extends Controller
        $attributes = $request->validate([
         'name' => 'required|unique:cities|min:3|unique:cities',
         'country_id' => 'required',
+        'description' => 'nullable',
     ]); 
 
        City::create($attributes);
@@ -93,6 +97,7 @@ class CityController extends Controller
        $attributes = $request->validate([
         'name' => 'required|min:3',
         'country_id' => 'required',
+        'description' => 'nullable',
     ]);
 
        $city->update($attributes);

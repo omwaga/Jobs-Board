@@ -9,6 +9,12 @@ use App\Documents;
 
 class DocumentsController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function store(Request $request)
     {
     	$attributes = $request->validate([

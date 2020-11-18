@@ -9,7 +9,7 @@
       <div class="col-lg-8 mb-4 mb-lg-0">
         <div class="d-flex align-items-center">
           <div class="border p-2 d-inline-block mr-3 rounded">
-            <img src="{{asset('front/images/featured-listing-1.jpg')}}" alt="{{$job->job_title}}">
+            <img src="{{asset('front/images/logo.png')}}" alt="{{$job->job_title}}">
           </div>
           <div>
             <h2>{{$job->job_title ?? ''}}</h2>
@@ -41,7 +41,7 @@
           {!!$job->how_to_apply!!}
         </div>
 
-        <div class="row mt-5">
+        <div class="row mt-5 mb-5">
           <div class="col-6">
             <a href="{{route('login')}}" class="btn btn-danger">Login to Apply</a>
           </div>

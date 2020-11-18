@@ -63,7 +63,7 @@
                   </form>
                 </div>
                 <div class="col-6">
-                  <a href="{{route('jobseeker.application.create', $job->id)}}" class="btn btn-block btn-primary btn-md">Apply Now</a>
+                  <a href="{{route('jobseeker.application.create', $job->id)}}" class="btn btn-block btn-primary btn-md" data-toggle="modal" data-target="#application">Apply Now</a>
                 </div>
               </div>
             </div>
@@ -108,6 +108,53 @@
           </div>
         </div>
       </section>
+    </div>
+  </div>
+</div>
+
+
+<!--Add Experience Modal -->
+<div class="modal fade" id="application" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">How do you want to apply?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="container pt-3">    
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <div class="card card-stats card-round">
+              <div class="card-body text-center">
+                <div class="icon-big text-center">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                  @if(!auth()->user()->selectedLevel)
+                  <a  href="{{route('jobseeker.levelSelection')}}" class="btn btn-info">Recruitable Apply</a> 
+                  @else
+                  <a  href="{{route('jobseeker.'.auth()->user()->selectedLevel->level)}}" class="btn btn-info">Recruitable Apply
+                  </a> 
+                  @endif
+                <p class="card-category">I have just graduated/ I haven't worked after graduation</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <div class="card card-stats card-round">
+              <div class="card-body text-center">
+                <div class="icon-big text-center">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <a href="{{route('jobseeker.application.create', $job->id)}}" class="btn btn-info">Send CV and Cover Letter</a>
+                <p class="card-category">I have at least one month of work experience</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

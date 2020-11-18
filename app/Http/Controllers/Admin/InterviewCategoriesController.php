@@ -9,9 +9,15 @@ use App\InterviewCategories;
 
 class InterviewCategoriesController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
 	public function index()
 	{
-		$categories = InterviewCategories::all();
+		$categories = InterviewCategories::orderBy('created_at', 'DESC')->get();
 
 		return view('backend.interviews.interview-categories', compact('categories'));
 	}
@@ -25,10 +31,34 @@ class InterviewCategoriesController extends Controller
 	{
 		$attributes = $request->validate([
 			'name' => 'required|min:3|unique:interview_categories',
+			'cover_image' => 'nullable',
 			'description' => 'nullable'
 		]);
 
 		InterviewCategories::create($attributes);
+
+		Alert::Success('Success!', 'Category added successfully')->position('top-right')->toToast();
+
+		return redirect(route('admin.interviewCategories.index'));
+	}
+
+	public function edit(InterviewCategories $interviewCategory)
+	{
+		return view('backend.interviews.edit-category', compact('interviewCategory'));
+	}
+
+	public function update(InterviewCategories $interviewCategory, Request $request)
+	{
+		$interviewCategory->update(request(['name', 'description']));
+
+		Alert::Success('Success!', 'Category updated successfully')->position('top-right')->toToast();
+
+		return redirect(route('admin.interviewCategories.index'));
+	}
+
+	public function destroy(InterviewCategories $interviewCategory)
+	{
+		$interviewCategory->delete();
 
 		Alert::Success('Success!', 'Category added successfully')->position('top-right')->toToast();
 

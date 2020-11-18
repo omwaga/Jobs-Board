@@ -9,6 +9,12 @@ use App\Skill;
 
 class SkillController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index()
     {
         $skills = Skill::where('user_id', auth()->user()->id)->get();

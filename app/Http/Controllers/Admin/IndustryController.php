@@ -10,6 +10,11 @@ use App\Industry;
 class IndustryController extends Controller
 {
 
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *

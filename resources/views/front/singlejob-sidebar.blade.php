@@ -12,7 +12,7 @@
 	<div class="categories">
 		<h3 class="heading-3 text-center text-primary">Job by Category</h3>
 		@foreach($categories as $category)
-		<li><a href="{{route('front.category', $category->slug)}}">{{$category->name ?? ''}}<span>(12)</span></a></li>
+		<li><a href="{{route('front.category', $category->slug)}}">{{$category->name ?? ''}}<span class="text-success">({{$category->jobs->count()}} jobs)</span></a></li>
 		@endforeach
 	</div>
 </div>
