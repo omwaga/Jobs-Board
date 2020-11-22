@@ -428,7 +428,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="{{route('admin.interviewCategories.index')}}">
+                    <a href="{{route('admin.subcategories.index')}}">
                       <span class="sub-item">Sub Categories</span>
                     </a>
                   </li>

@@ -10,11 +10,11 @@ use App\InterviewCategories;
 class InterviewCategoriesController extends Controller
 {
 
-    public function __construct()
-    {
-        return $this->middleware('auth');
-    }
-    
+	public function __construct()
+	{
+		return $this->middleware('auth');
+	}
+
 	public function index()
 	{
 		$categories = InterviewCategories::orderBy('created_at', 'DESC')->get();
@@ -34,6 +34,11 @@ class InterviewCategoriesController extends Controller
 			'cover_image' => 'nullable',
 			'description' => 'nullable'
 		]);
+
+		if ($request->hasFile('cover_image')) {
+			$attributes['cover_image'] = $request->cover_image->getClientOriginalName();
+			$request->cover_image->storeAs('public/interview_categories', $attributes['cover_image']);
+		}
 
 		InterviewCategories::create($attributes);
 

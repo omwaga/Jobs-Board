@@ -4,7 +4,7 @@
   <div class="content">
     <div class="page-inner">
       <div class="page-header">
-        <h4 class="page-title">Interview Questions Management</h4>
+        <h4 class="page-title">Interview Sub-category Management</h4>
         <ul class="breadcrumbs">
           <li class="nav-home">
             <a href="{{route('admin.dashboard')}}">
@@ -21,13 +21,7 @@
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="{{route('admin.interviewCategories.index')}}">Categories</a>
-          </li>
-          <li class="separator">
-            <i class="flaticon-right-arrow"></i>
-          </li>
-          <li class="nav-item">
-            <a href="#">Interview Questions Management</a>
+            <a href="#">Interview Sub-category Management</a>
           </li>
         </ul>
       </div>
@@ -35,7 +29,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <a href="{{route('admin.interviews.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Question & Answer</a>
+              <a href="{{route('admin.subcategories.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Sub-category</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -51,24 +45,24 @@
                   <tfoot>
                     <tr>
                       <th>#</th>
-                      <th>Question</th>
+                      <th>Name</th>
                       <th>Category</th>
                       <th>Action</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     @php $no = 0 @endphp
-                    @foreach($questions as $question)
+                    @foreach($subcategories as $subcategory)
                     @php $no = $no + 1 @endphp
                     <tr>
                       <td>{{$no}}</td>
-                      <td>{{$question->question}}</td>
-                      <td>{{$question->category->name}}</td>
+                      <td>{{$subcategory->name}}</td>
+                      <td>{{$subcategory->category->name}}</td>
                       <td>
                         <div class="btn-group">
-                          <a class="btn btn-primary btn-sm" href="{{route('admin.interviews.edit', $question->id)}}"><i class="fas fa-edit"></i> Edit</a>
+                          <a class="btn btn-primary btn-sm" href="{{route('admin.subcategories.edit', $subcategory->id)}}"><i class="fas fa-edit"></i> Edit</a>
 
-                          <form method="POST" action="{{route('admin.interviews.destroy', $question->id)}}" id="delete-form">
+                          <form method="POST" action="{{route('admin.subcategories.destroy', $subcategory->id)}}" id="delete-form">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash"></i> Delete</button>

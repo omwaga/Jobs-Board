@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {!! SEOMeta::generate() !!}
+  {!! SEOMeta::generate() !!}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="{{asset('front/css/style.css')}}">
 </head>
 <body>
+  @include('sweetalert::alert')
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
@@ -93,13 +94,14 @@
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-          <h2>Subcribe to our Newsletter</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+          <h2>Recruitable JobSpeak</h2>
+          <p>Get monthly Job Index that provides insights into hiring trends in your city, job function, job category and industry.</p>
           <div class="row d-flex justify-content-center mt-4 mb-4">
             <div class="col-md-8">
-              <form action="#" class="subscribe-form">
+              <form action="{{route('front.emails.store')}}" method="POST" class="subscribe-form">
+                @csrf
                 <div class="form-group d-flex">
-                  <input type="text" class="form-control" placeholder="Enter email address">
+                  <input type="email" name="email" class="form-control" placeholder="Enter email address">
                   <input type="submit" value="Subscribe" class="submit px-3">
                 </div>
               </form>

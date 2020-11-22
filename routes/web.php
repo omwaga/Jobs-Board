@@ -17,6 +17,9 @@ Route::name('front.')->group(function(){
 	Route::get('/jobseeker/register', 'PagesController@jobseekerregister')->name('jobseeker.register');
 	Route::get('/search', 'PagesController@search')->name('jobseeker.search');
 	Route::get('/interview-questions', 'PagesController@interviews')->name('interviews');
+	Route::get('/interviews/{name}', 'PagesController@interviewCategory')->name('interviewCategory');
+	Route::get('/interviews/category/{slug}', 'PagesController@interviewSubcategory')->name('interviewSubcategory');
+	Route::POST('/emails', 'EmailSubscriptionController@store')->name('emails.store');
 });
 
 Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(function(){
@@ -63,6 +66,7 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 	Route::patch('vacancy/publish/{id}', 'VacancyController@publish')->name('vacancies.publish');
 	Route::get('applications', 'AdminController@applications')->name('applications');
 	Route::resource('/interviewCategories', 'InterviewCategoriesController');
+	Route::resource('/subcategories', 'InterviewSubcategoriesController');
 	Route::resource('/interviews', 'InterviewsController');
 });
 

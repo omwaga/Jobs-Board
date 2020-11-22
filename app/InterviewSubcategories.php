@@ -1,25 +1,20 @@
 <?php
 
 namespace App;
-
-use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 
-class Interviews extends Model
+class InterviewSubcategories extends Model
 {
     use Sluggable;
-    protected $guarded = [];
 
+    protected $guarded = [];
+    
     public function category()
     {
         return $this->belongsTo(InterviewCategories::class);
     }
-
-    public function subcategory()
-    {
-        return $this->belongsTo(InterviewSubcategories::class);
-    }
-
+    
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -29,7 +24,7 @@ class Interviews extends Model
     {
         return [
             'slug' => [
-                'source' => 'question'
+                'source' => 'name'
             ]
         ];
     }

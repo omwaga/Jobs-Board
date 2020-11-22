@@ -13,11 +13,6 @@ use App\JobType;
 
 class SavedJobsController extends Controller
 {
-
-    public function __construct()
-    {
-        return $this->middleware('auth');
-    }
     
     /**
      * Create a new controller instance.

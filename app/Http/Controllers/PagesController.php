@@ -14,6 +14,8 @@ use App\JobType;
 use App\PostingSubscription;
 use App\Vacancy;
 use App\InterviewCategories;
+use App\InterviewSubcategories;
+use App\Interviews;
 
 class PagesController extends Controller
 {
@@ -218,11 +220,27 @@ class PagesController extends Controller
     public function interviews()
     {
         $categories = InterviewCategories::paginate(20);
+        $interviews = Interviews::limit(9)->orderBy('created_at', 'DESC')->get();
+        $popular_interviews = Interviews::limit(9)->get();
 
         SEOMeta::setTitle('Interview Questions and Answers');
         SEOMeta::setDescription('Interview Questions and Answers');
 
-        return view('front.interviews', compact('categories'));
+        return view('front.interviews', compact('categories', 'interviews', 'popular_interviews'));
+    }
+    public function interviewSubcategory($slug)
+    {
+        $category = InterviewCategories::where('slug', $slug)->first();
+
+        SEOMeta::setTitle($category->name . ' - Interview Questions and Answers');
+        SEOMeta::setDescription($category->description);
+
+        return view('front.interview-subcategories', compact('category'));
+    }
+
+    public function interviewCategory($name)
+    {
+        return view('front.interview-category');
     }
 
 }
