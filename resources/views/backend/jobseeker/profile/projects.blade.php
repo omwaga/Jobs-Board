@@ -17,9 +17,6 @@
         <div class="card-body" v-for="(project, index) in Projects" :key="project.id">
           @include('backend.jobseeker.profile.edit-projects')
           <div class="d-flex">
-            <div class="avatar avatar-online">
-              <span class="avatar-title rounded-circle border border-white bg-info">J</span>
-            </div>
             <div class="flex-1 ml-3 pt-1">
               <h5 class="text-uppercase fw-bold mb-1">@{{project.project_name}} </h5>
               <span class="text-muted">@{{project.description}}</span>

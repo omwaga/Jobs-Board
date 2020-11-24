@@ -441,6 +441,34 @@
               </div>
             </li>
             @endcan
+            @can('manage-interviews')
+            <li class="nav-item">
+              <a data-toggle="collapse" href="#blog">
+                <i class="fas fa-graduation-cap"></i>
+                <p>Blog</p>
+                <span class="caret"></span>
+              </a>
+              <div class="collapse" id="blog">
+                <ul class="nav nav-collapse">
+                  <li>
+                    <a href="{{route('admin.blogcategories.index')}}">
+                      <span class="sub-item">Categories</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{route('admin.blogsubcategories.index')}}">
+                      <span class="sub-item">Sub Categories</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{route('admin.blogposts.index')}}">
+                      <span class="sub-item">Blog Articles</span>
+                    </a>
+                  </li>                 
+                </ul>
+              </div>
+            </li>
+            @endcan
 
             @can('manage-candidates')
             <li class="nav-item">

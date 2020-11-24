@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="{{asset('front/css/ionicons.min.css')}}">
 
   <link rel="stylesheet" href="{{asset('front/css/bootstrap-datepicker.css')}}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
 
 
   <link rel="stylesheet" href="{{asset('front/css/flaticon.css')}}">
@@ -44,8 +45,8 @@
           <li class="nav-item"><a href="{{route('front.vacancies')}}" class="nav-link">Job Listings</a></li>
           <li class="nav-item"><a href="{{route('front.interviews')}}" class="nav-link">Interview Q&A</a></li>
           <!-- <li class="nav-item"><a href="#" class="nav-link">Resume Maker</a></li> -->
-          <!-- <li class="nav-item"><a href="#" class="nav-link">Career Guidance</a></li> -->
-          <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Career Guidance</a></li>
+          <li class="nav-item"><a href="{{route('front.blog')}}" class="nav-link">Blog</a></li>
           <!-- Authentication Links -->
           @guest
           <li class="nav-item cta mr-md-2"><a href="{{route('front.employer.register')}}" class="nav-link">Post a Job</a></li>
@@ -195,6 +196,13 @@
 <script src="{{asset('front/js/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('front/js/scrollax.min.js')}}"></script>
 <script src="{{asset('front/js/main.js')}}"></script>
+
+
+<script type="text/javascript">
+  $("img").lazyload({
+      effect : "fadeIn"
+  });
+</script>
 
 </body>
 </html>

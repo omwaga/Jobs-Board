@@ -16,9 +16,6 @@
         <div class="card-body" v-for="(skill, index) in Skills" :key="skill.id">
           @include('backend.jobseeker.profile.edit-skill')
           <div class="d-flex">
-            <div class="avatar avatar-online">
-              <span class="avatar-title rounded-circle border border-white bg-info">J</span>
-            </div>
             <div class="flex-1 ml-3 pt-1">
               <h5 class="text-uppercase fw-bold mb-1">@{{skill.name}} </h5>
             </div>

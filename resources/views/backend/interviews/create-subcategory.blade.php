@@ -39,7 +39,7 @@
 							<div class="card-title">New Sub Category </div>
 						</div>
 						<div class="card-body">
-							<form method="Post" action="{{route('admin.subcategories.store')}}">
+							<form method="Post" action="{{route('admin.subcategories.store')}}" enctype="multipart/form-data">
 								@csrf					
 								
 								<div class="form-group">

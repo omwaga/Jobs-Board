@@ -306,99 +306,30 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-</section>
-
-
-
-<section class="ftco-section testimony-section">
-	<div class="container">
-		<div class="row justify-content-center mb-5 pb-3">
-			<div class="col-md-7 text-center heading-section ftco-animate">
-				<span class="subheading">Testimonial</span>
-				<h2 class="mb-4"><span>Happy</span> Clients</h2>
-			</div>
-		</div>
-		<div class="row ftco-animate">
-			<div class="col-md-12">
-				<div class="carousel-testimony owl-carousel ftco-owl">
-					<div class="item">
+					<div class="item p-4 mt-3 bg-white">
 						<div class="testimony-wrap py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-							</div>
+							<h4>Services for Recruiters</h4>
 							<div class="text">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Roger Scott</p>
-								<span class="position">Marketing Manager</span>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-							</div>
-							<div class="text">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Roger Scott</p>
-								<span class="position">Interface Designer</span>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-							</div>
-							<div class="text">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Roger Scott</p>
-								<span class="position">UI Designer</span>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-							</div>
-							<div class="text">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Roger Scott</p>
-								<span class="position">Web Developer</span>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-							</div>
-							<div class="text">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Roger Scott</p>
-								<span class="position">System Analyst</span>
+								<ul class="mb-3" style="list-style: none">
+									<li><span class="icon-my_location"></span> Recruitable Employer Zone</li>
+									<small>End your hunt for the perfect employee</small>
+									<li>Search CVs for Free now</li>
+									<small>Find the right candidate</small>
+									<li>Naukri Job Posting Services and Resume Database Access</li>
+									<small>Call 1800-102-2558 for Employer products</small>
+									<li>Campus Hiring Solutions</li>
+									<small>Optimize your Fresher Hiring</small>
+									<li>Naukri RMS</li>
+									<small>Automate your end to end hiring process.</small>
+								</ul>
+								<button class="btn btn-primary">Get Started</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
 </section>
 

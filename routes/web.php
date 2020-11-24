@@ -17,8 +17,11 @@ Route::name('front.')->group(function(){
 	Route::get('/jobseeker/register', 'PagesController@jobseekerregister')->name('jobseeker.register');
 	Route::get('/search', 'PagesController@search')->name('jobseeker.search');
 	Route::get('/interview-questions', 'PagesController@interviews')->name('interviews');
-	Route::get('/interviews/{name}', 'PagesController@interviewCategory')->name('interviewCategory');
-	Route::get('/interviews/category/{slug}', 'PagesController@interviewSubcategory')->name('interviewSubcategory');
+	Route::get('/interviews/category/{name}', 'PagesController@interviewCategory')->name('interviewCategory');
+	Route::get('/interviews/{slug}', 'PagesController@interviewSubcategory')->name('interviewSubcategory');
+	Route::get('/blog', 'PagesController@blog')->name('blog');
+	Route::get('/blog/{slug}', 'PagesController@blogCategory')->name('blogSubcategory');
+	Route::get('/blog/category/{slug}', 'PagesController@blogSubcategory')->name('blog.articles');
 	Route::POST('/emails', 'EmailSubscriptionController@store')->name('emails.store');
 });
 
@@ -68,6 +71,9 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 	Route::resource('/interviewCategories', 'InterviewCategoriesController');
 	Route::resource('/subcategories', 'InterviewSubcategoriesController');
 	Route::resource('/interviews', 'InterviewsController');
+	Route::resource('/blogcategories', 'BlogCategoryController');
+	Route::resource('/blogsubcategories', 'BlogSubcategoriesController');
+	Route::resource('/blogposts', 'BlogPostController');
 });
 
 Route::get('/portfolio', function () {

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\InterviewSubcategories;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\InterviewCategories;
+use App\InterviewSubcategories;
 
 use Illuminate\Http\Request;
 
@@ -40,6 +40,11 @@ class InterviewSubcategoriesController extends Controller
 			'description' => 'nullable'
 		]);
 
+		if ($request->hasFile('cover_image')) {
+			$attributes['cover_image'] = $request->cover_image->getClientOriginalName();
+			$request->cover_image->storeAs('public/interview_sub_categories', $attributes['cover_image']);
+		}
+
 		InterviewSubcategories::create($attributes);
 
 		Alert::Success('Success!', 'Sub category added successfully')->position('top-right')->toToast();
@@ -56,7 +61,18 @@ class InterviewSubcategoriesController extends Controller
 
 	public function update(InterviewSubcategories $subcategory, Request $request)
 	{
-		$subcategory->update(request(['name', 'description', 'category_id']));
+		$attributes = $request->validate([
+			'name' => 'required|min:3',
+			'cover_image' => 'nullable',
+			'category_id' => 'required',
+			'description' => 'nullable'
+		]);
+
+		if ($request->hasFile('cover_image')) {
+			$attributes['cover_image'] = $request->cover_image->getClientOriginalName();
+			$request->cover_image->storeAs('public/interview_sub_categories', $attributes['cover_image']);
+		}
+		$subcategory->update($attributes);
 
 		Alert::Success('Success!', 'Sub category updated successfully')->position('top-right')->toToast();
 

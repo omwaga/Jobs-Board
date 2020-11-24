@@ -54,7 +54,18 @@ class InterviewCategoriesController extends Controller
 
 	public function update(InterviewCategories $interviewCategory, Request $request)
 	{
-		$interviewCategory->update(request(['name', 'description']));
+		$attributes = $request->validate([
+			'name' => 'required|min:3',
+			'cover_image' => 'nullable',
+			'description' => 'nullable'
+		]);
+
+		if ($request->hasFile('cover_image')) {
+			$attributes['cover_image'] = $request->cover_image->getClientOriginalName();
+			$request->cover_image->storeAs('public/interview_categories', $attributes['cover_image']);
+		}
+
+		$interviewCategory->update($attributes);
 
 		Alert::Success('Success!', 'Category updated successfully')->position('top-right')->toToast();
 

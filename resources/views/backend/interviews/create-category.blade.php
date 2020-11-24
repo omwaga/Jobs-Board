@@ -39,7 +39,7 @@
 							<div class="card-title">New Category </div>
 						</div>
 						<div class="card-body">
-							<form method="Post" action="{{route('admin.interviewCategories.store')}}">
+							<form method="Post" action="{{route('admin.interviewCategories.store')}}" enctype="multipart/form-data">
 								@csrf
 								
 								<div class="form-group">

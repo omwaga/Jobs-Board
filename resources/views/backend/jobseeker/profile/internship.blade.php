@@ -14,9 +14,6 @@
     <div class="card-body" v-for="(internship, index) in Internships" v-bind:key="internship.id">
       @include('backend.jobseeker.profile.edit-internships')
       <div class="d-flex">
-        <div class="avatar avatar-online">
-          <span class="avatar-title rounded-circle border border-white bg-info">J</span>
-        </div>
         <div class="flex-1 ml-3 pt-1">
           <h5 class="text-uppercase fw-bold mb-1">@{{internship.position}} at @{{internship.organization}}  <span class="text-warning pl-3">@{{internship.start_date}} - @{{internship.end_date}}</span></h5>
           <span class="text-muted">@{{internship.responsibilities}}</span>

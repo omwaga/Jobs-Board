@@ -16,9 +16,6 @@
         <div class="card-body" v-for="(experience, index) in Experiences" :key="experience.id">
           @include('backend.jobseeker.profile.edit-experience')
           <div class="d-flex">
-            <div class="avatar avatar-online">
-              <span class="avatar-title rounded-circle border border-white bg-info">J</span>
-            </div>
             <div class="flex-1 ml-3 pt-1">
               <h5 class="text-uppercase fw-bold mb-1">@{{experience.position}} at @{{experience.organization}}  <span class="text-warning pl-3">@{{experience.start_date}} - @{{experience.end_date}}</span></h5>
               <span class="text-muted">@{{experience.responsibilities}}</span>

@@ -17,9 +17,6 @@
         <div class="card-body" v-for="(certification, index) in Certifications" :key="certification.id">
           @include('backend.jobseeker.profile.edit-certification')
           <div class="d-flex">
-            <div class="avatar avatar-online">
-              <span class="avatar-title rounded-circle border border-white bg-info">J</span>
-            </div>
             <div class="flex-1 ml-3 pt-1">
               <h5 class="text-uppercase fw-bold mb-1">@{{certification.certification_name}}  <span class="text-warning pl-3">@{{certification.start_date}} - @{{certification.end_date}}</span></h5>
               <span class="text-muted">I am facing some trouble with my viewport. When i start my</span>
@@ -88,9 +85,6 @@
         <div class="card-body" v-for="(award, index) in Awards" :key="award.id">
           @include('backend.jobseeker.profile.edit-award')
           <div class="d-flex">
-            <div class="avatar avatar-online">
-              <span class="avatar-title rounded-circle border border-white bg-info">J</span>
-            </div>
             <div class="flex-1 ml-3 pt-1">
               <h5 class="text-uppercase fw-bold mb-1">@{{award.award_name}}</h5>
               <span class="text-muted">@{{award.degree_name}}</span>
