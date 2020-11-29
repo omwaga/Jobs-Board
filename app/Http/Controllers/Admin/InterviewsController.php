@@ -62,6 +62,7 @@ class InterviewsController extends Controller
 			'question' => 'required|min:3',
 			'category_id' => 'required',
 			'answer' => 'required|min:3'
+			'subcategory_id' => 'nullable'
 		]);
 
 		$interview->update(request(['question', 'category_id', 'answer', 'subcategory_id']));
@@ -75,7 +76,7 @@ class InterviewsController extends Controller
 	{
 		$interview->delete();
 
-		Alert::Success('Success!', 'Interview Question deleted successfully')->position('top-right')->toToast();
+		Alert::Success('Success!', 'Interview question deleted successfully')->position('top-right')->toToast();
 
 		return redirect(route('admin.interviews.index'));		
 	}

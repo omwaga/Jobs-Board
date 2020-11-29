@@ -71,7 +71,7 @@
               <div class="card-body">
                 <h4>Personalized Interview Answers</h4>
                 <p>Based on your profile we have created your personalized answers to most common interview questions</p>
-                <a href="#" class="btn btn-secondary">View Interview Answers</a>
+                <a href="{{route('front.interviews')}}" target="blank" class="btn btn-secondary">View Interview Answers</a>
               </div>
             </div>
             <div class="card card-stats card-round">

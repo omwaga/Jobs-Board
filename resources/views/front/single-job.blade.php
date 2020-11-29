@@ -5,7 +5,7 @@
 
 <section class="site-section bg-light pt-5">
   <div class="container">
-    <div class="row align-items-center mb-5 pb-3 bg-white">
+    <div class="row align-items-center mb-2 pb-3 bg-white">
       <div class="col-lg-8 mb-4 mb-lg-0">
         <div class="d-flex align-items-center">
           <div class="border p-2 d-inline-block mr-3 rounded">
@@ -34,7 +34,7 @@
     </div>
     <div class="row pb-5">
       <div class="col-lg-8 bg-white">
-        <div class="mb-5">
+        <div class="mb-5 pt-5">
           {!!$job->description!!}
 
           <h5 class="text-primary">Application Details</h5>          
@@ -77,6 +77,22 @@
       </div>
     </div>
     @include('front.similar-jobs')
+  </div>
+</section>
+
+<section class="py-5 bg-image fixed overlay" style="background-image: url('{{asset('front/images/bg_1.jpg')}}');">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h2 class="text-white">Looking For A Job?</h2>
+        <p class="mb-0 text-white lead">
+          The Recruitable portal offers thousands of job offers in many industries, it also deals with job placement and training organization. 
+        </p>
+      </div>
+      <div class="col-md-3 ml-auto">
+        <a href="{{route('register')}}" class="btn btn-warning btn-block btn-lg">Sign Up</a>
+      </div>
+    </div>
   </div>
 </section>
 @endsection

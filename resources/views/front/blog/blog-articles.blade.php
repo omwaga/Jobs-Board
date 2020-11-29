@@ -25,17 +25,26 @@
 
     {{$categories->links()}}
 
-    <h4 class="pb-3 mt-5">Recently Added Blog Articles</h4>
+    <h4 class="pb-3 mt-5">Recently Added Articles</h4>
     <div class="row d-flex">
       @forelse($articles as $article)
       <div class="col-md-4 ftco-animate">
-          <a href="#" class="block-20" style="background-image: url('{{asset('storage/blog_articles/'.$article->cover_image)}}'); ">
-          </a>
+        <a href="{{route('front.blog.article', $article->slug)}}" class="block-20" style="background-image: url('{{asset('storage/blog_articles/'.$article->cover_image)}}'); ">
+        </a>
         <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
           <div class="mb-4 mb-md-0">
             <div class="job-post-item-body d-block">
-              <a href="#" class="h5">{{$article->title ?? ''}}</a>
-              <p>{!! Str::limit(strip_tags($article->description), 120) !!}</p>
+              <a href="{{route('front.blog.article', $article->slug)}}" class="h5">{{$article->title ?? ''}}</a>
+              <div class="row">
+                <div class="col-md-8">
+                  <strong>Last Updated</strong>
+                  <p>{{$article->updated_at->diffForHumans()}}</p>                
+                </div>   
+                <div class="col-md-4" align="right">
+                  <span class="icon-eye text-primary">43343657</span><br>
+                  <span class="icon-comments text-primary">7878</span>
+                </div>            
+              </div>
             </div>
           </div>
         </div>
@@ -73,17 +82,26 @@
       </div>
     </div>
 
-    <h4 class="pb-3 pt-5">Popular Blog Articles</h4>
+    <h4 class="pb-3 pt-5">Popular Articles</h4>
     <div class="row d-flex">
       @forelse($popular_articles as $article)
       <div class="col-md-4 ftco-animate">
-          <a href="#" class="block-20" style="background-image: url('{{asset('storage/blog_articles/'.$article->cover_image)}}'); ">
-          </a>
+        <a href="{{route('front.blog.article', $article->slug)}}" class="block-20" style="background-image: url('{{asset('storage/blog_articles/'.$article->cover_image)}}'); ">
+        </a>
         <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
           <div class="mb-4 mb-md-0">
             <div class="job-post-item-body d-block">
-              <a href="#" class="h5">{{$article->title ?? ''}}</a>
-              <p>{!! Str::limit(strip_tags($article->description), 120) !!}</p>
+              <a href="{{route('front.blog.article', $article->slug)}}" class="h5">{{$article->title ?? ''}}</a>
+              <div class="row">
+                <div class="col-md-8">
+                  <strong>Last Updated</strong>
+                  <p>{{$article->updated_at->diffForHumans()}}</p>                
+                </div>   
+                <div class="col-md-4" align="right">
+                  <span class="icon-eye text-primary">2345</span><br>
+                  <span class="icon-comments text-primary">8</span>
+                </div>            
+              </div>
             </div>
           </div>
         </div>

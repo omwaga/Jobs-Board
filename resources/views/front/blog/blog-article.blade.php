@@ -1,32 +1,13 @@
+@extends('layouts.front')
+@section('content')
 
+@include('front.banner')
 <section class="ftco-section ftco-degree-bg pt-3">
   <div class="container">
     <div class="row">
       <div class="col-md-8 ftco-animate">
-        <div class="row">
-          @forelse($all_articles as $article)
-          <div class="col-md-6">
-            <div class="job-post-item bg-white p-4">
-              <a href="{{route('front.blog.article', $article->slug)}}" class="block-20" style="background-image: url('{{asset('storage/blog_articles/'.$article->cover_image)}}');">
-              </a>
-              <a href="{{route('front.blog.article', $article->slug)}}"><h4 class="mb-3">{{$article->title ?? ''}}</h4></a>
-              <div class="row">
-                <div class="col-md-8">
-                  <strong>Last Updated</strong>
-                  <p>{{$article->updated_at->diffForHumans()}}</p>                
-                </div>   
-                <div class="col-md-4" align="right">
-                  <span class="icon-eye text-primary">43343657</span><br>
-                  <span class="icon-comments text-primary">7878</span>
-                </div>            
-              </div>
-              <p>{!! Str::limit(strip_tags($article->description), 80) !!}</p>
-            </div>
-          </div>
-          @empty
-          <p>Nothing yet</p>
-          @endforelse
-        </div>
+        <h2>{{$page_banner->title ?? ''}}</h2>
+        {!!$page_banner->description ?? ''!!}
       </div> <!-- .col-md-8 -->
 
       <div class="col-md-4 sidebar ftco-animate">
@@ -68,3 +49,4 @@
     </div>
   </div>
 </section> 
+@endsection

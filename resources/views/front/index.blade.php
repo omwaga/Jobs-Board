@@ -8,137 +8,7 @@
 				<p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">We have <span class="number" data-number="850000">0</span> great job offers you deserve!</p>
 				<h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Your Dream <br><span>Job is Waiting</span></h1>
 
-				<div class="ftco-search">
-					<div class="row">
-						<div class="col-md-12 nav-link-wrap">
-							<div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-								<a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Find a Job/Internship</a>
-
-								<a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Find a Candidate</a>
-
-							</div>
-						</div>
-						<div class="col-md-12 tab-wrap">
-
-							<div class="tab-content p-4" id="v-pills-tabContent">
-
-								<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
-									<form action="{{route('front.jobseeker.search')}}" class="search-job" method="GET">
-										<div class="row">
-											<div class="col-md">
-												<div class="form-group">
-													<div class="form-field">
-														<div class="icon"><span class="icon-briefcase"></span></div>
-														<input type="text" name="search" class="form-control" placeholder="eg. Garphic. Web Developer">
-													</div>
-												</div>
-											</div>
-											<div class="col-md">
-												<div class="form-group">
-													<div class="form-field">
-														<div class="select-wrap">
-															<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-															<select name="category" id="" class="form-control">
-																<option value="">All Categories</option>
-																@foreach($categories as $category)
-																<option value="{{$category->id}}">{{$category->name}}</option>
-																@endforeach
-															</select>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md">
-												<div class="form-group">
-													<div class="form-field">
-														<div class="select-wrap">
-															<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-															<select name="job_type" id="" class="form-control">
-																<option value="">All Job Types</option>
-																@foreach($job_types as $type)
-																<option value="{{$type->id}}">{{$type->name}}</option>
-																@endforeach
-															</select>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md">
-												<div class="form-group">
-													<div class="form-field">
-														<div class="select-wrap">
-															<div class="icon"><span class="icon-map-marker"></span></div>
-															<select name="location" id="" class="form-control">
-																<option value="">All Locations</option>
-																@foreach($locations as $location)
-																<option value="{{$location->id}}">{{$location->name}}</option>
-																@endforeach
-															</select>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md">
-												<div class="form-group">
-													<div class="form-field">
-														<input type="submit" value="Search" class="form-control btn btn-primary">
-													</div>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-
-								<div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-performance-tab">
-									<form action="#" class="search-job">
-										<div class="row">
-											<div class="col-md">
-												<div class="form-group">
-													<div class="form-field">
-														<div class="icon"><span class="icon-user"></span></div>
-														<input type="text" class="form-control" placeholder="eg. Adam Scott">
-													</div>
-												</div>
-											</div>
-											<div class="col-md">
-												<div class="form-group">
-													<div class="form-field">
-														<div class="select-wrap">
-															<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-															<select name="" id="" class="form-control">
-																<option value="">Category</option>
-																<option value="">Full Time</option>
-																<option value="">Part Time</option>
-																<option value="">Freelance</option>
-																<option value="">Internship</option>
-																<option value="">Temporary</option>
-															</select>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md">
-												<div class="form-group">
-													<div class="form-field">
-														<div class="icon"><span class="icon-map-marker"></span></div>
-														<input type="text" class="form-control" placeholder="Location">
-													</div>
-												</div>
-											</div>
-											<div class="col-md">
-												<div class="form-group">
-													<div class="form-field">
-														<input type="submit" value="Search" class="form-control btn btn-primary">
-													</div>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				@include('front.search-job')
 			</div>
 		</div>
 	</div>
@@ -160,8 +30,8 @@
 				<div class="media block-6 services d-block">
 					<div class="icon"><span class="flaticon-promotions"></span></div>
 					<div class="media-body">
-						<h3 class="heading mb-3">Professional Development</h3>
-						<p>We support you in your professional development. Find all the resources you need here.</p>
+						<h3 class="heading mb-3">Get Personalised Job Recommendations</h3>
+						<p>Registering with us gives you the benefit of browsing & applying variety of jobs based on your preferences</p>
 					</div>
 				</div>    
 			</div>
@@ -184,6 +54,11 @@
 				</div>      
 			</div>
 		</div>
+
+			<div align="center">
+					<a href="{{route('register')}}" class="btn btn-primary">Register Now</a>
+					<p>Already have a recruitable account? <a href="{{route('register')}}">Login</a></p>
+			</div>
 	</div>
 </section>
 
@@ -311,15 +186,15 @@
 							<h4>Services for Recruiters</h4>
 							<div class="text">
 								<ul class="mb-3" style="list-style: none">
-									<li><span class="icon-my_location"></span> Recruitable Employer Zone</li>
+									<li><span class="icon-check"></span> Recruitable Employer Zone</li>
 									<small>End your hunt for the perfect employee</small>
-									<li>Search CVs for Free now</li>
+									<li><span class="icon-check"></span> Search CVs for Free now</li>
 									<small>Find the right candidate</small>
-									<li>Naukri Job Posting Services and Resume Database Access</li>
+									<li><span class="icon-check"></span> Naukri Job Posting Services and Resume Database Access</li>
 									<small>Call 1800-102-2558 for Employer products</small>
-									<li>Campus Hiring Solutions</li>
+									<li><span class="icon-check"></span> Campus Hiring Solutions</li>
 									<small>Optimize your Fresher Hiring</small>
-									<li>Naukri RMS</li>
+									<li><span class="icon-check"></span> Naukri RMS</li>
 									<small>Automate your end to end hiring process.</small>
 								</ul>
 								<button class="btn btn-primary">Get Started</button>
@@ -338,69 +213,44 @@
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
 				<span class="subheading">Our Blog</span>
-				<h2><span>Recent</span> Blog</h2>
+				<h2><span>Recent</span> Articles</h2>
 			</div>
 		</div>
 		<div class="row d-flex">
+			@forelse($articles as $article)
 			<div class="col-md-3 d-flex ftco-animate">
 				<div class="blog-entry align-self-stretch">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+					<a href="{{route('front.blog.article', $article->slug)}}" class="block-20" style="background-image: url('{{asset('storage/blog_articles/'.$article->cover_image)}}');">
 					</a>
 					<div class="text mt-3">
 						<div class="meta mb-2">
-							<div><a href="#">December 2, 2018</a></div>
-							<div><a href="#">Admin</a></div>
-							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+							<div><a href="{{route('front.blog.article', $article->slug)}}">{{$article->updated_at->diffForHumans()}}</a></div>
+							<div><a href="{{route('front.blog.article', $article->slug)}}">Recruitable Consulting</a></div>
+							<div><a href="{{route('front.blog.article', $article->slug)}}" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
 						</div>
-						<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias architecto enim non iste maxime optio, ut com</p>
+						<h3 class="heading"><a href="{{route('front.blog.article', $article->slug)}}">{{$article->title ?? ''}}</a></h3>
+						<p>{!! Str::limit(strip_tags($article->description), 100) !!} <a href="{{route('front.blog.article', $article->slug)}}">Read More</a></p>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 d-flex ftco-animate">
-				<div class="blog-entry align-self-stretch">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-					</a>
-					<div class="text mt-3">
-						<div class="meta mb-2">
-							<div><a href="#">December 2, 2018</a></div>
-							<div><a href="#">Admin</a></div>
-							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-						</div>
-						<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nobis natus incidunt officia assumenda.</p>
-					</div>
-				</div>
+			@empty
+			<p>Nothing Yet</p>
+			@endforelse
+		</div>
+	</div>
+</section>
+
+<section class="py-5 bg-image fixed overlay" style="background-image: url('{{asset('front/images/bg_1.jpg')}}');">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-md-8">
+				<h2 class="text-white">Looking For A Job?</h2>
+				<p class="mb-0 text-white lead">
+					The Recruitable portal offers thousands of job offers in many industries, it also deals with job placement and training organization. 
+				</p>
 			</div>
-			<div class="col-md-3 d-flex ftco-animate">
-				<div class="blog-entry align-self-stretch">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-					</a>
-					<div class="text mt-3">
-						<div class="meta mb-2">
-							<div><a href="#">December 2, 2018</a></div>
-							<div><a href="#">Admin</a></div>
-							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-						</div>
-						<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi obcaecati praesentium,</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 d-flex ftco-animate">
-				<div class="blog-entry align-self-stretch">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_4.jpg');">
-					</a>
-					<div class="text mt-3">
-						<div class="meta mb-2">
-							<div><a href="#">December 2, 2018</a></div>
-							<div><a href="#">Admin</a></div>
-							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-						</div>
-						<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor minima, dolores quis, dolorum accusamu</p>
-					</div>
-				</div>
+			<div class="col-md-3 ml-auto">
+				<a href="{{route('register')}}" class="btn btn-warning btn-block btn-lg">Sign Up</a>
 			</div>
 		</div>
 	</div>

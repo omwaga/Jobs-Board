@@ -102,7 +102,7 @@
 	</div>
 </section>
 
-<section class="site-section py-4 mb-5 border-top">
+<!-- <section class="site-section py-4 mb-5 border-top">
 	<div class="container">
 
 		<div class="row align-items-center">
@@ -130,19 +130,20 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 
-<section class="py-5 bg-image overlay-primary fixed overlay" style="background-image: url('images/hero_1.jpg');">
+<section class="py-5 bg-image fixed overlay" style="background-image: url('{{asset('front/images/bg_1.jpg')}}');">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-md-8">
 				<h2 class="text-white">Looking For A Job?</h2>
-				<p class="mb-0 text-white lead">Lorem ipsum dolor sit amet consectetur adipisicing elit tempora adipisci
-				impedit.</p>
+				<p class="mb-0 text-white lead">
+					The Recruitable portal offers thousands of job offers in many industries, it also deals with job placement and training organization. 
+				</p>
 			</div>
 			<div class="col-md-3 ml-auto">
-				<a href="#" class="btn btn-warning btn-block btn-lg">Sign Up</a>
+				<a href="{{route('register')}}" class="btn btn-warning btn-block btn-lg">Sign Up</a>
 			</div>
 		</div>
 	</div>

@@ -19,9 +19,11 @@ Route::name('front.')->group(function(){
 	Route::get('/interview-questions', 'PagesController@interviews')->name('interviews');
 	Route::get('/interviews/category/{name}', 'PagesController@interviewCategory')->name('interviewCategory');
 	Route::get('/interviews/{slug}', 'PagesController@interviewSubcategory')->name('interviewSubcategory');
+	Route::get('/interview-question/{slug}', 'PagesController@interview')->name('interview.question');
 	Route::get('/blog', 'PagesController@blog')->name('blog');
 	Route::get('/blog/{slug}', 'PagesController@blogCategory')->name('blogSubcategory');
 	Route::get('/blog/category/{slug}', 'PagesController@blogSubcategory')->name('blog.articles');
+	Route::get('/article/{slug}', 'PagesController@article')->name('blog.article');
 	Route::POST('/emails', 'EmailSubscriptionController@store')->name('emails.store');
 });
 
@@ -49,6 +51,8 @@ Route::namespace('Jobseeker')->prefix('user')->name('jobseeker.')->group(functio
 	Route::get('/fill-details', 'PagesController@fillDetails')->name('fillDetails');
 	Route::get('/dashboard', 'HomeController@index')->name('home');
 	Route::get('/category/{categorySlug}', 'PagesController@categorySlug')->name('category');
+	Route::get('/type/{typeSlug}', 'PagesController@typeSlug')->name('type');
+	Route::get('/location/{locationSlug}', 'PagesController@locationSlug')->name('location');
 	Route::resource('savedjobs', 'SavedJobsController');
 	Route::patch('/user/{id}', 'HomeController@updateUser')->name('updateUser');
 });

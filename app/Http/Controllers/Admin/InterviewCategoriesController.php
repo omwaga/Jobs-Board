@@ -76,7 +76,7 @@ class InterviewCategoriesController extends Controller
 	{
 		$interviewCategory->delete();
 
-		Alert::Success('Success!', 'Category added successfully')->position('top-right')->toToast();
+		Alert::Success('Success!', 'Category deleted successfully')->position('top-right')->toToast();
 
 		return redirect(route('admin.interviewCategories.index'));
 	}

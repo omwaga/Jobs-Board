@@ -41,30 +41,40 @@
 									<img src="{{asset('front/images/logo.png')}}" alt="..." class="avatar-img rounded-circle">
 								</div>
 								<div class="info-post ml-2">
-									<a href="{{route('jobseeker.singlejob', $vacancy->job->slug)}}"><h3 class="card-title">{{$vacancy->job->job_title ?? ''}}</h3></a>
+									<a href="{{route('jobseeker.singlejob', $vacancy->slug)}}"><h3 class="card-title">{{$vacancy->job_title ?? ''}}</h3></a>
 									<p class="date text-muted"><span class="fas fa-building"></span>{{$vacancy->user->name ?? ''}}     <span class="fas fa-map-marker"></span> {{$vacancy->postcity->name ?? ''}}, {{$vacancy->postcountry->name ?? ''}}</p>
-									</div>
-									<div class="info-post ml-2">
-									</div>
 								</div>
-								<div class="separator-solid"></div>
-								<p class="card-text">{!! Str::limit(strip_tags($vacancy->job->description), 400) !!}</p>
-								<div class="row pl-3">
-								<a href="{{route('jobseeker.singlejob', $vacancy->job->slug)}}" class="btn btn-primary btn-rounded btn-sm mr-3">Apply Job</a>
+								<div class="info-post ml-2">
+									@if($vacancy->postjobtype->name === 'Full Time')
+									<span class="bg-warning text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+									@elseif($vacancy->postjobtype->name === 'Part Time')
+									<span class="bg-primary text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+									@elseif($vacancy->postjobtype->name === 'Internship')
+									<span class="bg-secondary text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+									@elseif($vacancy->postjobtype->name === 'Freelance')
+									<span class="bg-info text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+									@elseif($vacancy->postjobtype->name === 'Temporary')
+									<span class="bg-danger text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
+									@endif
+								</div>
+							</div>
+							<div class="separator-solid"></div>
+							<p class="card-text">{!! Str::limit(strip_tags($vacancy->description), 400) !!}</p>
+							<div class="row pl-3">
+								<a href="{{route('jobseeker.singlejob', $vacancy->slug)}}" class="btn btn-primary btn-rounded btn-sm mr-3">Apply Job</a>
 
-									<form method="POST" action="{{route('jobseeker.savedjobs.destroy', $vacancy->id)}}">
+								<form method="POST" action="{{route('jobseeker.savedjobs.store')}}">
 									@csrf
-									@method('DELETE')
-									<input type="hidden" name="vacancy_id" value="{{$vacancy->job->id}}">
-									<button type="submit" class="btn btn-secondary rounded-circle d-flex align-items-center">
+									<input type="hidden" name="vacancy_id" value="{{$vacancy->id}}">
+									<button type="submit" class="btn btn-danger rounded-circle d-flex align-items-center">
 										<span class="fas fa-heart"></span>
 									</button>
 								</form>
-								</div>
-
-								
 							</div>
+
+							
 						</div>
+					</div>
 					@endforeach
 				</div>
 				<div class="col-md-4">

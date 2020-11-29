@@ -46,4 +46,38 @@ class BlogCategoryController extends Controller
 
 		return redirect(route('admin.blogcategories.index'));
 	}
+
+	public function edit(BlogCategory $blogcategory)
+	{
+		return view('backend.blog.edit-category', compact('blogcategory'));
+	}
+
+	public function update(BlogCategory $blogcategory, Request $request)
+	{
+		$attributes = $request->validate([
+			'name' => 'required|min:3',
+			'cover_image' => 'nullable',
+			'description' => 'nullable'
+		]);
+
+		if ($request->hasFile('cover_image')) {
+			$attributes['cover_image'] = $request->cover_image->getClientOriginalName();
+			$request->cover_image->storeAs('public/blog_categories', $attributes['cover_image']);
+		}
+
+		$blogcategory->update($attributes);
+
+		Alert::Success('Success!', 'Category updated successfully')->position('top-right')->toToast();
+
+		return redirect(route('admin.blogcategories.index'));
+	}
+
+	public function destroy(BlogCategory $blogcategory)
+	{
+		$blogcategory->delete();
+
+		Alert::Success('Success!', 'Category deleted successfully')->position('top-right')->toToast();
+
+		return redirect(route('admin.blogcategories.index'));
+	}
 }

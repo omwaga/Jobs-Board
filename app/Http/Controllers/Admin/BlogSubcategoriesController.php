@@ -50,4 +50,40 @@ class BlogSubcategoriesController extends Controller
 
 		return redirect(route('admin.blogsubcategories.index'));
 	}
+
+	public function edit(BlogSubcategories $blogsubcategory)
+	{
+		$categories = BlogCategory::all();
+
+		return view('backend.blog.edit-sub-category', compact('blogsubcategory', 'categories'));
+	}
+
+	public function update(BlogSubcategories $blogsubcategory, Request $request)
+	{
+		$attributes = $request->validate([
+			'name' => 'required|min:3',
+			'cover_image' => 'nullable',
+			'category_id' => 'required',
+			'description' => 'nullable'
+		]);
+
+		if ($request->hasFile('cover_image')) {
+			$attributes['cover_image'] = $request->cover_image->getClientOriginalName();
+			$request->cover_image->storeAs('public/blog_sub_categories', $attributes['cover_image']);
+		}
+		$blogsubcategory->update($attributes);
+
+		Alert::Success('Success!', 'Sub category updated successfully')->position('top-right')->toToast();
+
+		return redirect(route('admin.blogsubcategories.index'));
+	}
+
+	public function destroy(BlogSubcategories $blogsubcategory)
+	{
+		$blogsubcategory->delete();
+
+		Alert::Success('Success!', 'Sub category deleted successfully')->position('top-right')->toToast();
+
+		return redirect(route('admin.blogsubcategories.index'));
+	}
 }

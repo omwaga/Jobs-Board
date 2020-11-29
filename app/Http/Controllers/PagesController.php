@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use DB;
+use Str;
 use App\Country;
 use App\City;
 use App\Industry;
@@ -29,6 +30,7 @@ class PagesController extends Controller
         $top_categories2 = Category::all()->random(4);
         $top_categories3 = Category::all()->random(4);
         $top_categories4 = Category::all()->random(4);
+        $articles = BlogPost::orderBy('created_at', 'DESC')->limit(4)->get();
         $categories = Category::all();
         $locations = City::all();
         $job_types = JobType::all();
@@ -37,7 +39,7 @@ class PagesController extends Controller
         SEOMeta::setDescription('Recruitable Jobs In Kenya');
         SEOMeta::addKeyword(['jobs in kenya', 'Accounting, Banking and Insurance jobs']);
 
-        return view('front.index', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));
+        return view('front.index', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types', 'articles'));
     }
 
 
@@ -86,7 +88,7 @@ class PagesController extends Controller
         $categoryId = Category::where('slug', $categorySlug)->value('id');
         $category= Category::where('slug', $categorySlug)->first();
         $page_banner = Category::where('slug', $categorySlug)->first();
-        $vacancies = Vacancy::where([['category', $categoryId],['status', 'published']])->orderBy('created_at', 'DESC')->get();
+        $vacancies = Vacancy::where([['category', $categoryId],['status', 'published']])->orderBy('created_at', 'DESC')->paginate(15);
         $categories = Category::all();
         $locations = City::all();
         $job_types = JobType::all();
@@ -101,7 +103,7 @@ class PagesController extends Controller
     {
         $locationId = City::where('slug', $locationSlug)->value('id');
         $location = City::where('slug', $locationSlug)->first();
-        $vacancies = Vacancy::where([['city', $locationId],['status', 'published']])->orderBy('created_at', 'DESC')->get();
+        $vacancies = Vacancy::where([['city', $locationId],['status', 'published']])->orderBy('created_at', 'DESC')->paginate(15);
         $categories = Category::all();
         $locations = City::all();
         $job_types = JobType::all();
@@ -116,7 +118,7 @@ class PagesController extends Controller
     {
         $typeId = JobType::where('slug', $typeSlug)->value('id');
         $type = JobType::where('slug', $typeSlug)->first();
-        $vacancies = Vacancy::where([['job_type', $typeId ],['status', 'published']])->orderBy('created_at', 'DESC')->get();
+        $vacancies = Vacancy::where([['job_type', $typeId ],['status', 'published']])->orderBy('created_at', 'DESC')->paginate(15);
         $categories = Category::all();
         $locations = City::all();
         $job_types = JobType::all();
@@ -242,11 +244,12 @@ class PagesController extends Controller
         $popular_interviews = Interviews::where('category_id',  $page_banner->id)->limit(9)->get();
         $all_interviews = Interviews::where('category_id',  $page_banner->id)->get();
         $categories = InterviewCategories::get();
+        $recent_questions = Interviews::where('category_id',  $page_banner->category_id)->orderBy('created_at', 'DESC')->limit(10)->get();
 
         SEOMeta::setTitle($page_banner->name . ' - Interview Questions and Answers');
         SEOMeta::setDescription($page_banner->description);
 
-        return view('front.interview-subcategories', compact('subcategories', 'interviews', 'popular_interviews', 'all_interviews', 'page_banner', 'categories'));
+        return view('front.interview-subcategories', compact('subcategories', 'interviews', 'popular_interviews', 'all_interviews', 'page_banner', 'categories', 'recent_questions'));
     }
 
     public function interviewCategory($name)
@@ -254,11 +257,25 @@ class PagesController extends Controller
         $page_banner = InterviewSubcategories::where('slug', $name)->first();
         $all_interviews = Interviews::where('subcategory_id',  $page_banner->id)->get();
         $categories = InterviewCategories::get();
+        $recent_questions = Interviews::where('category_id',  $page_banner->category_id)->orderBy('created_at', 'DESC')->limit(10)->get();
 
         SEOMeta::setTitle($page_banner->name . ' - Interview Questions and Answers');
         SEOMeta::setDescription($page_banner->description);
 
-        return view('front.interview', compact('all_interviews', 'page_banner', 'categories'));
+        return view('front.interview', compact('all_interviews', 'page_banner', 'categories', 'recent_questions'));
+    }
+
+    public function interview($slug)
+    {
+        $page_banner = Interviews::where('slug', $slug)->first();
+        $related_questions = Interviews::where('category_id',  $page_banner->category_id)->paginate(20);
+        $recent_questions = Interviews::where('category_id',  $page_banner->category_id)->orderBy('created_at', 'DESC')->limit(10)->get();
+        $categories = InterviewCategories::get();
+
+        SEOMeta::setTitle($page_banner->question);
+        SEOMeta::setDescription(Str::limit(strip_tags($page_banner->answer), 500));
+
+        return view('front.single-interview', compact('related_questions', 'page_banner', 'categories', 'recent_questions'));
     }
 
     public function blog()
@@ -281,23 +298,37 @@ class PagesController extends Controller
         $popular_articles = BlogPost::where('category_id',  $page_banner->id)->limit(9)->get();
         $all_articles = BlogPost::where('category_id',  $page_banner->id)->get();
         $categories = BlogCategory::get();
+        $recent_articles = BlogPost::orderBy('created_at', 'DESC')->limit(4)->get();
 
         SEOMeta::setTitle($page_banner->name . ' - Interview Questions and Answers');
         SEOMeta::setDescription($page_banner->description);
 
-        return view('front.blog.blog-subcategories', compact('subcategories', 'articles', 'popular_articles', 'all_articles', 'page_banner', 'categories'));
+        return view('front.blog.blog-subcategories', compact('subcategories', 'articles', 'popular_articles', 'all_articles', 'page_banner', 'categories', 'recent_articles'));
     }
 
     public function blogSubcategory($slug)
     {
         $page_banner = BlogSubcategories::where('slug', $slug)->first();
         $all_articles = BlogPost::where('subcategory_id',  $page_banner->id)->get();
+        $articles = BlogPost::orderBy('created_at', 'DESC')->limit(4)->get();
         $categories = BlogCategory::get();
 
         SEOMeta::setTitle($page_banner->name . ' - Interview Questions and Answers');
         SEOMeta::setDescription($page_banner->description);
 
-        return view('front.blog.articles', compact('all_articles', 'page_banner', 'categories'));
+        return view('front.blog.articles', compact('all_articles', 'articles', 'page_banner', 'categories'));
+    }
+
+    public function article($slug)
+    {
+        $page_banner = BlogPost::where('slug', $slug)->first();
+        $articles = BlogPost::orderBy('created_at', 'DESC')->limit(4)->get();
+        $categories = BlogCategory::get();
+
+        SEOMeta::setTitle($page_banner->title);
+        SEOMeta::setDescription(Str::limit(strip_tags($page_banner->description), 80));
+
+        return view('front.blog.blog-article', compact('articles', 'page_banner', 'categories'));
     }
 
 }

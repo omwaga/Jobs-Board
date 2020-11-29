@@ -49,7 +49,7 @@
           @endforeach
         </div>
         <div class="col-md-4">
-          ,,,
+          @include('backend.jobseeker.jobs-sidebar')
         </div>
       </div>
     </div>

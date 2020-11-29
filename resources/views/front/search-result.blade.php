@@ -3,8 +3,9 @@
 
 @include('front.banner')
 
-<div class="container-fluid">
-	<div class="row bg-light">
+<section class="ftco-section ftco-candidates ftco-candidates-2 bg-light">
+<div class="container">
+	<div class="row ">
 		<div class="col-md-8">
 			<section class="ftco-section ">
 				<div class="container">
@@ -54,13 +55,9 @@
 						@empty
 						@endforelse
 					</div>
-					<div class="row mt-5">
-						<div class="col text-center">
-							<div class="block-27">					
-								{{$vacancies->links()}}
-							</div>
-						</div>
-					</div>
+					
+					{{$vacancies->links()}}
+					
 				</div>
 			</section>
 
@@ -110,48 +107,19 @@
 		</div>
 	</div>
 </div>
-
-<section class="site-section py-4 mb-5 border-top">
-	<div class="container">
-
-		<div class="row align-items-center">
-			<div class="col-12 text-center mt-4 mb-5">
-				<div class="row justify-content-center">
-					<div class="col-md-7">
-						<h2 class="section-title mb-2">Our Candidates Work In Company</h2>
-						<p class="lead">Porro error reiciendis commodi beatae omnis similique voluptate rerum ipsam fugit
-						mollitia ipsum facilis expedita tempora suscipit iste</p>
-					</div>
-				</div>
-
-			</div>
-			<div class="col-6 col-lg-3 col-md-6 text-center">
-				<img src="images/logo_mailchimp.svg" alt="Image" class="img-fluid logo-1">
-			</div>
-			<div class="col-6 col-lg-3 col-md-6 text-center">
-				<img src="images/logo_paypal.svg" alt="Image" class="img-fluid logo-2">
-			</div>
-			<div class="col-6 col-lg-3 col-md-6 text-center">
-				<img src="images/logo_stripe.svg" alt="Image" class="img-fluid logo-3">
-			</div>
-			<div class="col-6 col-lg-3 col-md-6 text-center">
-				<img src="images/logo_visa.svg" alt="Image" class="img-fluid logo-4">
-			</div>
-		</div>
-	</div>
 </section>
 
-
-<section class="py-5 bg-image overlay-primary fixed overlay" style="background-image: url('images/hero_1.jpg');">
+<section class="py-5 bg-image fixed overlay" style="background-image: url('{{asset('front/images/bg_1.jpg')}}');">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-md-8">
 				<h2 class="text-white">Looking For A Job?</h2>
-				<p class="mb-0 text-white lead">Lorem ipsum dolor sit amet consectetur adipisicing elit tempora adipisci
-				impedit.</p>
+				<p class="mb-0 text-white lead">
+					The Recruitable portal offers thousands of job offers in many industries, it also deals with job placement and training organization. 
+				</p>
 			</div>
 			<div class="col-md-3 ml-auto">
-				<a href="#" class="btn btn-warning btn-block btn-lg">Sign Up</a>
+				<a href="{{route('register')}}" class="btn btn-warning btn-block btn-lg">Sign Up</a>
 			</div>
 		</div>
 	</div>

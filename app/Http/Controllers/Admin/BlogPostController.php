@@ -53,4 +53,43 @@ class BlogPostController extends Controller
 
 		return redirect(route('admin.blogposts.index'));
 	}
+
+	public function edit(BlogPost $blogpost)
+	{
+		$categories = BlogCategory::all();
+		$subcategories = BlogSubcategories::all();
+
+		return view('backend.blog.edit-blog-post', compact('blogpost', 'categories',  'subcategories'));
+	}
+
+	public function update(BlogPost $blogpost, Request $request)
+	{
+		$attributes = request()->validate([
+			'title' => 'required|min:3',
+			'category_id' => 'required',
+			'description' => 'required|min:3',
+			'subcategory_id' => 'nullable',
+			'cover_image' => 'nullable',
+		]);
+
+		if ($request->hasFile('cover_image')) {
+			$attributes['cover_image'] = $request->cover_image->getClientOriginalName();
+			$request->cover_image->storeAs('public/blog_articles', $attributes['cover_image']);
+		}
+
+		$blogpost->update($attributes);
+
+		Alert::Success('Success!', 'Blog post updated successfully')->position('top-right')->toToast();
+
+		return redirect(route('admin.blogposts.index'));
+	}
+
+	public function destroy(BlogPost $blogpost)
+	{
+		$blogpost->delete();
+
+		Alert::Success('Success!', 'Blog post deleted successfully')->position('top-right')->toToast();
+
+		return redirect(route('admin.blogposts.index'));		
+	}
 }

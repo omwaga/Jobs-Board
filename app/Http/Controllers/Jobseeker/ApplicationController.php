@@ -10,6 +10,8 @@ use App\Country;
 use App\City;
 use App\Application;
 use App\Documents;
+use App\Category;
+use App\JobType;
 
 class ApplicationController extends Controller
 {    
@@ -20,8 +22,11 @@ class ApplicationController extends Controller
     public function index()
     {
         $applications = Application::where('user_id', auth()->user()->id)->get();
+        $categories = Category::all();
+        $locations = City::all();
+        $job_types = JobType::all();
         
-        return view('backend.jobseeker.applications', compact('applications'));
+        return view('backend.jobseeker.applications', compact('applications', 'categories', 'locations', 'job_types'));
     }
 
     public function create($job)

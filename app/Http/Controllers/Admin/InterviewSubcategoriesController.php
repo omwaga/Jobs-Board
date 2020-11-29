@@ -83,7 +83,7 @@ class InterviewSubcategoriesController extends Controller
 	{
 		$subcategory->delete();
 
-		Alert::Success('Success!', 'Sub category added successfully')->position('top-right')->toToast();
+		Alert::Success('Success!', 'Sub category deleted successfully')->position('top-right')->toToast();
 
 		return redirect(route('admin.subcategories.index'));
 	}

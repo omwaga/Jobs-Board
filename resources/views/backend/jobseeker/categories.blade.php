@@ -36,14 +36,17 @@
 			<div class="row">
 				<div class="col-md-8">
 					@foreach($vacancies as $vacancy)
-					<div class="col-md-12 ftco-animate p-3">
-
-						<div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
-
-							<div class="mb-4 mb-md-0 mr-5">
-								<div class="job-post-item-header d-flex align-items-center">
-									<a href="{{route('jobseeker.singlejob', $vacancy->slug)}}"><h2 class="mr-3 text-black h3">{{$vacancy->job_title ?? ''}}</h2></a>
-									<div class="badge-wrap">
+					<div class="card card-post card-round">
+						<div class="card-body">
+							<div class="d-flex">
+								<div class="avatar">
+									<img src="{{asset('front/images/logo.png')}}" alt="..." class="avatar-img rounded-circle">
+								</div>
+								<div class="info-post ml-2">
+									<a href="{{route('jobseeker.singlejob', $vacancy->slug)}}"><h3 class="card-title">{{$vacancy->job_title ?? ''}}</h3></a>
+									<p class="date text-muted"><span class="fas fa-building"></span>{{$vacancy->user->name ?? ''}}     <span class="fas fa-map-marker"></span> {{$vacancy->postcity->name ?? ''}}, {{$vacancy->postcountry->name ?? ''}}</p>
+									</div>
+									<div class="info-post ml-2">
 										@if($vacancy->postjobtype->name === 'Full Time')
 										<span class="bg-warning text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
 										@elseif($vacancy->postjobtype->name === 'Part Time')
@@ -57,25 +60,23 @@
 										@endif
 									</div>
 								</div>
-								<div class="job-post-item-body d-block d-md-flex">
-									<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->user->name ?? ''}}</a></div>
-									<div><span class="icon-my_location"></span> <span>{{$vacancy->postcity->name ?? ''}}, {{$vacancy->postcountry->name ?? ''}}</span></div>
-								</div>
-							</div>
+								<div class="separator-solid"></div>
+								<p class="card-text">{!! Str::limit(strip_tags($vacancy->description), 400) !!}</p>
+								<div class="row pl-3">
+								<a href="{{route('jobseeker.singlejob', $vacancy->slug)}}" class="btn btn-primary btn-rounded btn-sm mr-3">Apply Job</a>
 
-							<div class="ml-auto d-flex">
-								<a href="{{route('jobseeker.singlejob', $vacancy->slug)}}" class="btn btn-primary py-2 mr-1">Apply Job</a>
-
-								<form method="POST" action="{{route('jobseeker.savedjobs.store')}}">
+									<form method="POST" action="{{route('jobseeker.savedjobs.store')}}">
 									@csrf
 									<input type="hidden" name="vacancy_id" value="{{$vacancy->id}}">
 									<button type="submit" class="btn btn-secondary rounded-circle d-flex align-items-center">
 										<span class="fas fa-heart"></span>
 									</button>
 								</form>
+								</div>
+
+								
 							</div>
 						</div>
-					</div>
 					@endforeach
 				</div>
 				<div class="col-md-4">

@@ -7,6 +7,8 @@
     {!! SEOMeta::generate() !!}
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 
   <!-- Fonts and icons -->
   <script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
@@ -367,6 +369,18 @@
               <a href="{{route('jobseeker.applications.index')}}">
                 <i class="fas fa-paper-plane"></i>
                 <p>Job Applications</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a target="blank" href="{{route('front.interviews')}}">
+                <i class="fas fa-graduation-cap"></i>
+                <p>Interview Questions</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a target="blank" href="{{route('front.blog')}}">
+                <i class="fas fa-paper-plane"></i>
+                <p>Industry Insights</p>
               </a>
             </li>
             @endcan

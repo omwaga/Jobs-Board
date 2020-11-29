@@ -60,4 +60,35 @@ class PagesController extends Controller
 
         return view('backend.jobseeker.categories', compact('vacancies', 'page_banner', 'categories', 'locations', 'job_types'));
     }
+
+    public function typeSlug($typeSlug)
+    {
+        $typeId = JobType::where('slug', $typeSlug)->value('id');
+        $type = JobType::where('slug', $typeSlug)->first();
+        $vacancies = Vacancy::where([['job_type', $typeId ],['status', 'published']])->orderBy('created_at', 'DESC')->get();
+        $categories = Category::all();
+        $locations = City::all();
+        $job_types = JobType::all();
+
+
+        SEOMeta::setTitle($type->name. ' Jobs in Kenya');
+        SEOMeta::setDescription($type->description);
+
+        return view('backend.jobseeker.job-types', compact('vacancies', 'categories', 'locations', 'job_types'));
+    }
+
+    public function locationSlug($locationSlug)
+    {
+        $locationId = City::where('slug', $locationSlug)->value('id');
+        $location = City::where('slug', $locationSlug)->first();
+        $vacancies = Vacancy::where([['city', $locationId],['status', 'published']])->orderBy('created_at', 'DESC')->get();
+        $categories = Category::all();
+        $locations = City::all();
+        $job_types = JobType::all();
+
+        SEOMeta::setTitle(' Jobs in '. $location->name);
+        SEOMeta::setDescription($location->description);
+
+        return view('backend.jobseeker.locations', compact('vacancies', 'categories', 'locations', 'job_types'));
+    }
 }

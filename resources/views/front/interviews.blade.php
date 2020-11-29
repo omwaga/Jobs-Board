@@ -32,8 +32,8 @@
         <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
           <div class="mb-4 mb-md-0">
             <div class="job-post-item-body d-block">
-              <a href="#" class="h5">{{$interview->question ?? ''}}</a>
-              <p>{!! Str::limit(strip_tags($interview->answer), 120) !!}</p>
+              <a href="{{route('front.interview.question', $interview->slug)}}" class="h5">{{$interview->question ?? ''}}</a>
+              <p>{!! Str::limit(strip_tags($interview->answer), 120) !!} <a href="{{route('front.interview.question', $interview->slug)}}">Read More</a></p>
             </div>
           </div>
         </div>
@@ -78,8 +78,8 @@
         <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
           <div class="mb-4 mb-md-0">
             <div class="job-post-item-body d-block">
-              <a href="#" class="h5">{{$interview->question ?? ''}}</a>
-              <p>{!! Str::limit(strip_tags($interview->answer), 120) !!}</p>
+              <a href="{{route('front.interview.question', $interview->slug)}}" class="h5">{{$interview->question ?? ''}}</a>
+              <p>{!! Str::limit(strip_tags($interview->answer), 120) !!} <a href="{{route('front.interview.question', $interview->slug)}}">Read More</a></p>
             </div>
           </div>
         </div>

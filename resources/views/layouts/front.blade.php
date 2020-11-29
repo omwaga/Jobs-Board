@@ -88,8 +88,6 @@
 
 @yield('content')
 
-
-
 <section class="ftco-section-parallax">
   <div class="parallax-img d-flex align-items-center">
     <div class="container">
