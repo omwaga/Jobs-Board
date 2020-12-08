@@ -30,13 +30,10 @@
           @foreach($applications as $application)
           <div class="card p-3">  
             <div class="d-flex align-items-center">
-              <div class="border p-2 d-inline-block mr-3 rounded">
-                <img src="{{asset('front/images/featured-listing-1.jpg')}}" alt="Free Website Template By Free-Template.co">
-              </div>
               <div>
                 <h2>{{$application->vacancy->job_title ?? ''}}</h2>
                 <div>
-                  <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{{$application->employer->name ?? ''}}</span>
+                  <span class="ml-0 mr-2 mb-2"><span class="fas fa-building mr-2"></span>{{$application->employer->name ?? ''}}</span>
                 </div>
               </div>
             </div>

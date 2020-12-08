@@ -58,7 +58,7 @@
                       <td>{{$application->created_at->diffForHumans()}}</td>
                       <td>
                         <div class="btn-group">
-                          <a class="btn btn-primary btn-sm" href="#"><i class="fas fa-eye"></i> View</a>
+                          <a class="btn btn-primary btn-sm" href="{{route('admin.applicant', $application->user_id)}}"><i class="fas fa-eye"></i> View</a>
                         </div>
                       </td>
                     </tr>

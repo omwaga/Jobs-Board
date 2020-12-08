@@ -15,14 +15,14 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<form method="POST" action="{{route('jobseeker.updateUser', auth()->user()->id)}}">
+							<form method="POST" action="{{route('jobseeker.updateUser', auth()->user()->id)}}" enctype="multipart/form-data">
 								@csrf
 								@method('PATCH')
 								<div class="row mt-3">
 									<div class="col-md-6">
 										<div class="form-group form-group-default">
 											<label>Upload Profile Picture</label>
-											<input type="file" class="form-control" name="name" placeholder="Profile Picture" value="{{auth()->user()->name}}">
+											<input type="file" class="form-control" name="profile_picture" placeholder="Profile Picture">
 										</div>
 									</div>
 								</div>
@@ -30,7 +30,7 @@
 									<div class="col-md-6">
 										<div class="form-group form-group-default">
 											<label>Job Title/Designation</label>
-											<input type="text" class="form-control" name="name" placeholder="Designation" value="{{auth()->user()->designation}}">
+											<input type="text" class="form-control" name="designation" placeholder="Designation" value="{{auth()->user()->designation}}">
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -71,7 +71,7 @@
 									</div>
 								</div>
 								<div class="text-right mt-3 mb-3">
-									<button class="btn btn-success">Save</button>
+									<button class="btn btn-success">Update</button>
 								</div>
 							</form>
 						</div>
@@ -79,10 +79,10 @@
 				</div>
 				<div class="col-md-4">
 					<div class="card card-profile card-secondary">
-						<div class="card-header" style="background-image: url('../assets/img/blogpost.jpg')">
+						<div class="card-header" style="background-image: url('{{asset('storage/user_profiles/'.auth()->user()->profile_picture)}}')">
 							<div class="profile-picture">
 								<div class="avatar avatar-xl">
-									<img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="{{asset('storage/user_profiles/'.auth()->user()->profile_picture)}}" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</div>
 						</div>
@@ -124,5 +124,4 @@
 		</div>
 	</div>
 </div>
-
 @endsection

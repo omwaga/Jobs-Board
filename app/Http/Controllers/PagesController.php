@@ -230,7 +230,7 @@ class PagesController extends Controller
         $interviews = Interviews::limit(9)->orderBy('created_at', 'DESC')->get();
         $popular_interviews = Interviews::limit(9)->get();
 
-        SEOMeta::setTitle('Interview Questions and Answers');
+        SEOMeta::setTitle('Top Interview Questions and Answers');
         SEOMeta::setDescription('Interview Questions and Answers');
 
         return view('front.interviews', compact('categories', 'interviews', 'popular_interviews'));
@@ -242,11 +242,11 @@ class PagesController extends Controller
         $subcategories = InterviewSubcategories::where('category_id', $page_banner->id)->paginate(12);
         $interviews = Interviews::where('category_id',  $page_banner->id)->limit(9)->orderBy('created_at', 'DESC')->get();
         $popular_interviews = Interviews::where('category_id',  $page_banner->id)->limit(9)->get();
-        $all_interviews = Interviews::where('category_id',  $page_banner->id)->get();
+        $all_interviews = Interviews::where('category_id',  $page_banner->id)->paginate(20);
         $categories = InterviewCategories::get();
-        $recent_questions = Interviews::where('category_id',  $page_banner->category_id)->orderBy('created_at', 'DESC')->limit(10)->get();
+        $recent_questions = Interviews::where('category_id',  $page_banner->id)->orderBy('created_at', 'DESC')->limit(10)->get();
 
-        SEOMeta::setTitle($page_banner->name . ' - Interview Questions and Answers');
+        SEOMeta::setTitle('Top '.$page_banner->name . ' Interview Questions and Answers');
         SEOMeta::setDescription($page_banner->description);
 
         return view('front.interview-subcategories', compact('subcategories', 'interviews', 'popular_interviews', 'all_interviews', 'page_banner', 'categories', 'recent_questions'));
@@ -255,11 +255,11 @@ class PagesController extends Controller
     public function interviewCategory($name)
     {
         $page_banner = InterviewSubcategories::where('slug', $name)->first();
-        $all_interviews = Interviews::where('subcategory_id',  $page_banner->id)->get();
+        $all_interviews = Interviews::where('subcategory_id',  $page_banner->id)->paginate(20);
         $categories = InterviewCategories::get();
         $recent_questions = Interviews::where('category_id',  $page_banner->category_id)->orderBy('created_at', 'DESC')->limit(10)->get();
 
-        SEOMeta::setTitle($page_banner->name . ' - Interview Questions and Answers');
+        SEOMeta::setTitle('Top '.$page_banner->name . ' Interview Questions and Answers');
         SEOMeta::setDescription($page_banner->description);
 
         return view('front.interview', compact('all_interviews', 'page_banner', 'categories', 'recent_questions'));

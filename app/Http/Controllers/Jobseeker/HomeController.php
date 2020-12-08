@@ -60,13 +60,22 @@ class HomeController extends Controller
 
     public function updateUser(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-
-        $user->update([
-            'designation' => $request->designation, 
-            'about' => $request->about, 
-            'show_profile' => $request->show_profile
+        $attributes = request()->validate([
+            'profile_picture' => 'nullable',
+            'designation' => 'nullable|min:3',
+            'show_profile' => 'nullable',
+            'name' => 'required|min:3',
+            'about' => 'nullable|min:3',
         ]);
+
+        $user = User::findOrFail($id);        
+
+        if ($request->hasFile('profile_picture')) {
+            $attributes['profile_picture'] = $request->profile_picture->getClientOriginalName();
+            $request->profile_picture->storeAs('public/user_profiles', $attributes['profile_picture']);
+        }
+
+        $user->update($attributes);
 
         Alert::Success('Success!', 'Profile details updated successfully')->position('top-right')->toToast();
 

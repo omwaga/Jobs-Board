@@ -61,7 +61,7 @@ class InterviewsController extends Controller
 		$attributes = request()->validate([
 			'question' => 'required|min:3',
 			'category_id' => 'required',
-			'answer' => 'required|min:3'
+			'answer' => 'required|min:3',
 			'subcategory_id' => 'nullable'
 		]);
 

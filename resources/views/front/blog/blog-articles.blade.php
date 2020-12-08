@@ -54,33 +54,7 @@
       @endforelse
     </div>
 
-    <h4 class="pb-3">More Resources</h4>
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-3 card d-flex ftco-animate m-2">
-        <div class="blog-entry align-self-stretch">
-          <div class="text mt-3">
-            <h3 class="heading"><a href="#">Job Listings</a></h3>
-            <p>3 blog articles</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 card d-flex ftco-animate m-2">
-        <div class="blog-entry align-self-stretch">
-          <div class="text mt-3">
-            <h3 class="heading"><a href="#">Blog</a></h3>
-            <p>3 blog articles</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 card d-flex ftco-animate m-2">
-        <div class="blog-entry align-self-stretch">
-          <div class="text mt-3">
-            <h3 class="heading"><a href="#">Cheat Sheets</a></h3>
-            <p>3 blog articles</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    @include('front.more-resources')
 
     <h4 class="pb-3 pt-5">Popular Articles</h4>
     <div class="row d-flex">

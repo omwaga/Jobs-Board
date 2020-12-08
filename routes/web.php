@@ -78,6 +78,7 @@ Route::namespace('Admin')->prefix('recruitment')->name('admin.')->group(function
 	Route::resource('/blogcategories', 'BlogCategoryController');
 	Route::resource('/blogsubcategories', 'BlogSubcategoriesController');
 	Route::resource('/blogposts', 'BlogPostController');
+	Route::get('/applicant/{id}', 'AdminController@applicant')->name('applicant');
 });
 
 Route::get('/portfolio', function () {

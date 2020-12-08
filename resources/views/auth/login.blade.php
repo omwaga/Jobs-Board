@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
 
   <!-- Fonts and icons -->
-  <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+  <script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
   <script>
     WebFont.load({
       google: {"families":["Open+Sans:300,400,600,700"]},
@@ -20,8 +20,8 @@
   </script>
   
   <!-- CSS Files -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/azzara.min.css">
+  <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/azzara.css')}}">
 </head>
 <body class="login">
   <div class="wrapper wrapper-login">
@@ -133,10 +133,10 @@
       </form>
     </div>
   </div>
-  <script src="assets/js/core/jquery.3.2.1.min.js"></script>
-  <script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-  <script src="assets/js/core/popper.min.js"></script>
-  <script src="assets/js/core/bootstrap.min.js"></script>
-  <script src="assets/js/ready.js"></script>
+  <script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}"></script>
+  <script src="{{asset('assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
+  <script src="{{asset('assets/js/ready.js')}}"></script>
 </body>
 </html>

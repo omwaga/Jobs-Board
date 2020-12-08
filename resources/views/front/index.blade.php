@@ -190,11 +190,11 @@
 									<small>End your hunt for the perfect employee</small>
 									<li><span class="icon-check"></span> Search CVs for Free now</li>
 									<small>Find the right candidate</small>
-									<li><span class="icon-check"></span> Naukri Job Posting Services and Resume Database Access</li>
-									<small>Call 1800-102-2558 for Employer products</small>
+									<li><span class="icon-check"></span> Recruitable Job Posting Services and Resume Database Access</li>
+									<small>Call +254-713-577210 for Employer products</small>
 									<li><span class="icon-check"></span> Campus Hiring Solutions</li>
 									<small>Optimize your Fresher Hiring</small>
-									<li><span class="icon-check"></span> Naukri RMS</li>
+									<li><span class="icon-check"></span> Recruitable RMS</li>
 									<small>Automate your end to end hiring process.</small>
 								</ul>
 								<button class="btn btn-primary">Get Started</button>

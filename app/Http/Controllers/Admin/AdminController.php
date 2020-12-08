@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Application;
 use Auth;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -30,6 +31,13 @@ class AdminController extends Controller
 		}
 
 		return view('backend.applications', compact('applications'));
+	}
+
+	public function applicant($id)
+	{
+		$applicant = User::where('id', $id)->first();
+
+		return view('backend.applicant', compact('applicant'));
 	}
 
 	public function companys()
