@@ -5,6 +5,16 @@
   {!! SEOMeta::generate() !!}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset('front/images/logo.png')}}" />
+  
+  
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MCZMF64');</script>
+<!-- End Google Tag Manager -->
 
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 
@@ -26,8 +36,25 @@
   <link rel="stylesheet" href="{{asset('front/css/flaticon.css')}}">
   <link rel="stylesheet" href="{{asset('front/css/icomoon.css')}}">
   <link rel="stylesheet" href="{{asset('front/css/style.css')}}">
+  
+  <script data-ad-client="ca-pub-3474881270337873" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BNE9WYWF1B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BNE9WYWF1B');
+</script>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCZMF64"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
   @include('sweetalert::alert')
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -118,7 +145,7 @@
       <div class="col-md">
        <div class="ftco-footer-widget mb-4">
         <h2 class="ftco-heading-2">About</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+        <p>Recruitable is a kenyan online employment solution for people seeking jobs and the employers who need great people.</p>
         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
           <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
           <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -156,9 +183,9 @@
         <h2 class="ftco-heading-2">Have a Questions?</h2>
         <div class="block-23 mb-3">
           <ul>
-            <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-            <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+            <li><span class="icon icon-map-marker"></span><span class="text">Nairobi Kenya</span></li>
+            <li><a href="#"><span class="icon icon-phone"></span><span class="text">+254 792 691 409</span></a></li>
+            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@recruitable.co.ke</span></a></li>
           </ul>
         </div>
       </div>
@@ -168,7 +195,7 @@
     <div class="col-md-12 text-center">
 
       <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
       </div>
     </div>

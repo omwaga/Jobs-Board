@@ -14,7 +14,7 @@
           <div>
             <h2>{{$job->job_title ?? ''}}</h2>
             <div>
-              <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{{$job->user->name ?? ''}}</span>
+              <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{{$job->employer_name ?? $job->user->name}}</span>
               <span class="m-2"><span class="icon-room mr-2"></span>{{$job->postcity->name ?? ''}}, {{$job->postcountry->name}}</span>
               <span class="m-2"><span class="icon-clock-o mr-2"></span><span class="text-primary">{{$job->postjobtype->name ?? ''}}</span></span>
             </div>

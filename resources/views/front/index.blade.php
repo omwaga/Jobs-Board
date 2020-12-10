@@ -6,7 +6,7 @@
 		<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
 			<div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
 				<p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">We have <span class="number" data-number="850000">0</span> great job offers you deserve!</p>
-				<h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Your Dream <br><span>Job is Waiting</span></h1>
+				<h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find A Job at <br><span>Kenya's No.1 Job Site</span></h1>
 
 				@include('front.search-job')
 			</div>
@@ -74,28 +74,28 @@
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
 					@foreach($top_categories1 as $category)
-					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="10">0</span></a></li>
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}</a></li>
 					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
 					@foreach($top_categories2 as $category)
-					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="10">0</span></a></li>
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}</a></li>
 					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
 					@foreach($top_categories3 as $category)
-					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="10">0</span></a></li>
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}</a></li>
 					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
 					@foreach($top_categories4 as $category)
-					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="{{$category->jobs->count()}}">0</span></a></li>
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}</a></li>
 					@endforeach
 				</ul>
 			</div>
@@ -121,7 +121,7 @@
 
 							<div class="mb-4 mb-md-0 mr-5">
 								<div class="job-post-item-header d-flex align-items-center">
-									<a href="{{route('front.singlejob', $vacancy->slug)}}"><h2 class="mr-3 text-black h3">{{$vacancy->job_title ?? ''}}</h2></a>
+									<a href="{{route('front.singlejob', $vacancy->slug)}}"><h4 class="mr-3 text-black h4">{{$vacancy->job_title ?? ''}}</h4></a>
 									<div class="badge-wrap">
 										@if($vacancy->postjobtype->name === 'Full Time')
 										<span class="bg-warning text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
@@ -137,7 +137,7 @@
 									</div>
 								</div>
 								<div class="job-post-item-body d-block d-md-flex">
-									<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->user->name ?? ''}}</a></div>
+									<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->employer_name ?? $vacancy->user->name}}</a></div>
 									<div><span class="icon-my_location"></span> <span>{{$vacancy->postcity->name ?? ''}}, {{$vacancy->postcountry->name ?? ''}}</span></div>
 								</div>
 							</div>

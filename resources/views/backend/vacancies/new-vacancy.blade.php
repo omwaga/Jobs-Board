@@ -40,6 +40,10 @@
 										<label class="control-label">Job Title <span class="text-danger">*</span></label>
 										<input class="form-control" name="job_title" type="text" required value="{{old('job_title')}}" />
 									</div>
+									<div class="form-group ">
+										<label class="control-label">Employer Name</label>
+										<input class="form-control" name="employer_name" type="text" value="{{old('employer_name')}}" />
+									</div>
 
 									<div class="row p-3">
 										<div class="col-lg-6">
@@ -81,12 +85,12 @@
 										</div>
 
 										<div class="col-lg-6">
-											<label class="control-label">Required Exerience <span class="text-danger">*</span></label>
+											<label class="control-label">Required Experience</label>
 											<input class="form-control" name="required_experience" type="text" value="{{old('required_experience')}}" />
 										</div>
 
 										<div class="col-lg-6">
-											<label class="control-label">Application Deadline <span class="text-danger">*</span></label>
+											<label class="control-label">Application Deadline</label>
 											<input class="form-control" name="application_deadline" type="text" value="{{old('application_deadline')}}" />
 										</div>
 										
@@ -100,8 +104,8 @@
 											</select>
 										</div>
 										<div class="col-lg-6">
-											<label class="control-label">Salary <span class="text-danger">*</span></label>
-											<input class="form-control" name="salary" value="{{old('salary')}}" type="text" required/>
+											<label class="control-label">Salary</label>
+											<input class="form-control" name="salary" value="{{old('salary')}}" type="text"/>
 										</div>
 									</div>
 									<div class="form-group ">
@@ -121,7 +125,7 @@
 									</div>
 									<div class="form-group">
 										<div class="col-lg-offset-2 col-lg-10">
-											<button class="btn btn-primary" type="submit">Save</button>
+											<button class="btn btn-primary" type="submit">Post Job</button>
 										</div>
 									</div>
 								</form>

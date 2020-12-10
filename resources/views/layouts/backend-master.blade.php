@@ -6,7 +6,7 @@
   
     {!! SEOMeta::generate() !!}
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-  <link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
+  <link rel="icon" href="{{asset('front/images/logo.png')}}" type="image/x-icon"/>
   
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 

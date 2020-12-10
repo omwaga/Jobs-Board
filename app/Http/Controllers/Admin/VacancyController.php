@@ -117,7 +117,8 @@ class VacancyController extends Controller
         'required_experience' => 'nullable',
         'application_deadline' => 'nullable',
         'how_to_apply' => 'nullable',
-        'recruitable_apply' => 'nullable'
+        'recruitable_apply' => 'nullable',
+        'employer_name' => 'nullable'
     ]);  
 
        $slug = Str::slug($request->job_title.'-'.auth()->user()->id);
@@ -151,6 +152,7 @@ class VacancyController extends Controller
             'application_deadline' => $request->application_deadline,
             'how_to_apply' => $request->how_to_apply,
             'recruitable_apply' => $request->recruitable_apply,
+            'employer_name' => $request->employer_name,
         ]);
         
 

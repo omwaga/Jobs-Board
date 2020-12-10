@@ -37,11 +37,15 @@
 									@csrf
 									@method('PATCH')
 									<div class="form-group ">
-										<label class="control-label">Job Title <span class="required">*</span></label>
+										<label class="control-label">Job Title <span class="text-danger">*</span></label>
 										<input class="form-control" name="job_title" type="text" required value="{{$vacancy->job_title}}" />
 									</div>
+									<div class="form-group ">
+										<label class="control-label">Employer Name</label>
+										<input class="form-control" name="employer_name" type="text" value="{{$vacancy->employer_name}}" />
+									</div>
 
-									<div class="row">
+									<div class="row p-2">
 										<div class="col-lg-6">
 											<label class="control-label">Job Category <span class="required">*</span></label>
 											<select class="form-control m-bot15" name="category">
@@ -116,7 +120,7 @@
 
 										<div class="form-check">
 											<label class="form-check-label">
-												<input class="form-check-input" name="recruitable_apply" type="checkbox" value="No">
+												<input class="form-check-input" name="recruitable_apply" type="checkbox" checked="" value="No">
 												<span class="form-check-sign">Check if you dont want to receive and manage applications on Recruitable System</span>
 											</label>
 										</div>								

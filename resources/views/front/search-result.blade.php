@@ -39,7 +39,7 @@
 										</div>
 									</div>
 									<div class="job-post-item-body d-block d-md-flex">
-										<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->user->name ?? ''}}</a></div>
+										<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->employer_name ?? $vacancy->user->name}}</a></div>
 										<div><span class="icon-my_location"></span> <span>{{$vacancy->postcity->name ?? ''}}, {{$vacancy->postcountry->name ?? ''}}</span></div>
 									</div>
 								</div>

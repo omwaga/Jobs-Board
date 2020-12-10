@@ -15,28 +15,28 @@
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
 					@foreach($top_categories1 as $category)
-					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="10">0</span></a></li>
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}</a></li>
 					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
 					@foreach($top_categories2 as $category)
-					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="10">0</span></a></li>
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}</a></li>
 					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
 					@foreach($top_categories3 as $category)
-					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="10">0</span></a></li>
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}</a></li>
 					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-3 ftco-animate">
 				<ul class="category">
 					@foreach($top_categories4 as $category)
-					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}<span class="number" data-number="{{$category->jobs->count()}}">0</span></a></li>
+					<li><a href="{{route('front.category', $category->slug)}}">{{$category->name}}</a></li>
 					@endforeach
 				</ul>
 			</div>
@@ -76,7 +76,7 @@
 							</div>
 						</div>
 						<div class="job-post-item-body d-block d-md-flex">
-							<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->user->name ?? ''}}</a></div>
+							<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$vacancy->employer_name ?? $vacancy->user->name}}</a></div>
 							<div><span class="icon-my_location"></span> <span>{{$vacancy->postcity->name ?? ''}}, {{$vacancy->postcountry->name ?? ''}}</span></div>
 						</div>
 					</div>
