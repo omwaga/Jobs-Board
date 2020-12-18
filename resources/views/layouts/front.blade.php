@@ -1,8 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   {!! SEOMeta::generate() !!}
+  {!! OpenGraph::generate() !!}
+<meta name="robots" content="INDEX,FOLLOW">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" type="image/x-icon" href="{{asset('front/images/logo.png')}}" />
@@ -72,7 +73,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li class="nav-item"><a href="{{route('front.vacancies')}}" class="nav-link">Job Listings</a></li>
           <li class="nav-item"><a href="{{route('front.interviews')}}" class="nav-link">Interview Q&A</a></li>
           <!-- <li class="nav-item"><a href="#" class="nav-link">Resume Maker</a></li> -->
-          <li class="nav-item"><a href="#" class="nav-link">Career Guidance</a></li>
+          <!-- <li class="nav-item"><a href="#" class="nav-link">Career Guidance</a></li> -->
           <li class="nav-item"><a href="{{route('front.blog')}}" class="nav-link">Blog</a></li>
           <!-- Authentication Links -->
           @guest
@@ -158,10 +159,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="ftco-heading-2">Employers Services</h2>
         <ul class="list-unstyled">
           <li><a href="#" class="py-2 d-block">How it works</a></li>
-          <li><a href="#" class="py-2 d-block">Recruiter Register</a></li>
-          <li><a href="#" class="py-2 d-block">Job Posting </a></li>
-          <li><a href="#" class="py-2 d-block">Advance Skill Search</a></li>
-          <li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
+          <li><a href="{{route('front.employer.register')}}" class="py-2 d-block">Recruiter Register</a></li>
+          <li><a href="{{route('front.employer.register')}}" class="py-2 d-block">Job Posting </a></li>
+          <!-- <li><a href="#" class="py-2 d-block">Advance Skill Search</a></li> -->
+          <li><a href="{{route('front.employer.register')}}" class="py-2 d-block">Recruiting Service</a></li>
         </ul>
       </div>
     </div>
@@ -170,11 +171,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="ftco-heading-2">Jobseekers Seervices</h2>
         <ul class="list-unstyled">
           <li><a href="#" class="py-2 d-block">Priority Applicant</a></li>
-          <li><a href="#" class="py-2 d-block">Register</a></li>
-          <li><a href="#" class="py-2 d-block">Post Your Skills</a></li>
-          <li><a href="#" class="py-2 d-block">Job Search</a></li>
-          <li><a href="#" class="py-2 d-block">Resume Display</a></li>
-          <li><a href="#" class="py-2 d-block">Create Job Alerts</a></li>
+          <li><a href="{{route('register')}}" class="py-2 d-block">Register</a></li>
+          <li><a href="{{route('login')}}" class="py-2 d-block">Post Your Skills</a></li>
+          <li><a href="{{route('front.vacancies')}}" class="py-2 d-block">Job Search</a></li>
+          <li><a href="{{route('login')}}" class="py-2 d-block">Resume Display</a></li>
+          <li><a href="{{route('login')}}" class="py-2 d-block">Create Job Alerts</a></li>
         </ul>
       </div>
     </div>
@@ -184,7 +185,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="block-23 mb-3">
           <ul>
             <li><span class="icon icon-map-marker"></span><span class="text">Nairobi Kenya</span></li>
-            <li><a href="#"><span class="icon icon-phone"></span><span class="text">+254 792 691 409</span></a></li>
+            <li><a href="#"><span class="icon icon-phone"></span><span class="text">+254 713 577 210</span></a></li>
             <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@recruitable.co.ke</span></a></li>
           </ul>
         </div>

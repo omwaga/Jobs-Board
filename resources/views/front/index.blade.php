@@ -121,7 +121,7 @@
 
 							<div class="mb-4 mb-md-0 mr-5">
 								<div class="job-post-item-header d-flex align-items-center">
-									<a href="{{route('front.singlejob', $vacancy->slug)}}"><h4 class="mr-3 text-black h4">{{$vacancy->job_title ?? ''}}</h4></a>
+									<a href="{{route('front.singlejob', $vacancy->slug)}}"><h4 class="mr-3 text-black h5">{{$vacancy->job_title ?? ''}}</h4></a>
 									<div class="badge-wrap">
 										@if($vacancy->postjobtype->name === 'Full Time')
 										<span class="bg-warning text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>
@@ -166,8 +166,8 @@
 							<h3>Get Personalised Jobs !!</h3>
 							<div class="text">
 								<p class="mb-3">Tell us what kind of a job you are looking out for and stay updated with latest opportunities.</p>
-								<button class="btn btn-danger">Register for Free</button>
-								<button class="btn btn-primary">Upload CV</button>
+								<a href="{{route('login')}}" class="btn btn-danger">Register for Free</a>
+								<a href="{{route('login')}}" class="btn btn-primary">Upload CV</a>
 							</div>
 						</div>
 					</div>
@@ -177,7 +177,7 @@
 							<div class="text">
 								<p class="mb-3">Tell us what kind of a job you are looking out for and stay updated with latest opportunities.</p>
 								<small>No registration required</small><br>	
-								<button class="btn btn-primary">Create Job Alert</button>
+								<a href="{{route('login')}}" class="btn btn-primary">Create Job Alert</a>
 							</div>
 						</div>
 					</div>
@@ -197,7 +197,7 @@
 									<li><span class="icon-check"></span> Recruitable RMS</li>
 									<small>Automate your end to end hiring process.</small>
 								</ul>
-								<button class="btn btn-primary">Get Started</button>
+								<a href="{{route('register')}}" class="btn btn-primary">Get Started</a>
 							</div>
 						</div>
 					</div>

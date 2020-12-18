@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Certification;
 
 class CertificationController extends Controller
@@ -31,10 +30,6 @@ class CertificationController extends Controller
     	]);
 
 		Certification::create($attributes + ['user_id' => auth()->user()->id]);
-
-		Alert::Success('Success!', 'Certification details saved successfully')->position('top-right')->toToast();
-
-		return back();
     }
 
     public function destroy(Certification $certification)

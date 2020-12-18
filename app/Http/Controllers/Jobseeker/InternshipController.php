@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Internship;
 
 use Illuminate\Http\Request;
@@ -39,10 +38,6 @@ class InternshipController extends Controller
     	]);
 
 		Internship::create($attributes + ['user_id' => auth()->user()->id]);
-
-		Alert::Success('Success!', 'Internship details saved successfully')->position('top-right')->toToast();
-
-		return back();
     }
 
     public function destroy(Internship $internship)

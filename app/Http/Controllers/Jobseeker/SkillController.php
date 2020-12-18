@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Skill;
 
 class SkillController extends Controller
@@ -28,10 +27,6 @@ class SkillController extends Controller
     	]);
 
 		Skill::create($attributes + ['user_id' => auth()->user()->id]);
-
-		Alert::Success('Success!', 'Skill saved successfully')->position('top-right')->toToast();
-
-		return back();
     }
 
     public function destroy(Skill $skill)

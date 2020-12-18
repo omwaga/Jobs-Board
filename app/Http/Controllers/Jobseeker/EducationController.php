@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Education;
 
 class EducationController extends Controller
@@ -33,10 +32,6 @@ class EducationController extends Controller
     	]);
 
 		Education::create($attributes + ['user_id' => auth()->user()->id]);
-
-		Alert::Success('Success!', 'Education details saved successfully')->position('top-right')->toToast();
-
-		return back();
 
     }
 

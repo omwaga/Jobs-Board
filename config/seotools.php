@@ -9,13 +9,13 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Jobs - Recruitment - Job Search - Employment", // set false to total remove
+            'title'        => "Jobs in kenya - Recruitment - Job Search - Employment", // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
             'description'  => 'Jobs - Recruitment - Job Search - Employment', // set false to total remove
             'separator'    => ' - ',
-            'keywords'     => [],
-            'canonical'    => false, // Set null for using Url::current(), set false to total remove
-            'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
+            'keywords'     => ['jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya', 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions', 'career advice', 'interview'],
+            'canonical'    => null, // Set null for using Url::current(), set false to total remove
+            'robots'       => "INDEX,FOLLOW", // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
          * Webmaster tags are always added.
@@ -38,9 +38,9 @@ return [
         'defaults' => [
             'title'       => 'Jobs - Recruitment - Job Search -Employment!', // set false to total remove
             'description' => 'Jobs - Recruitment - Job Search -Employment', // set false to total remove
-            'url'         => false, // Set null for using Url::current(), set false to total remove
-            'type'        => false,
-            'site_name'   => false,
+            'url'         => null, // Set null for using Url::current(), set false to total remove
+            'type'        => 'WebPage',
+            'site_name'   => 'Recruitable',
             'images'      => [],
         ],
     ],

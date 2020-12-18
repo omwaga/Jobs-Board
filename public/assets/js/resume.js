@@ -311,56 +311,56 @@ new Vue({
   methods: {
     detailsSubmit() {
         this.details.post('/user/details')
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Details saved successfully!'));
 
         this.showDetails()
     },
 
     projectsSubmit() {
         this.projects.post('/user/projects')
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Project added successfully!'));
 
         this.showProjects()
     },
 
     educationSubmit() {
         this.education.post('/user/educations')
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Education added successfully!'));
 
         this.showEducations()
     },
 
     internshipsSubmit() {
         this.internships.post('/user/internships')
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Internship added successfully!'));
 
         this.showInternships()
     },
 
     experiencesSubmit() {
         this.experiences.post('/user/experiences')
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Experience added successfully!'));
 
         this.showExperiences()
     },
 
     skillsSubmit() {
         this.skills.post('/user/skills')
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Skill added successfully!'));
 
         this.showSkills()
     },
 
     certificationsSubmit() {
         this.certifications.post('/user/certifications')
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Certification added successfully!'));
 
         this.showCertifications()
     },
 
     awardsSubmit() {
         this.awards.post('/user/awards')
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Award added successfully!'));
 
         this.showAwards()
     },
@@ -369,7 +369,7 @@ new Vue({
 
     detailsUpdate(id) {
         this.userDetails.patch('/user/details/' + id)
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Details updated successfully!'));
 
         this.showDetails()
     },
@@ -417,49 +417,49 @@ new Vue({
 // Delete Methods
     deleteEducation(id){        
         axios.delete('/user/educations/' + id)
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Education deleted successfully!'));
 
         this.showEducations()    
     },
 
     deleteInternship(id){        
         axios.delete('/user/internships/' + id)
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Internship deleted successfully!'));
 
         this.showInternships()    
     },
 
     deleteProject(id){        
         axios.delete('/user/projects/' + id)
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Project deleted successfully!'));
 
         this.showProjects()    
     },
 
     deleteExperience(id){        
         axios.delete('/user/experiences/' + id)
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Experience deleted successfully!'));
 
         this.showExperiences()    
     },
 
     deleteSkill(id){        
         axios.delete('/user/skills/' + id)
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Skill deleted successfully!'));
 
         this.showSkills()    
     },
 
     deleteCertification(id){        
         axios.delete('/user/certifications/' + id)
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Certification deleted successfully!'));
 
         this.showCertifications()    
     },
 
     deleteAward(id){        
         axios.delete('/user/awards/' + id)
-        .then(response => alert('Wahoo!'));
+        .then(response => swal('Award deleted successfully!'));
 
         this.showAwards()    
     },

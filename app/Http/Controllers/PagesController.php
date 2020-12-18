@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 use DB;
 use Str;
 use App\Country;
@@ -35,9 +36,15 @@ class PagesController extends Controller
         $locations = City::all();
         $job_types = JobType::all();
 
-        SEOMeta::setTitle('Recruitable Jobs In Kenya');
-        SEOMeta::setDescription('Recruitable Jobs In Kenya');
-        SEOMeta::addKeyword(['jobs in kenya', 'Accounting, Banking and Insurance jobs']);
+        SEOMeta::setTitle('Job opportuinities in Kenya');
+        SEOMeta::setDescription(' Search for jobs, prepare for job interviews read career advice and sign up for alerts on the latest vacancies from top international and local companies.');
+        SEOMeta::addKeyword(['Recruitable', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya', 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions', 'career advice', 'interview']);
+        SEOMeta::addMeta('jobs:jobs', 'Find the best job vacancies in kenya', 'property');
+        OpenGraph::setTitle('Jobs in Kenya');
+        OpenGraph::setDescription('Search  and apply for the latest jobs in kenya');
+        OpenGraph::addProperty('type', 'WebPage');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.index', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types', 'articles'));
     }
@@ -60,8 +67,15 @@ class PagesController extends Controller
         $top_categories3 = Category::all()->random(4);
         $top_categories4 = Category::all()->random(4);
 
-        SEOMeta::setTitle('Jobs In Kenya');
-        SEOMeta::setDescription('Recruitable Jobs In Kenya');
+        SEOMeta::setTitle('Jobs vacancies in Kenya');
+        SEOMeta::setDescription('Search and apply for job opportuinities in Kenya');
+        SEOMeta::addKeyword(['job search', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya', 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions', 'career advice', 'interview']);
+        SEOMeta::addMeta('jobs:jobs', 'Find the best job vacancies in kenya', 'property');
+        OpenGraph::setTitle('Job vacancies in Kenya');
+        OpenGraph::setDescription('Search and apply for the lates job vacancies in kenya');
+        OpenGraph::addProperty('type', 'Page');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.vacancies', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));
     }
@@ -79,6 +93,14 @@ class PagesController extends Controller
 
         SEOMeta::setTitle($job->job_title);
         SEOMeta::setDescription($job->job_title.' job in kenya');
+        SEOMeta::addKeyword([$job->job_title, $job->postcategory->name.' jobs', $job->postcategory->name.' jobs in kenya', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya']);
+        SEOMeta::addMeta('jobpost:title', $job->job_title, 'property');
+        SEOMeta::addMeta('jobpost:category', $job->postcategory->name, 'property');
+        OpenGraph::setTitle($job->job_title);
+        OpenGraph::setDescription($job->description);
+        OpenGraph::addProperty('type', 'job');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.single-job', compact('related_jobs', 'page_banner', 'categories', 'locations', 'job_types', 'job', 'similar_jobs'));
     }
@@ -95,6 +117,13 @@ class PagesController extends Controller
 
         SEOMeta::setTitle($page_banner->name.' Jobs in Kenya');
         SEOMeta::setDescription($category->description);
+        SEOMeta::addKeyword([$page_banner->name, $page_banner->name.' jobs', $page_banner->name.' jobs in kenya', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya']);
+        SEOMeta::addMeta('jobs:category', $page_banner->name.' jobs', 'property');
+        OpenGraph::setTitle($page_banner->name);
+        OpenGraph::setDescription($page_banner->description);
+        OpenGraph::addProperty('type', 'Category');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.categories', compact('vacancies', 'page_banner', 'categories', 'locations', 'job_types'));
     }
@@ -110,6 +139,13 @@ class PagesController extends Controller
 
         SEOMeta::setTitle(' Jobs in '. $location->name);
         SEOMeta::setDescription($location->description);
+        SEOMeta::addKeyword([$location->name.' county jobs', 'jobs in '.$location->name, 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya']);
+        SEOMeta::addMeta('jobs:location', 'jobs in '.$location->name);
+        OpenGraph::setTitle('Job vacancies in '.$location->name);
+        OpenGraph::setDescription($location->description);
+        OpenGraph::addProperty('type', 'location');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.locations', compact('vacancies', 'categories', 'locations', 'job_types'));
     }
@@ -126,6 +162,13 @@ class PagesController extends Controller
 
         SEOMeta::setTitle($type->name. ' Jobs in Kenya');
         SEOMeta::setDescription($type->description);
+        SEOMeta::addKeyword([$type->name.' jobs', $type->name.' jobs in kenya', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya']);
+        SEOMeta::addMeta('jobs:type', $type->name.' jobs', 'property');
+        OpenGraph::setTitle($type->name. ' jobs in kenya');
+        OpenGraph::setDescription($type->description);
+        OpenGraph::addProperty('type', 'job type');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.job-types', compact('vacancies', 'categories', 'locations', 'job_types'));
     }
@@ -228,10 +271,17 @@ class PagesController extends Controller
     {
         $categories = InterviewCategories::paginate(12);
         $interviews = Interviews::limit(9)->orderBy('created_at', 'DESC')->get();
-        $popular_interviews = Interviews::limit(9)->get();
+        $popular_interviews = Interviews::all()->random(9);
 
         SEOMeta::setTitle('Top Interview Questions and Answers');
         SEOMeta::setDescription('Interview Questions and Answers');
+        SEOMeta::addKeyword(['interview anwers', 'interviews in kenya', 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions']);
+        SEOMeta::addMeta('interviews:interviews', 'Best interview questions and answers');
+        OpenGraph::setTitle('Top interview questions and answers');
+        OpenGraph::setDescription('prepare for your interview  with the best interview questions and answers');
+        OpenGraph::addProperty('type', 'interviews');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.interviews', compact('categories', 'interviews', 'popular_interviews'));
     }
@@ -248,6 +298,13 @@ class PagesController extends Controller
 
         SEOMeta::setTitle('Top '.$page_banner->name . ' Interview Questions and Answers');
         SEOMeta::setDescription($page_banner->description);
+        SEOMeta::addKeyword([$page_banner->name, $page_banner->name.' interview questions', $page_banner->name. ' interview preparation', 'interview for '.$page_banner->name, 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions']);
+        SEOMeta::addMeta('interview:category', $page_banner->name.' job interview', 'property');
+        OpenGraph::setTitle($page_banner->name.' interview questions');
+        OpenGraph::setDescription($page_banner->description);
+        OpenGraph::addProperty('type', 'category');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.interview-subcategories', compact('subcategories', 'interviews', 'popular_interviews', 'all_interviews', 'page_banner', 'categories', 'recent_questions'));
     }
@@ -261,6 +318,13 @@ class PagesController extends Controller
 
         SEOMeta::setTitle('Top '.$page_banner->name . ' Interview Questions and Answers');
         SEOMeta::setDescription($page_banner->description);
+        SEOMeta::addKeyword([$page_banner->name, $page_banner->name.' interview questions', $page_banner->name. ' interview preparation', 'interview for '.$page_banner->name, 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions']);
+        SEOMeta::addMeta('interview:category', $page_banner->name.' job interview', 'property');
+        OpenGraph::setTitle($page_banner->name.' interview questions');
+        OpenGraph::setDescription($page_banner->description);
+        OpenGraph::addProperty('type', 'category');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.interview', compact('all_interviews', 'page_banner', 'categories', 'recent_questions'));
     }
@@ -268,12 +332,19 @@ class PagesController extends Controller
     public function interview($slug)
     {
         $page_banner = Interviews::where('slug', $slug)->first();
-        $related_questions = Interviews::where('category_id',  $page_banner->category_id)->paginate(20);
+        $related_questions = Interviews::where('category_id',  $page_banner->category_id)->inRandomOrder()->paginate(20);
         $recent_questions = Interviews::where('category_id',  $page_banner->category_id)->orderBy('created_at', 'DESC')->limit(10)->get();
         $categories = InterviewCategories::get();
 
         SEOMeta::setTitle($page_banner->question);
-        SEOMeta::setDescription(Str::limit(strip_tags($page_banner->answer), 500));
+        SEOMeta::setDescription(Str::limit(strip_tags($page_banner->answer), 100));
+        SEOMeta::addKeyword([$page_banner->question, 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions']);
+        SEOMeta::addMeta('interview:question', $page_banner->question, 'property');
+        OpenGraph::setTitle($page_banner->question);
+        OpenGraph::setDescription(Str::limit(strip_tags($page_banner->answer), 100));
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.single-interview', compact('related_questions', 'page_banner', 'categories', 'recent_questions'));
     }
@@ -284,8 +355,14 @@ class PagesController extends Controller
         $articles = BlogPost::limit(9)->orderBy('created_at', 'DESC')->get();
         $popular_articles = BlogPost::limit(9)->get();
 
-        SEOMeta::setTitle('Insights');
+        SEOMeta::setTitle('Career Advice');
         SEOMeta::setDescription('Career Insights');
+        SEOMeta::addKeyword(['insights', 'careers', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya', 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions', 'career advice', 'interview']);
+        OpenGraph::setTitle('Career Advice');
+        OpenGraph::setDescription('Best career advice for your next job opportuinity');
+        OpenGraph::addProperty('type', 'blog');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.blog.blog-articles', compact('categories', 'articles', 'popular_articles'));
     }
@@ -300,8 +377,15 @@ class PagesController extends Controller
         $categories = BlogCategory::get();
         $recent_articles = BlogPost::orderBy('created_at', 'DESC')->limit(4)->get();
 
-        SEOMeta::setTitle($page_banner->name . ' - Interview Questions and Answers');
+        SEOMeta::setTitle($page_banner->name . ' - Career Advice');
         SEOMeta::setDescription($page_banner->description);
+        SEOMeta::addKeyword([$page_banner->name, $page_banner->name.' career advice', $page_banner->name.' jobs']);
+        SEOMeta::addMeta('career:category', $page_banner->name, 'property');
+        OpenGraph::setTitle($page_banner->name . ' - Career Advice');
+        OpenGraph::setDescription($page_banner->description);
+        OpenGraph::addProperty('type', 'category');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.blog.blog-subcategories', compact('subcategories', 'articles', 'popular_articles', 'all_articles', 'page_banner', 'categories', 'recent_articles'));
     }
@@ -313,8 +397,16 @@ class PagesController extends Controller
         $articles = BlogPost::orderBy('created_at', 'DESC')->limit(4)->get();
         $categories = BlogCategory::get();
 
-        SEOMeta::setTitle($page_banner->name . ' - Interview Questions and Answers');
+        SEOMeta::setTitle($page_banner->name . ' - Career Advice');
         SEOMeta::setDescription($page_banner->description);
+        SEOMeta::addKeyword([$page_banner->name, $page_banner->name.' career advice', $page_banner->name.' careers']);
+        SEOMeta::addMeta('career:category', $page_banner->name, 'property');
+        SEOMeta::addMeta('career:category', $page_banner->name, 'property');
+        OpenGraph::setTitle($page_banner->name . ' - Career Advice');
+        OpenGraph::setDescription($page_banner->description);
+        OpenGraph::addProperty('type', 'category');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.blog.articles', compact('all_articles', 'articles', 'page_banner', 'categories'));
     }
@@ -327,6 +419,14 @@ class PagesController extends Controller
 
         SEOMeta::setTitle($page_banner->title);
         SEOMeta::setDescription(Str::limit(strip_tags($page_banner->description), 80));
+        SEOMeta::addKeyword([$page_banner->title]);
+        SEOMeta::addMeta('career:category', $page_banner->category->name, 'property');
+        SEOMeta::addMeta('career:category', $page_banner->name, 'property');
+        OpenGraph::setTitle($page_banner->title);
+        OpenGraph::setDescription(strip_tags($page_banner->description), 80);
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'en-ke');
+        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.blog.blog-article', compact('articles', 'page_banner', 'categories'));
     }

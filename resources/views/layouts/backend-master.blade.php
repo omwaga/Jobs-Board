@@ -543,20 +543,11 @@
 <!-- Moment JS -->
 <script src="{{asset('assets/js/plugin/moment/moment.min.js')}}"></script>
 
-<!-- Chart JS -->
-<script src="{{asset('assets/js/plugin/chart.js/chart.min.js')}}"></script>
-
 <!-- jQuery Sparkline -->
 <script src="{{asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
 
-<!-- Chart Circle -->
-<script src="{{asset('assets/js/plugin/chart-circle/circles.min.js')}}"></script>
-
 <!-- Datatables -->
 <script src="{{asset('assets/js/plugin/datatables/datatables.min.js')}}"></script>
-
-<!-- Bootstrap Notify -->
-<script src="{{asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
 
 <!-- Bootstrap Toggle -->
 <script src="{{asset('assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js')}}"></script>

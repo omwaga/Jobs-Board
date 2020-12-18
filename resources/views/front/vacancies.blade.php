@@ -60,7 +60,7 @@
 
 					<div class="mb-4 mb-md-0 mr-5">
 						<div class="job-post-item-header d-flex align-items-center">
-							<a href="{{route('front.singlejob', $vacancy->slug)}}"><h2 class="mr-3 text-black h3">{{$vacancy->job_title ?? ''}}</h2></a>
+							<a href="{{route('front.singlejob', $vacancy->slug)}}"><h2 class="mr-3 text-black h5">{{$vacancy->job_title ?? ''}}</h2></a>
 							<div class="badge-wrap">
 								@if($vacancy->postjobtype->name === 'Full Time')
 								<span class="bg-warning text-white badge py-2 px-3">{{$vacancy->postjobtype->name ?? ''}}</span>

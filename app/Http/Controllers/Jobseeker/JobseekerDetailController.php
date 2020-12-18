@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 
 use App\JobseekerDetail;
 
@@ -40,9 +39,6 @@ class JobseekerDetailController extends Controller
 
 		JobseekerDetail::create($attributes + ['user_id' => auth()->user()->id]);
 
-		Alert::Success('Success!', 'Details saved successfully')->position('top-right')->toToast();
-
-		return back();
 	}
 
 	public function update(JobseekerDetail $detail,Request $request)

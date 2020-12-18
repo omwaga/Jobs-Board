@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Award;
 
 class AwardController extends Controller
@@ -29,10 +28,6 @@ class AwardController extends Controller
     	]);
 
 		Award::create($attributes + ['user_id' => auth()->user()->id]);
-
-		Alert::Success('Success!', 'Award details saved successfully')->position('top-right')->toToast();
-
-		return back();
     }
 
     public function destroy(Award $award)

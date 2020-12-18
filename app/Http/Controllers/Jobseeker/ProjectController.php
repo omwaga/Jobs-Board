@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Project;
 
 use Illuminate\Http\Request;
@@ -34,8 +33,6 @@ class ProjectController extends Controller
     	]);
 
 		Project::create($attributes + ['user_id' => auth()->user()->id]);
-
-		Alert::Success('Success!', 'Project details saved successfully')->position('top-right')->toToast();
 
 		return back();
     }

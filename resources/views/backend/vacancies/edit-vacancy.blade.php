@@ -47,7 +47,7 @@
 
 									<div class="row p-2">
 										<div class="col-lg-6">
-											<label class="control-label">Job Category <span class="required">*</span></label>
+											<label class="control-label">Job Category <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="category">
 												<option value="{{$vacancy->category}}">{{$vacancy->postcategory->name ?? 'Select Category'}}</option>
 												@foreach($categories as $category)
@@ -56,7 +56,7 @@
 											</select>
 										</div>
 										<div class="col-lg-6">
-											<label class="control-label">Job Type <span class="required">*</span></label>
+											<label class="control-label">Job Type <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="job_type">
 												<option value="{{$vacancy->job_type}}">{{$vacancy->postjobtype->name ?? 'Select Job Type'}}</option>
 												@foreach($job_types as $job_type)
@@ -66,7 +66,7 @@
 										</div>
 
 										<div class="col-lg-6">
-											<label class="control-label">Country <span class="required">*</span></label>
+											<label class="control-label">Country <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="country">
 												<option value="{{$vacancy->country}}">{{$vacancy->postcountry->name ?? 'Select Country'}}</option>
 												@foreach($countries as $country)
@@ -75,7 +75,7 @@
 											</select>
 										</div>
 										<div class="col-lg-6">
-											<label class="control-label">City <span class="required">*</span></label>
+											<label class="control-label">City <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="city">
 												<option value="{{$vacancy->city}}">{{$vacancy->postcity->name ?? 'Select City'}}</option>
 												@foreach($cities as $city)
@@ -85,17 +85,17 @@
 										</div>
 
 										<div class="col-lg-6">
-											<label class="control-label">Required Exerience <span class="required">*</span></label>
+											<label class="control-label">Required Exerience </label>
 										<input class="form-control" name="required_experience" type="text" value="{{$vacancy->required_experience}}" />
 										</div>
 
 										<div class="col-lg-6">
-											<label class="control-label">Application Deadline <span class="required">*</span></label>
+											<label class="control-label">Application Deadline </label>
 										<input class="form-control" name="application_deadline" type="text" value="{{$vacancy->application_deadline}}" />
 										</div>
 
 										<div class="col-lg-6">
-											<label class="control-label">Subscription <span class="required">*</span></label>
+											<label class="control-label">Subscription <span class="text-danger">*</span></label>
 											<select class="form-control m-bot15" name="subscription">
 												<option value="{{$vacancy->subscription}}">{{$vacancy->postsubscription->name ?? 'Select Subscription'}}</option>
 												@foreach($subscriptions as $subscription)
@@ -104,13 +104,13 @@
 											</select>
 										</div>
 										<div class="col-lg-6">
-											<label class="control-label">Salary <span class="required">*</span></label>
-											<input class="form-control" name="salary" value="{{$vacancy->salary}}" type="text" required/>
+											<label class="control-label">Salary</label>
+											<input class="form-control" name="salary" value="{{$vacancy->salary}}" type="text"/>
 										</div>
 									</div>
 
 									<div class="form-group ">
-										<label class="control-label">Description <span class="required">*</span></label>
+										<label class="control-label">Description <span class="text-danger">*</span></label>
 										<div class="col-lg-12">										
 											<textarea class="form-control ckeditor" name="description" rows="10">{{$vacancy->description}}</textarea>
 										</div>

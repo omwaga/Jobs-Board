@@ -34,6 +34,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  
+<script src="https://unpkg.com/vue-swal"></script>
   <script src="{{asset('assets/js/resume.js')}}"></script>
 </body>
 </html>

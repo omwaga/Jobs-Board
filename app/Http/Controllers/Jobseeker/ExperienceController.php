@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Experience;
 
 class ExperienceController extends Controller
@@ -33,10 +32,6 @@ class ExperienceController extends Controller
     	]);
 
 		Experience::create($attributes + ['user_id' => auth()->user()->id]);
-
-		Alert::Success('Success!', 'Experience details saved successfully')->position('top-right')->toToast();
-
-		return back();
     }
 
     public function destroy(Experience $experience)

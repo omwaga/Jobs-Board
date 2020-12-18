@@ -17,7 +17,7 @@
 						<h4 class="pt-5">Related Interview Questions</h4>
 						@forelse($related_questions as $interview)
 						<div class="job-post-item bg-white p-4">
-							<h4 class="mb-3">Question: {{$interview->question ?? ''}}</h4>
+							<h4 class="mb-3">{{$interview->question ?? ''}}</h4>
 							<p>{!!$interview->answer ?? ''!!}</p>
 						</div>
 						@empty
