@@ -63,6 +63,17 @@ class UsersController extends Controller
         
     }
 
+    public function show(User $user)
+    {
+        if(Gate::denies('edit-users'))
+        {
+            return redirect(route('admin.users.index'));
+        }
+
+        return view('backend.users.show', compact('user'));
+
+    }
+
     /**
      * Update the specified resource in storage.
      *

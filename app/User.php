@@ -49,7 +49,17 @@ class User extends Authenticatable
 
     public function vacancies()
     {
-        return $this->hasMany(Vacancy::class, 'id', 'user_id');
+        return $this->hasMany(Vacancy::class, 'user_id', 'id');
+    }
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class, 'employer_id', 'id');
+    }
+
+    public function pools()
+    {
+        return $this->hasMany(TalentPool::class, 'user_id', 'id');
     }
 
     public function hasRole($role)

@@ -6,7 +6,7 @@
 		<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
 			<div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
 				<p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">We have <span class="number" data-number="850000">0</span> great job offers you deserve!</p>
-				<h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find A Job at <br><span>Kenya's No.1 Job Site</span></h1>
+				<h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Search and apply<br><span>for the latest jobs in Kenya</span></h1>
 
 				@include('front.search-job')
 			</div>

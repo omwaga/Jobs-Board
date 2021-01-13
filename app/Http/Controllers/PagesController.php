@@ -36,7 +36,7 @@ class PagesController extends Controller
         $locations = City::all();
         $job_types = JobType::all();
 
-        SEOMeta::setTitle('Job opportuinities in Kenya');
+        SEOMeta::setTitle('Recruitable - Latest Jobs in Kenya');
         SEOMeta::setDescription(' Search for jobs, prepare for job interviews read career advice and sign up for alerts on the latest vacancies from top international and local companies.');
         SEOMeta::addKeyword(['Recruitable', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya', 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions', 'career advice', 'interview']);
         SEOMeta::addMeta('jobs:jobs', 'Find the best job vacancies in kenya', 'property');
@@ -69,10 +69,10 @@ class PagesController extends Controller
 
         SEOMeta::setTitle('Jobs vacancies in Kenya');
         SEOMeta::setDescription('Search and apply for job opportuinities in Kenya');
-        SEOMeta::addKeyword(['job search', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya', 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions', 'career advice', 'interview']);
+        SEOMeta::addKeyword(['apply for jobs', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya', 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions', 'career advice', 'interview']);
         SEOMeta::addMeta('jobs:jobs', 'Find the best job vacancies in kenya', 'property');
         OpenGraph::setTitle('Job vacancies in Kenya');
-        OpenGraph::setDescription('Search and apply for the lates job vacancies in kenya');
+        OpenGraph::setDescription('Search and apply for the latest job vacancies in kenya');
         OpenGraph::addProperty('type', 'Page');
         OpenGraph::addProperty('locale', 'en-ke');
         OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
@@ -92,7 +92,7 @@ class PagesController extends Controller
 
 
         SEOMeta::setTitle($job->job_title);
-        SEOMeta::setDescription($job->job_title.' job in kenya');
+        SEOMeta::setDescription($job->job_title.' job');
         SEOMeta::addKeyword([$job->job_title, $job->postcategory->name.' jobs', $job->postcategory->name.' jobs in kenya', 'jobs in kenya', 'job application letter', 'job vacancies in kenya', 'latest jobs in kenya', 'job opportuinities in kenya', 'job sites in kenya', 'careers kenya', 'careers in kenya']);
         SEOMeta::addMeta('jobpost:title', $job->job_title, 'property');
         SEOMeta::addMeta('jobpost:category', $job->postcategory->name, 'property');
@@ -275,7 +275,7 @@ class PagesController extends Controller
 
         SEOMeta::setTitle('Top Interview Questions and Answers');
         SEOMeta::setDescription('Interview Questions and Answers');
-        SEOMeta::addKeyword(['interview anwers', 'interviews in kenya', 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions']);
+        SEOMeta::addKeyword(['interview answers', 'interviews in kenya', 'interview questions', 'interview questions in Kenya', 'interview questions and answers', 'interview preparation', 'common interview questions']);
         SEOMeta::addMeta('interviews:interviews', 'Best interview questions and answers');
         OpenGraph::setTitle('Top interview questions and answers');
         OpenGraph::setDescription('prepare for your interview  with the best interview questions and answers');
@@ -332,7 +332,7 @@ class PagesController extends Controller
     public function interview($slug)
     {
         $page_banner = Interviews::where('slug', $slug)->first();
-        $related_questions = Interviews::where('category_id',  $page_banner->category_id)->inRandomOrder()->paginate(20);
+        $related_questions = Interviews::where('category_id',  $page_banner->category_id)->paginate(20);
         $recent_questions = Interviews::where('category_id',  $page_banner->category_id)->orderBy('created_at', 'DESC')->limit(10)->get();
         $categories = InterviewCategories::get();
 

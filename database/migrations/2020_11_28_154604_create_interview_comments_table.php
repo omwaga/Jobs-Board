@@ -15,6 +15,7 @@ class CreateInterviewCommentsTable extends Migration
     {
         Schema::create('interview_comments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
         });
     }

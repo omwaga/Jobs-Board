@@ -12,7 +12,7 @@
             <img src="{{asset('front/images/logo.png')}}" alt="{{$job->job_title}}">
           </div>
           <div>
-            <h2>{{$job->job_title ?? ''}}</h2>
+            <h1>{{$job->job_title ?? ''}}</h1>
             <div>
               <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{{$job->employer_name ?? $job->user->name}}</span>
               <span class="m-2"><span class="icon-room mr-2"></span>{{$job->postcity->name ?? ''}}, {{$job->postcountry->name}}</span>
@@ -37,7 +37,7 @@
         <div class="mb-5 pt-5">
           {!!$job->description!!}
 
-          <h5 class="text-primary">Application Details</h5>          
+          <h4>Application Details</h4>          
           {!!$job->how_to_apply!!}
         </div>
 

@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 ftco-animate">
-        <h2>{{$page_banner->title ?? ''}}</h2>
+        <h1>{{$page_banner->title ?? ''}}</h1>
         {!!$page_banner->description ?? ''!!}
       </div> <!-- .col-md-8 -->
 

@@ -64,6 +64,10 @@
                           @can('edit-users')
                           <a class="btn btn-primary btn-sm" href="{{route('admin.users.edit', $user->id)}}"><i class="fas fa-edit"></i> Edit</a>
                           @endcan
+
+                          @can('edit-users')
+                          <a class="btn btn-secondary btn-sm" href="{{route('admin.users.show', $user->id)}}"><i class="fas fa-eye"></i> View</a>
+                          @endcan
                           @can('delete-users')
 
                           <form method="POST" action="{{route('admin.users.destroy', $user)}}" class="float-left">

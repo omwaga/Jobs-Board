@@ -10,7 +10,7 @@
 				<div class="row">
 					<div class="col-md-8 ftco-animate">
 						<div class="job-post-item bg-white p-4">
-							<h4 class="mb-3">Question: {{$page_banner->question ?? ''}}</h4>
+							<h1 class="mb-3 h4">{{$page_banner->question ?? ''}}</h1>
 							<p>{!!$page_banner->answer ?? ''!!}</p>
 						</div>
 
@@ -43,7 +43,7 @@
 							</div>
 						</div>
 
-						<div class="sidebar-box ftco-animate">
+						<!-- <div class="sidebar-box ftco-animate">
 							<h3>Recent Interview Questions</h3>
 							@forelse($recent_questions as $interview)
 							<div class="block-21 mb-4 d-flex">
@@ -59,7 +59,7 @@
 							@empty
 							<p>Nothing yet!</p>
 							@endforelse
-						</div>
+						</div> -->
 					</div>
 
 				</div>
