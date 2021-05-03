@@ -248,7 +248,7 @@ class PagesController extends Controller
 
             SEOMeta::setTitle('Jobs In Kenya');
 
-            return view('front.search-result', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));  
+            return view('front.search-result', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));
         }
         else if($request->job_type !== null && $request->category === null && $request->location === null && $request->search === null)
         {
@@ -263,7 +263,7 @@ class PagesController extends Controller
 
             SEOMeta::setTitle('Jobs In Kenya');
 
-            return view('front.search-result', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types')); 
+            return view('front.search-result', compact('vacancies', 'top_categories1', 'top_categories2', 'top_categories3', 'top_categories4', 'categories', 'locations', 'job_types'));
         }
     }
 
@@ -306,7 +306,9 @@ class PagesController extends Controller
         OpenGraph::addProperty('locale', 'en-ke');
         OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
-        return view('front.interview-subcategories', compact('subcategories', 'interviews', 'popular_interviews', 'all_interviews', 'page_banner', 'categories', 'recent_questions'));
+        return $subcategories->count() ? view('front.interview-subcategories', compact('subcategories', 'interviews', 'popular_interviews', 'page_banner', 'categories', 'recent_questions'))
+
+        : view('front.interview', compact('all_interviews', 'page_banner', 'categories', 'recent_questions'));
     }
 
     public function interviewCategory($name)
@@ -327,26 +329,6 @@ class PagesController extends Controller
         OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
 
         return view('front.interview', compact('all_interviews', 'page_banner', 'categories', 'recent_questions'));
-    }
-
-    public function interview($slug)
-    {
-        $page_banner = Interviews::where('slug', $slug)->first();
-        $related_questions = Interviews::where('category_id',  $page_banner->category_id)->paginate(20);
-        $recent_questions = Interviews::where('category_id',  $page_banner->category_id)->orderBy('created_at', 'DESC')->limit(10)->get();
-        $categories = InterviewCategories::get();
-
-        SEOMeta::setTitle($page_banner->question);
-        SEOMeta::setDescription(Str::limit(strip_tags($page_banner->answer), 100));
-        SEOMeta::addKeyword([$page_banner->question, 'interview questions', 'interview questions and answers', 'interview preparation', 'common interview questions']);
-        SEOMeta::addMeta('interview:question', $page_banner->question, 'property');
-        OpenGraph::setTitle($page_banner->question);
-        OpenGraph::setDescription(Str::limit(strip_tags($page_banner->answer), 100));
-        OpenGraph::addProperty('type', 'article');
-        OpenGraph::addProperty('locale', 'en-ke');
-        OpenGraph::addProperty('locale:alternate', ['en-ke', 'en-ke']);
-
-        return view('front.single-interview', compact('related_questions', 'page_banner', 'categories', 'recent_questions'));
     }
 
     public function blog()

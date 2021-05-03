@@ -19,7 +19,6 @@ Route::name('front.')->group(function(){
 	Route::get('/interview-questions', 'PagesController@interviews')->name('interviews');
 	Route::get('/interviews/category/{name}', 'PagesController@interviewCategory')->name('interviewCategory');
 	Route::get('/interviews/{slug}', 'PagesController@interviewSubcategory')->name('interviewSubcategory');
-	Route::get('/interview-question/{slug}', 'PagesController@interview')->name('interview.question');
 	Route::get('/blog', 'PagesController@blog')->name('blog');
 	Route::get('/blog/{slug}', 'PagesController@blogCategory')->name('blogSubcategory');
 	Route::get('/blog/category/{slug}', 'PagesController@blogSubcategory')->name('blog.articles');

@@ -90,11 +90,12 @@
 				</div>
 			</div><!-- end -->
 			@empty
+			<p>No Jobs Yet!</p>
 			@endforelse
 		</div>
 		<div class="row mt-5">
 			<div class="col text-center">
-				<div class="block-27">					
+				<div class="block-27">
 					{{$vacancies->links()}}
 				</div>
 			</div>
@@ -139,7 +140,7 @@
 			<div class="col-md-8">
 				<h2 class="text-white">Looking For A Job?</h2>
 				<p class="mb-0 text-white lead">
-					The Recruitable portal offers thousands of job offers in many industries, it also deals with job placement and training organization. 
+					The Recruitable portal offers thousands of job offers in many industries, it also deals with job placement and training organization.
 				</p>
 			</div>
 			<div class="col-md-3 ml-auto">
